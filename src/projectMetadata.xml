@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:metadata xmlns="http://xmlns.oracle.com/bpm/pml/projectLock.xsd" xmlns:ns2="http://xmlns.oracle.com/obpm/pml/projectMetadata.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:publicShareMetadata">
+    <ns2:name>prepush</ns2:name>
+    <ns2:description>prepush restrictions for git or mercurial</ns2:description>
+    <ns2:creator>weblogic</ns2:creator>
+    <ns2:timestamp>2013-03-15T09:38:05.544+01:00</ns2:timestamp>
+    <ns2:updateTimestamp>2013-03-15T12:58:35.463+01:00</ns2:updateTimestamp>
+    <ns2:projectType>PUBLIC_SHARED</ns2:projectType>
+    <ns2:topology>
+        <ns2:filesystem>
+            <ns2:simpleFilesystem>/bpm/applications/prepush</ns2:simpleFilesystem>
+        </ns2:filesystem>
+    </ns2:topology>
+    <ns2:allowShare>false</ns2:allowShare>
+    <ns2:isFromScratch>true</ns2:isFromScratch>
+    <ns2:hasWorkflowAproval>false</ns2:hasWorkflowAproval>
+</ns2:metadata>

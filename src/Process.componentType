@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fuego version="11.1.1.6.0.15.53" build="15.53"?>
+<componentType
+	xmlns:ui="http://xmlns.oracle.com/soa/designer/"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:ns2="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+	xmlns:ns6="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+	xmlns="http://xmlns.oracle.com/sca/1.0"
+	xmlns:orawsp="http://schemas.oracle.com/ws/2006/01/policy"
+	xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+	<service name="Process.service"
+		ui:wsdlLocation="Process.wsdl">
+		<interface.wsdl
+			interface="http://xmlns.oracle.com/bpmn/bpmnProcess/Process#wsdl.interface(ProcessPortType)"
+			callbackInterface="http://xmlns.oracle.com/bpmn/bpmnProcess/Process#wsdl.interface(ProcessPortTypeCallBack)"/>
+		<property name="bpm.generated.service.reference"
+			type="xs:string"
+			many="false">Process.service</property>
+	</service>
+</componentType>

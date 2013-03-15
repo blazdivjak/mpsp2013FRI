@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?oracleBPM version="11.1.1.6.0.15.53" fileRevision="20110706"?>
+<processDocumentation xmlns="http://xmlns.oracle.com/bpm/taskMetadataService/processDocumentation">
+    <component name="Process">
+        <topicDocumentations>
+            <topicDocumentation name="Process">
+                <labels>
+                    <label locale="en">Process</label>
+                </labels>
+            </topicDocumentation>
+            <topicDocumentation name="ABSTRACT_ACTIVITY_1363336963722">
+                <labels>
+                    <label locale="en">Preveri imena branchov</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="ABSTRACT_ACTIVITY_1363337031918">
+                <labels>
+                    <label locale="en">Preveri spellcheck komentarjev</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="ABSTRACT_ACTIVITY_1363337092310">
+                <labels>
+                    <label locale="en">Preveri merge</label>
+                </labels>
+                <descriptions>
+                    <description locale="en">preveri merge. To obsega zelo veliko preverjanj, tako da bo gotovo razdeljen na vec subtaskov</description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="ABSTRACT_ACTIVITY_1363337142701">
+                <labels>
+                    <label locale="en">Preveri lokacijo komitov</label>
+                </labels>
+                <descriptions>
+                    <description locale="en">preveri na katerih brancih so komiti</description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="USER_TASK_1363337300136">
+                <labels>
+                    <label locale="en">commitSpellcheckManual</label>
+                </labels>
+                <descriptions>
+                    <description locale="en">preveri ce so kaksne besede, ki se niso v slovarju in ce je vredu dovoli commit</description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="ABSTRACT_ACTIVITY_1363337901797">
+                <labels>
+                    <label locale="en">brachDevelop</label>
+                </labels>
+                <descriptions>
+                    <description locale="en">poglej ce obstaja branch z imenom develop in je na novo spremenjena</description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="USER_TASK_1363348547999">
+                <labels>
+                    <label locale="en">Naredi CodeReview</label>
+                </labels>
+            </topicDocumentation>
+            <topicDocumentation name="USER_TASK_1363348601524">
+                <labels>
+                    <label locale="en">Naredi Merge na Deploy branch</label>
+                </labels>
+            </topicDocumentation>
+            <topicDocumentation name="START_EVENT6174453879719">
+                <labels>
+                    <label locale="en">Start</label>
+                </labels>
+            </topicDocumentation>
+            <topicDocumentation name="END_EVENT617445387978">
+                <labels>
+                    <label locale="en">End</label>
+                </labels>
+            </topicDocumentation>
+            <topicDocumentation name="PARALLEL_GATEWAY_1363336813880">
+                <labels>
+                    <label locale="en">Layer#1</label>
+                </labels>
+            </topicDocumentation>
+            <topicDocumentation name="PARALLEL_GATEWAY_1363336813880M">
+                <labels>
+                    <label locale="en">Layer#1Merge</label>
+                </labels>
+            </topicDocumentation>
+            <topicDocumentation name="EXCLUSIVE_GATEWAY_1363337442402">
+                <labels>
+                    <label locale="en">spellcheckOK</label>
+                </labels>
+            </topicDocumentation>
+            <topicDocumentation name="EXCLUSIVE_GATEWAY_1363337740321">
+                <labels>
+                    <label locale="en">developExists</label>
+                </labels>
+            </topicDocumentation>
+            <topicDocumentation name="EXCLUSIVE_GATEWAY_1363347361931">
+                <labels>
+                    <label locale="en">codeOK</label>
+                </labels>
+            </topicDocumentation>
+            <topicDocumentation name="sf4"/>
+            <topicDocumentation name="sf_1363336813883"/>
+            <topicDocumentation name="sf_1363337132834"/>
+            <topicDocumentation name="sf_1363337260801"/>
+            <topicDocumentation name="sf_1363337265124"/>
+            <topicDocumentation name="sf_1363337267339"/>
+            <topicDocumentation name="sf_1363337453767"/>
+            <topicDocumentation name="sf_1363337455018">
+                <labels>
+                    <label locale="en">NE</label>
+                </labels>
+            </topicDocumentation>
+            <topicDocumentation name="sf_1363337545210"/>
+            <topicDocumentation name="sf_1363337747324"/>
+            <topicDocumentation name="sf_1363337843935">
+                <labels>
+                    <label locale="en">NE</label>
+                </labels>
+            </topicDocumentation>
+            <topicDocumentation name="sf_1363337921730"/>
+            <topicDocumentation name="sf_1363347082638"/>
+            <topicDocumentation name="sf_1363347388182">
+                <labels>
+                    <label locale="en">DA</label>
+                </labels>
+            </topicDocumentation>
+            <topicDocumentation name="sf_1363347766881">
+                <labels>
+                    <label locale="en">NE</label>
+                </labels>
+            </topicDocumentation>
+            <topicDocumentation name="sf_1363348045238">
+                <labels>
+                    <label locale="en">DA</label>
+                </labels>
+            </topicDocumentation>
+            <topicDocumentation name="sf_1363348458827"/>
+            <topicDocumentation name="sf_1363348634085"/>
+            <topicDocumentation name="sf_1363348636948"/>
+            <topicDocumentation name="sf_1363348639876">
+                <labels>
+                    <label locale="en">DA</label>
+                </labels>
+            </topicDocumentation>
+        </topicDocumentations>
+    </component>
+</processDocumentation>

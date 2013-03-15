@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions fileRevision="20110706" version="11.1.1.6.0.15.53" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns2="http://xmlns.oracle.com/bpm/OracleExtensions" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns4="http://www.omg.org/spec/DD/20100524/DC" xmlns:ns3="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns5="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <process processType="Public" isExecutable="true" name="Process" id="Process">
+        <extensionElements>
+            <ns2:OracleExtensions>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="false" name="atomic"/>
+                    <ns2:BooleanFeature value="false" name="instanceScreenflow"/>
+                    <ns2:BooleanFeature value="true" name="relative-coordinates"/>
+                    <ns2:BooleanFeature value="true" name="sharePredefineVariables"/>
+                    <ns2:BooleanFeature value="true" name="suspendInstanceOnDataAssociationError"/>
+                    <ns2:StringFeature value="" name="ANALYTICS_VIEW_IDENTIFIER"/>
+                    <ns2:StringFeature value="weblogic" name="AUTHOR"/>
+                    <ns2:StringFeature value="default" name="GreedyExecutionMode"/>
+                    <ns2:StringFeature value="" name="NAMESPACE"/>
+                    <ns2:StringFeature value="PROJECT_DEFAULT" name="generatesEvents"/>
+                    <ns2:StringFeature value="HORIZONTAL_LAYOUT" name="process-layout"/>
+                    <ns2:StringFeature value="1.0" name="scale"/>
+                    <ns2:StringFeature value="REGULAR" name="sealType"/>
+                </ns2:FeatureSet>
+                <ns2:Conversations>
+                    <ns2:Conversation id="CONVERSATION61744538797" type="define_interface">
+                        <ns2:DefineInterfaceConversationDefinition exposeSOAPService="true"/>
+                    </ns2:Conversation>
+                </ns2:Conversations>
+            </ns2:OracleExtensions>
+        </extensionElements>
+        <laneSet>
+            <lane name="Automatic Handler" id="lane0">
+                <extensionElements>
+                    <ns2:OracleExtensions>
+                        <ns2:GraphicsAttributes backgroundColor="-1761607681">
+                            <ns2:Position x="0" y="0"/>
+                            <ns2:Size width="491" height="0"/>
+                        </ns2:GraphicsAttributes>
+                        <ns2:LaneAttributes roleId="AutomaticHandler"/>
+                        <ns2:FeatureSet/>
+                    </ns2:OracleExtensions>
+                </extensionElements>
+            </lane>
+            <lane name="clan ekipe" id="lane">
+                <extensionElements>
+                    <ns2:OracleExtensions>
+                        <ns2:GraphicsAttributes backgroundColor="16777215">
+                            <ns2:Position x="491" y="0"/>
+                            <ns2:Size width="135" height="0"/>
+                        </ns2:GraphicsAttributes>
+                        <ns2:LaneAttributes roleId="clanekipe"/>
+                        <ns2:FeatureSet/>
+                    </ns2:OracleExtensions>
+                </extensionElements>
+            </lane>
+            <lane name="vodja ekipe" id="lane 1">
+                <extensionElements>
+                    <ns2:OracleExtensions>
+                        <ns2:GraphicsAttributes backgroundColor="16777215">
+                            <ns2:Position x="626" y="0"/>
+                            <ns2:Size width="136" height="0"/>
+                        </ns2:GraphicsAttributes>
+                        <ns2:LaneAttributes roleId="vodjaekipe"/>
+                        <ns2:FeatureSet/>
+                    </ns2:OracleExtensions>
+                </extensionElements>
+            </lane>
+        </laneSet>
+        <task isForCompensation="false" name="Preveri imena branchov" id="ABSTRACT_ACTIVITY_1363336963722">
+            <extensionElements>
+                <ns2:OracleExtensions>
+                    <ns2:GraphicsAttributes>
+                        <ns2:Position x="400" y="50"/>
+                    </ns2:GraphicsAttributes>
+                    <ns2:FeatureSet>
+                        <ns2:BooleanFeature value="false" name="isDraft"/>
+                        <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                        <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                    </ns2:FeatureSet>
+                </ns2:OracleExtensions>
+            </extensionElements>
+        </task>
+        <task isForCompensation="false" name="Preveri spellcheck komentarjev" id="ABSTRACT_ACTIVITY_1363337031918">
+            <extensionElements>
+                <ns2:OracleExtensions>
+                    <ns2:GraphicsAttributes>
+                        <ns2:Position x="400" y="350"/>
+                    </ns2:GraphicsAttributes>
+                    <ns2:FeatureSet>
+                        <ns2:BooleanFeature value="false" name="isDraft"/>
+                        <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                        <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                    </ns2:FeatureSet>
+                </ns2:OracleExtensions>
+            </extensionElements>
+        </task>
+        <task isForCompensation="false" name="Preveri merge" id="ABSTRACT_ACTIVITY_1363337092310">
+            <extensionElements>
+                <ns2:OracleExtensions>
+                    <ns2:GraphicsAttributes>
+                        <ns2:Position x="400" y="250"/>
+                    </ns2:GraphicsAttributes>
+                    <ns2:FeatureSet>
+                        <ns2:BooleanFeature value="false" name="isDraft"/>
+                        <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                        <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                    </ns2:FeatureSet>
+                </ns2:OracleExtensions>
+            </extensionElements>
+        </task>
+        <task isForCompensation="false" name="Preveri lokacijo komitov" id="ABSTRACT_ACTIVITY_1363337142701">
+            <extensionElements>
+                <ns2:OracleExtensions>
+                    <ns2:GraphicsAttributes>
+                        <ns2:Position x="400" y="150"/>
+                    </ns2:GraphicsAttributes>
+                    <ns2:FeatureSet>
+                        <ns2:BooleanFeature value="false" name="isDraft"/>
+                        <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                        <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                    </ns2:FeatureSet>
+                </ns2:OracleExtensions>
+            </extensionElements>
+        </task>
+        <userTask isForCompensation="false" name="commitSpellcheckManual" id="USER_TASK_1363337300136">
+            <extensionElements>
+                <ns2:OracleExtensions>
+                    <ns2:GraphicsAttributes>
+                        <ns2:Position x="750" y="550"/>
+                    </ns2:GraphicsAttributes>
+                    <ns2:FeatureSet>
+                        <ns2:BooleanFeature value="false" name="isDraft"/>
+                        <ns2:BooleanFeature value="false" name="reinitiate"/>
+                        <ns2:BooleanFeature value="false" name="manualCreation"/>
+                        <ns2:BooleanFeature value="false" name="inputValidation"/>
+                        <ns2:BooleanFeature value="false" name="outputValidation"/>
+                        <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                        <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                        <ns2:StringFeature value="REUSE_PAYLOAD" name="reinitiatorPolicy"/>
+                        <ns2:StringFeature value="SIMPLE" name="humanTaskType"/>
+                        <ns2:StringFeature value="" name="reinitiateSource"/>
+                    </ns2:FeatureSet>
+                    <ns2:HumanTask/>
+                    <ns2:LogHandlers/>
+                </ns2:OracleExtensions>
+            </extensionElements>
+            <ioSpecification/>
+            <resourceRole name="clan ekipe" id="lane"/>
+        </userTask>
+        <task isForCompensation="false" name="brachDevelop" id="ABSTRACT_ACTIVITY_1363337901797">
+            <extensionElements>
+                <ns2:OracleExtensions>
+                    <ns2:GraphicsAttributes>
+                        <ns2:Position x="1100" y="200"/>
+                    </ns2:GraphicsAttributes>
+                    <ns2:FeatureSet>
+                        <ns2:BooleanFeature value="false" name="isDraft"/>
+                        <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                        <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                    </ns2:FeatureSet>
+                </ns2:OracleExtensions>
+            </extensionElements>
+        </task>
+        <userTask isForCompensation="false" name="Naredi CodeReview" id="USER_TASK_1363348547999">
+            <extensionElements>
+                <ns2:OracleExtensions>
+                    <ns2:GraphicsAttributes>
+                        <ns2:Position x="1300" y="670"/>
+                    </ns2:GraphicsAttributes>
+                    <ns2:FeatureSet>
+                        <ns2:BooleanFeature value="false" name="isDraft"/>
+                        <ns2:BooleanFeature value="false" name="reinitiate"/>
+                        <ns2:BooleanFeature value="false" name="manualCreation"/>
+                        <ns2:BooleanFeature value="false" name="inputValidation"/>
+                        <ns2:BooleanFeature value="false" name="outputValidation"/>
+                        <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                        <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                        <ns2:StringFeature value="REUSE_PAYLOAD" name="reinitiatorPolicy"/>
+                        <ns2:StringFeature value="SIMPLE" name="humanTaskType"/>
+                        <ns2:StringFeature value="" name="reinitiateSource"/>
+                    </ns2:FeatureSet>
+                    <ns2:HumanTask/>
+                    <ns2:LogHandlers/>
+                </ns2:OracleExtensions>
+            </extensionElements>
+            <ioSpecification/>
+            <resourceRole name="vodja ekipe" id="lane 1"/>
+        </userTask>
+        <userTask isForCompensation="false" name="Naredi Merge na Deploy branch" id="USER_TASK_1363348601524">
+            <extensionElements>
+                <ns2:OracleExtensions>
+                    <ns2:GraphicsAttributes>
+                        <ns2:Position x="1550" y="670"/>
+                    </ns2:GraphicsAttributes>
+                    <ns2:FeatureSet>
+                        <ns2:BooleanFeature value="false" name="isDraft"/>
+                        <ns2:BooleanFeature value="false" name="reinitiate"/>
+                        <ns2:BooleanFeature value="false" name="manualCreation"/>
+                        <ns2:BooleanFeature value="false" name="inputValidation"/>
+                        <ns2:BooleanFeature value="false" name="outputValidation"/>
+                        <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                        <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                        <ns2:StringFeature value="REUSE_PAYLOAD" name="reinitiatorPolicy"/>
+                        <ns2:StringFeature value="SIMPLE" name="humanTaskType"/>
+                        <ns2:StringFeature value="" name="reinitiateSource"/>
+                    </ns2:FeatureSet>
+                    <ns2:HumanTask/>
+                    <ns2:LogHandlers/>
+                </ns2:OracleExtensions>
+            </extensionElements>
+            <ioSpecification/>
+            <resourceRole name="vodja ekipe" id="lane 1"/>
+        </userTask>
+        <startEvent isInterrupting="false" name="Start" id="START_EVENT6174453879719">
+            <extensionElements>
+                <ns2:OracleExtensions>
+                    <ns2:GraphicsAttributes>
+                        <ns2:Position x="100" y="200"/>
+                    </ns2:GraphicsAttributes>
+                    <ns2:FeatureSet>
+                        <ns2:BooleanFeature value="false" name="catchAllErrors"/>
+                        <ns2:BooleanFeature value="false" name="catchAllSystemExceptions"/>
+                        <ns2:BooleanFeature value="false" name="isDraft"/>
+                        <ns2:BooleanFeature value="false" name="outputValidation"/>
+                        <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                        <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                    </ns2:FeatureSet>
+                    <ns2:Conversational conversation="CONVERSATION61744538797">
+                        <ns2:DefineInterfaceConversationalDefinition definedOperationName="start"/>
+                    </ns2:Conversational>
+                    <ns2:LogHandlers/>
+                </ns2:OracleExtensions>
+            </extensionElements>
+            <outputSet/>
+            <messageEventDefinition/>
+        </startEvent>
+        <endEvent name="End" id="END_EVENT617445387978">
+            <extensionElements>
+                <ns2:OracleExtensions>
+                    <ns2:GraphicsAttributes>
+                        <ns2:Position x="1550" y="200"/>
+                    </ns2:GraphicsAttributes>
+                    <ns2:FeatureSet>
+                        <ns2:BooleanFeature value="false" name="catchAllErrors"/>
+                        <ns2:BooleanFeature value="false" name="catchAllSystemExceptions"/>
+                        <ns2:BooleanFeature value="false" name="inputValidation"/>
+                        <ns2:BooleanFeature value="false" name="isDraft"/>
+                        <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                        <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                    </ns2:FeatureSet>
+                    <ns2:Conversational conversation="CONVERSATION61744538797">
+                        <ns2:DefineInterfaceConversationalDefinition definedOperationName="end"/>
+                    </ns2:Conversational>
+                    <ns2:LogHandlers/>
+                </ns2:OracleExtensions>
+            </extensionElements>
+            <inputSet/>
+            <messageEventDefinition/>
+        </endEvent>
+        <parallelGateway gatewayDirection="Diverging" name="Layer#1" id="PARALLEL_GATEWAY_1363336813880">
+            <extensionElements>
+                <ns2:OracleExtensions>
+                    <ns2:GraphicsAttributes>
+                        <ns2:Position x="200" y="200"/>
+                    </ns2:GraphicsAttributes>
+                    <ns2:FeatureSet>
+                        <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                        <ns2:StringFeature value="PARALLEL_GATEWAY_1363336813880M" name="pairedGateway"/>
+                        <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                    </ns2:FeatureSet>
+                </ns2:OracleExtensions>
+            </extensionElements>
+        </parallelGateway>
+        <parallelGateway gatewayDirection="Converging" name="Layer#1Merge" id="PARALLEL_GATEWAY_1363336813880M">
+            <extensionElements>
+                <ns2:OracleExtensions>
+                    <ns2:GraphicsAttributes>
+                        <ns2:Position x="900" y="200"/>
+                    </ns2:GraphicsAttributes>
+                    <ns2:FeatureSet>
+                        <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                        <ns2:StringFeature value="PARALLEL_GATEWAY_1363336813880" name="pairedGateway"/>
+                        <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                    </ns2:FeatureSet>
+                </ns2:OracleExtensions>
+            </extensionElements>
+        </parallelGateway>
+        <exclusiveGateway gatewayDirection="Unspecified" name="spellcheckOK" id="EXCLUSIVE_GATEWAY_1363337442402">
+            <extensionElements>
+                <ns2:OracleExtensions>
+                    <ns2:GraphicsAttributes>
+                        <ns2:Position x="500" y="350"/>
+                    </ns2:GraphicsAttributes>
+                    <ns2:FeatureSet>
+                        <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                        <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                    </ns2:FeatureSet>
+                </ns2:OracleExtensions>
+            </extensionElements>
+        </exclusiveGateway>
+        <exclusiveGateway gatewayDirection="Unspecified" name="developExists" id="EXCLUSIVE_GATEWAY_1363337740321">
+            <extensionElements>
+                <ns2:OracleExtensions>
+                    <ns2:GraphicsAttributes>
+                        <ns2:Position x="1300" y="200"/>
+                    </ns2:GraphicsAttributes>
+                    <ns2:FeatureSet>
+                        <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                        <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                    </ns2:FeatureSet>
+                </ns2:OracleExtensions>
+            </extensionElements>
+        </exclusiveGateway>
+        <exclusiveGateway gatewayDirection="Unspecified" name="codeOK" id="EXCLUSIVE_GATEWAY_1363347361931">
+            <extensionElements>
+                <ns2:OracleExtensions>
+                    <ns2:GraphicsAttributes>
+                        <ns2:Position x="1000" y="200"/>
+                    </ns2:GraphicsAttributes>
+                    <ns2:FeatureSet>
+                        <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                        <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                    </ns2:FeatureSet>
+                </ns2:OracleExtensions>
+            </extensionElements>
+        </exclusiveGateway>
+        <sequenceFlow sourceRef="START_EVENT6174453879719" targetRef="PARALLEL_GATEWAY_1363336813880" name="sf4" id="sf4">
+            <extensionElements>
+                <ns2:OracleExtensions>
+                    <ns2:SequenceFlowAttributes/>
+                    <ns2:FeatureSet>
+                        <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                        <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                        <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                    </ns2:FeatureSet>
+                </ns2:OracleExtensions>
+            </extensionElements>
+        </sequenceFlow>
+        <sequenceFlow sourceRef="PARALLEL_GATEWAY_1363336813880" targetRef="ABSTRACT_ACTIVITY_1363336963722" name="sf_1363336813883" id="sf_1363336813883">
+            <extensionElements>
+                <ns2:OracleExtensions>
+                    <ns2:SequenceFlowAttributes>
+                        <ns2:Positions x="210" y="51"/>
+                    </ns2:SequenceFlowAttributes>
+                    <ns2:FeatureSet>
+                        <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                        <ns2:StringFeature value="210,51" name="curve"/>
+                        <ns2:StringFeature value="ORTHOGONAL" name="routing"/>
+                    </ns2:FeatureSet>
+                </ns2:OracleExtensions>
+            </extensionElements>
+        </sequenceFlow>
+        <sequenceFlow sourceRef="PARALLEL_GATEWAY_1363336813880" targetRef="ABSTRACT_ACTIVITY_1363337092310" name="sf_1363337132834" id="sf_1363337132834">
+            <extensionElements>
+                <ns2:OracleExtensions>
+                    <ns2:SequenceFlowAttributes>
+                        <ns2:Positions x="200" y="246"/>
+                    </ns2:SequenceFlowAttributes>
+                    <ns2:FeatureSet>
+                        <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                        <ns2:StringFeature value="200,246" name="curve"/>
+                        <ns2:StringFeature value="ORTHOGONAL" name="routing"/>
+                    </ns2:FeatureSet>
+                </ns2:OracleExtensions>
+            </extensionElements>
+        </sequenceFlow>
+        <sequenceFlow sourceRef="ABSTRACT_ACTIVITY_1363336963722" targetRef="PARALLEL_GATEWAY_1363336813880M" name="sf_1363337260801" id="sf_1363337260801">
+            <extensionElements>
+                <ns2:OracleExtensions>
+                    <ns2:SequenceFlowAttributes>
+                        <ns2:Positions x="900" y="87"/>
+                    </ns2:SequenceFlowAttributes>
+                    <ns2:FeatureSet>
+                        <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                        <ns2:StringFeature value="900,87" name="curve"/>
+                        <ns2:StringFeature value="ORTHOGONAL" name="routing"/>
+                    </ns2:FeatureSet>
+                </ns2:OracleExtensions>
+            </extensionElements>
+        </sequenceFlow>
+        <sequenceFlow sourceRef="ABSTRACT_ACTIVITY_1363337092310" targetRef="PARALLEL_GATEWAY_1363336813880M" name="sf_1363337265124" id="sf_1363337265124">
+            <extensionElements>
+                <ns2:OracleExtensions>
+                    <ns2:SequenceFlowAttributes>
+                        <ns2:Positions x="801" y="248"/>
+                    </ns2:SequenceFlowAttributes>
+                    <ns2:FeatureSet>
+                        <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                        <ns2:StringFeature value="801,248" name="curve"/>
+                        <ns2:StringFeature value="ORTHOGONAL" name="routing"/>
+                    </ns2:FeatureSet>
+                </ns2:OracleExtensions>
+            </extensionElements>
+        </sequenceFlow>
+        <sequenceFlow sourceRef="ABSTRACT_ACTIVITY_1363337142701" targetRef="PARALLEL_GATEWAY_1363336813880M" name="sf_1363337267339" id="sf_1363337267339">
+            <extensionElements>
+                <ns2:OracleExtensions>
+                    <ns2:SequenceFlowAttributes>
+                        <ns2:Positions x="901" y="155"/>
+                    </ns2:SequenceFlowAttributes>
+                    <ns2:FeatureSet>
+                        <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                        <ns2:StringFeature value="901,155" name="curve"/>
+                        <ns2:StringFeature value="ORTHOGONAL" name="routing"/>
+                    </ns2:FeatureSet>
+                </ns2:OracleExtensions>
+            </extensionElements>
+        </sequenceFlow>
+        <sequenceFlow sourceRef="ABSTRACT_ACTIVITY_1363337031918" targetRef="EXCLUSIVE_GATEWAY_1363337442402" name="sf_1363337453767" id="sf_1363337453767">
+            <extensionElements>
+                <ns2:OracleExtensions>
+                    <ns2:SequenceFlowAttributes/>
+                    <ns2:FeatureSet>
+                        <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                        <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                        <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                    </ns2:FeatureSet>
+                </ns2:OracleExtensions>
+            </extensionElements>
+        </sequenceFlow>
+        <sequenceFlow sourceRef="EXCLUSIVE_GATEWAY_1363337442402" targetRef="USER_TASK_1363337300136" name="sf_1363337455018" id="sf_1363337455018">
+            <extensionElements>
+                <ns2:OracleExtensions>
+                    <ns2:SequenceFlowAttributes>
+                        <ns2:Positions x="499" y="489"/>
+                    </ns2:SequenceFlowAttributes>
+                    <ns2:FeatureSet>
+                        <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                        <ns2:StringFeature value="499,489" name="curve"/>
+                        <ns2:StringFeature value="ORTHOGONAL" name="routing"/>
+                        <ns2:IntegerFeature value="0" name="order"/>
+                    </ns2:FeatureSet>
+                </ns2:OracleExtensions>
+            </extensionElements>
+            <conditionExpression xsi:type="tFormalExpression"/>
+        </sequenceFlow>
+        <sequenceFlow sourceRef="USER_TASK_1363337300136" targetRef="PARALLEL_GATEWAY_1363336813880M" name="sf_1363337545210" id="sf_1363337545210">
+            <extensionElements>
+                <ns2:OracleExtensions>
+                    <ns2:SequenceFlowAttributes>
+                        <ns2:Positions x="848" y="541"/>
+                    </ns2:SequenceFlowAttributes>
+                    <ns2:FeatureSet>
+                        <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                        <ns2:StringFeature value="848,541" name="curve"/>
+                        <ns2:StringFeature value="ORTHOGONAL" name="routing"/>
+                    </ns2:FeatureSet>
+                </ns2:OracleExtensions>
+            </extensionElements>
+        </sequenceFlow>
+        <sequenceFlow sourceRef="PARALLEL_GATEWAY_1363336813880M" targetRef="EXCLUSIVE_GATEWAY_1363347361931" name="sf_1363337747324" id="sf_1363337747324">
+            <extensionElements>
+                <ns2:OracleExtensions>
+                    <ns2:SequenceFlowAttributes/>
+                    <ns2:FeatureSet>
+                        <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                        <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                        <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                    </ns2:FeatureSet>
+                </ns2:OracleExtensions>
+            </extensionElements>
+        </sequenceFlow>
+        <sequenceFlow sourceRef="EXCLUSIVE_GATEWAY_1363337740321" targetRef="END_EVENT617445387978" name="sf_1363337843935" id="sf_1363337843935">
+            <extensionElements>
+                <ns2:OracleExtensions>
+                    <ns2:SequenceFlowAttributes/>
+                    <ns2:FeatureSet>
+                        <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                        <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                        <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                        <ns2:IntegerFeature value="0" name="order"/>
+                    </ns2:FeatureSet>
+                </ns2:OracleExtensions>
+            </extensionElements>
+            <conditionExpression xsi:type="tFormalExpression"/>
+        </sequenceFlow>
+        <sequenceFlow sourceRef="ABSTRACT_ACTIVITY_1363337901797" targetRef="EXCLUSIVE_GATEWAY_1363337740321" name="sf_1363337921730" id="sf_1363337921730">
+            <extensionElements>
+                <ns2:OracleExtensions>
+                    <ns2:SequenceFlowAttributes/>
+                    <ns2:FeatureSet>
+                        <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                        <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                        <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                    </ns2:FeatureSet>
+                </ns2:OracleExtensions>
+            </extensionElements>
+        </sequenceFlow>
+        <sequenceFlow sourceRef="PARALLEL_GATEWAY_1363336813880" targetRef="ABSTRACT_ACTIVITY_1363337031918" name="sf_1363347082638" id="sf_1363347082638">
+            <extensionElements>
+                <ns2:OracleExtensions>
+                    <ns2:SequenceFlowAttributes>
+                        <ns2:Positions x="200" y="313"/>
+                    </ns2:SequenceFlowAttributes>
+                    <ns2:FeatureSet>
+                        <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                        <ns2:StringFeature value="200,313" name="curve"/>
+                        <ns2:StringFeature value="ORTHOGONAL" name="routing"/>
+                    </ns2:FeatureSet>
+                </ns2:OracleExtensions>
+            </extensionElements>
+        </sequenceFlow>
+        <sequenceFlow sourceRef="EXCLUSIVE_GATEWAY_1363347361931" targetRef="ABSTRACT_ACTIVITY_1363337901797" name="sf_1363347388182" id="sf_1363347388182">
+            <extensionElements>
+                <ns2:OracleExtensions>
+                    <ns2:SequenceFlowAttributes/>
+                    <ns2:FeatureSet>
+                        <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                        <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                        <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                        <ns2:IntegerFeature value="0" name="order"/>
+                    </ns2:FeatureSet>
+                </ns2:OracleExtensions>
+            </extensionElements>
+            <conditionExpression xsi:type="tFormalExpression"/>
+        </sequenceFlow>
+        <sequenceFlow sourceRef="EXCLUSIVE_GATEWAY_1363347361931" targetRef="END_EVENT617445387978" name="sf_1363347766881" id="sf_1363347766881">
+            <extensionElements>
+                <ns2:OracleExtensions>
+                    <ns2:SequenceFlowAttributes>
+                        <ns2:Positions x="1221" y="100"/>
+                    </ns2:SequenceFlowAttributes>
+                    <ns2:FeatureSet>
+                        <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                        <ns2:StringFeature value="1221,100" name="curve"/>
+                        <ns2:StringFeature value="ORTHOGONAL" name="routing"/>
+                        <ns2:IntegerFeature value="0" name="order"/>
+                    </ns2:FeatureSet>
+                </ns2:OracleExtensions>
+            </extensionElements>
+            <conditionExpression xsi:type="tFormalExpression"/>
+        </sequenceFlow>
+        <sequenceFlow sourceRef="EXCLUSIVE_GATEWAY_1363337442402" targetRef="PARALLEL_GATEWAY_1363336813880M" name="sf_1363348045238" id="sf_1363348045238">
+            <extensionElements>
+                <ns2:OracleExtensions>
+                    <ns2:SequenceFlowAttributes>
+                        <ns2:Positions x="714" y="349"/>
+                    </ns2:SequenceFlowAttributes>
+                    <ns2:FeatureSet>
+                        <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                        <ns2:StringFeature value="714,349" name="curve"/>
+                        <ns2:StringFeature value="ORTHOGONAL" name="routing"/>
+                        <ns2:IntegerFeature value="0" name="order"/>
+                    </ns2:FeatureSet>
+                </ns2:OracleExtensions>
+            </extensionElements>
+            <conditionExpression xsi:type="tFormalExpression"/>
+        </sequenceFlow>
+        <sequenceFlow sourceRef="PARALLEL_GATEWAY_1363336813880" targetRef="ABSTRACT_ACTIVITY_1363337142701" name="sf_1363348458827" id="sf_1363348458827">
+            <extensionElements>
+                <ns2:OracleExtensions>
+                    <ns2:SequenceFlowAttributes>
+                        <ns2:Positions x="306" y="150"/>
+                    </ns2:SequenceFlowAttributes>
+                    <ns2:FeatureSet>
+                        <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                        <ns2:StringFeature value="306,150" name="curve"/>
+                        <ns2:StringFeature value="ORTHOGONAL" name="routing"/>
+                    </ns2:FeatureSet>
+                </ns2:OracleExtensions>
+            </extensionElements>
+        </sequenceFlow>
+        <sequenceFlow sourceRef="USER_TASK_1363348547999" targetRef="USER_TASK_1363348601524" name="sf_1363348634085" id="sf_1363348634085">
+            <extensionElements>
+                <ns2:OracleExtensions>
+                    <ns2:SequenceFlowAttributes/>
+                    <ns2:FeatureSet>
+                        <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                        <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                        <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                    </ns2:FeatureSet>
+                </ns2:OracleExtensions>
+            </extensionElements>
+        </sequenceFlow>
+        <sequenceFlow sourceRef="USER_TASK_1363348601524" targetRef="END_EVENT617445387978" name="sf_1363348636948" id="sf_1363348636948">
+            <extensionElements>
+                <ns2:OracleExtensions>
+                    <ns2:SequenceFlowAttributes/>
+                    <ns2:FeatureSet>
+                        <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                        <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                        <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                    </ns2:FeatureSet>
+                </ns2:OracleExtensions>
+            </extensionElements>
+        </sequenceFlow>
+        <sequenceFlow sourceRef="EXCLUSIVE_GATEWAY_1363337740321" targetRef="USER_TASK_1363348547999" name="sf_1363348639876" id="sf_1363348639876">
+            <extensionElements>
+                <ns2:OracleExtensions>
+                    <ns2:SequenceFlowAttributes/>
+                    <ns2:FeatureSet>
+                        <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                        <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                        <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                        <ns2:IntegerFeature value="0" name="order"/>
+                    </ns2:FeatureSet>
+                </ns2:OracleExtensions>
+            </extensionElements>
+            <conditionExpression xsi:type="tFormalExpression"/>
+        </sequenceFlow>
+    </process>
+</definitions>
