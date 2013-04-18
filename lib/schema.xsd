@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns:s="http://www.example.org/businessSchemas" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.example.org/businessSchemas">
+    <!-- Type definition -->
+    <complexType name="CommitEntityType">
+        <sequence>
+            <element name="rev" type="s:RevType" />
+            <element name="user" type="string" />
+            <element name="date" type="date" />
+            <element name="description" type="string" />
+            <element name="branch" type="string" />
+            <element name="parent1" type="string" />
+        </sequence>
+    </complexType>
+
+    <complexType name="RevType">
+        <sequence>
+            <element name="revNumber" type="int" />
+            <element name="revHex" type="s:RevHexType" />
+        </sequence>
+    </complexType>
+
+    <complexType name="RevHexType">
+        <sequence>
+            <element name="20char" type="string" />
+            <element name="40char" type="string" />
+        </sequence>
+    </complexType>
+    
+    <complexType name="FullCommitEntityType">
+        <complexContent>
+            <extension base="s:CommitEntityType">
+                <sequence>
+                    <element name="parent2" type="string" />
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    
+    <complexType name="MultiCommitEntityType">
+        <sequence>
+            <element name="commits" type="s:CommitEntityType" maxOccurs="unbounded" />
+        </sequence>
+    </complexType>
+
+    <complexType name="CommitEntityType">
+        <sequence>
+            <element name="rev" type="s:RevType" />
+            <element name="user" type="string" />
+            <element name="date" type="date" />
+            <element name="description" type="string" />
+            <element name="branch" type="string" />
+            <element name="parent1" type="string" />
+        </sequence>
+    </complexType>
+
+
+    <complexType name="ConfirmType">
+        <sequence>
+            <element name="confirmed" type="boolean" />
+        </sequence>
+    </complexType>
+
+
+    <complexType name="FaultType">
+        <sequence>
+            <element name="code" type="string"/>
+            <element name="description" type="string"/>
+        </sequence>
+    </complexType>
+
+
+
+    <element name="commits" type="MultiCommitEntityType" />
+    <element name="confirm" type="ConfirmType" />
+    <element name="fault" type="FaultType" />
+</schema>
