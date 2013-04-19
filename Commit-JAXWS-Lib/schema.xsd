@@ -21,8 +21,8 @@
 
     <complexType name="RevHexType">
         <sequence>
-            <element name="20char" type="string" />
-            <element name="40char" type="string" />
+            <element name="smallHash" type="string" />
+            <element name="bigHash" type="string" />
         </sequence>
     </complexType>
     
@@ -42,24 +42,11 @@
         </sequence>
     </complexType>
 
-    <complexType name="CommitEntityType">
-        <sequence>
-            <element name="rev" type="s:RevType" />
-            <element name="user" type="string" />
-            <element name="date" type="date" />
-            <element name="description" type="string" />
-            <element name="branch" type="string" />
-            <element name="parent1" type="string" />
-        </sequence>
-    </complexType>
-
-
     <complexType name="ConfirmType">
         <sequence>
             <element name="confirmed" type="boolean" />
         </sequence>
     </complexType>
-
 
     <complexType name="FaultType">
         <sequence>
@@ -68,9 +55,7 @@
         </sequence>
     </complexType>
 
-
-
-    <element name="commits" type="MultiCommitEntityType" />
-    <element name="confirm" type="ConfirmType" />
-    <element name="fault" type="FaultType" />
+    <element name="commits" type="s:MultiCommitEntityType" />
+    <element name="confirm" type="s:ConfirmType" />
+    <element name="fault" type="s:FaultType" />
 </schema>
