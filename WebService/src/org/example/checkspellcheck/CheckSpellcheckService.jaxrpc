@@ -1,0 +1,124 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<jdevws:WebService xmlns:jdevws="http://xmlns.oracle.com/jdeveloper/10130/webservice">
+   <list n="CHILD_NODES">
+      <url path="../../../../public_html/WEB-INF/wsdl/CheckSpellcheckService.wsdl"/>
+      <url path="../businessschemas/MultiCommitEntityType.java"/>
+      <url path="../businessschemas/RevHexType.java"/>
+      <url path="../messages/CheckSpellcheckFaultType.java"/>
+      <url path="../businessschemas/FullCommitEntityType.java"/>
+      <url path="../messages/CheckSpellcheckResponseType.java"/>
+      <url path="../businessschemas/RevType.java"/>
+      <url path="../businessschemas/ObjectFactory.java"/>
+      <url path="CheckSpellcheckFault.java"/>
+      <url path="../messages/CheckSpellcheckRequestType.java"/>
+      <url path="../messages/package-info.java"/>
+      <url path="../businessschemas/CommitEntityType.java"/>
+      <url path="../businessschemas/package-info.java"/>
+      <url path="../businessschemas/CommitFaultType.java"/>
+      <url path="../messages/ObjectFactory.java"/>
+      <url path="CheckSpellcheckPTImpl.java"/>
+   </list>
+   <hash n="DATA_MODEL">
+      <value n="ATTACHMENT_ENCODING" v="MTOM"/>
+      <list n="BD_">
+         <hash>
+            <value n="BOUND_PORT_TYPE" v="{USE_OWNER_TNS}CheckSpellcheckPT"/>
+            <value n="DEFAULT_NAME" v="false"/>
+            <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPBinding"/>
+            <value n="NAME" v="{http://www.example.org/CheckSpellcheck}CheckSpellcheckPTBinding"/>
+            <list n="OP_BINDINGS">
+               <hash>
+                  <value n="BD_DOCUMENT_WRAPPED" v="false"/>
+                  <value n="BD_RESPONSE_PART" v="return"/>
+                  <value n="BD_SOAP_ACTION" v="http://www.example.org/CheckSpellcheck/checkSpellcheck"/>
+                  <value n="BD_WSDL_RETURN_NAME" v="checkSpellcheckResponse"/>
+                  <value n="BD_WSDL_RETURN_TNS" v="http://www.example.org/messages"/>
+                  <value n="BOUND_OPERATION" v="org.example.messages.CheckSpellcheckResponseType.checkSpellcheck.org.example.messages.CheckSpellcheckRequestType"/>
+                  <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPOperationBinding"/>
+                  <hash n="PROPERTY_GROUPS"/>
+               </hash>
+            </list>
+            <hash n="PROPERTY_GROUPS"/>
+         </hash>
+      </list>
+      <list n="BINDING_FILES"/>
+      <value n="GENERATION_OPTION" v="ANNOTATIONS_WSDL"/>
+      <value n="GUID" v="26ae3b96-013e-1000-8001-7f0000014c15"/>
+      <list n="LOCAL_FILES"/>
+      <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.JavaWebService"/>
+      <list n="PO_">
+         <hash>
+            <value n="DEFAULT_NAME" v="false"/>
+            <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPPort"/>
+            <value n="NAME" v="CheckSpellcheckServicePort"/>
+            <value n="PORT_BINDING_NAME" v="{http://www.example.org/CheckSpellcheck}CheckSpellcheckPTBinding"/>
+            <list n="PORT_OPS">
+               <hash>
+                  <value n="EXPOSED_BD_OPERATION" v="org.example.messages.CheckSpellcheckResponseType.checkSpellcheck.org.example.messages.CheckSpellcheckRequestType"/>
+                  <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.PortOperation"/>
+                  <hash n="PROPERTY_GROUPS"/>
+               </hash>
+            </list>
+            <hash n="PROPERTY_GROUPS"/>
+            <url n="URL" protocol="http" host="www.example.org" path=""/>
+         </hash>
+      </list>
+      <hash n="PROPERTY_GROUPS">
+         <hash n="WSDL_TO_JAVA_PROPERTIES">
+            <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.WSDLToJavaProperties"/>
+         </hash>
+      </hash>
+      <list n="PT_">
+         <hash>
+            <value n="AUTO_SERVICE_INTERFACE"/>
+            <value n="DEFAULT_NAME" v="false"/>
+            <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.JavaPortType"/>
+            <value n="NAME" v="{USE_OWNER_TNS}CheckSpellcheckPT"/>
+            <list n="OP_">
+               <hash>
+                  <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.JavaOperation"/>
+                  <list n="OP_JAVA_EXCEPTIONS">
+                     <string v="org.example.checkspellcheck.CheckSpellcheckFault"/>
+                  </list>
+                  <value n="OP_JAVA_NAME" v="checkSpellcheck"/>
+                  <list n="OP_JAVA_PARAMETERS">
+                     <hash>
+                        <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.JavaParameter"/>
+                        <value n="NAME" v="in"/>
+                        <value n="PA_MODE" v="0"/>
+                        <value n="PA_WSDL_NAME" v="checkSpellcheckRequest"/>
+                        <value n="PA_WSDL_PART_NAME" v="in"/>
+                        <value n="TARGET_NAMESPACE" v="http://www.example.org/messages"/>
+                        <value n="TYPE" v="org.example.messages.CheckSpellcheckRequestType"/>
+                     </hash>
+                  </list>
+                  <value n="OP_JAVA_RETURN_TYPE" v="org.example.messages.CheckSpellcheckResponseType"/>
+                  <value n="OP_NAME" v="checkSpellcheck"/>
+                  <hash n="PROPERTY_GROUPS"/>
+               </hash>
+            </list>
+            <hash n="PROPERTY_GROUPS"/>
+            <value n="PT_CLASS" v="org.example.checkspellcheck.CheckSpellcheckPTImpl"/>
+         </hash>
+      </list>
+      <value n="SERVICE_ASYNC" v="false"/>
+      <url n="TARGET_PROJECT" path="../../../../WebService.jpr"/>
+      <value n="TOPDOWN_GENERATION_OPTION" v="JAVA"/>
+      <list n="WS_DEPENDENT_VALUE_TYPES"/>
+      <value n="WS_ORIG_GEN_DIRECTION" v="TOP_DOWN"/>
+      <url n="WS_REFERENCE_WSDL" path="../../../../public_html/WEB-INF/wsdl/CheckSpellcheckService.wsdl"/>
+      <value n="WS_TARGET_NAMESPACE" v="http://www.example.org/CheckSpellcheck"/>
+      <value n="WS_URI" v="CheckSpellcheckService"/>
+      <url n="WS_WSDL_FILE" path="../../../../public_html/WEB-INF/wsdl/CheckSpellcheckService.wsdl"/>
+      <value n="WS_WSDL_LOC_ON_SEI" v="false"/>
+      <value n="WS_WSDL_LOC_VALUE" v="/WEB-INF/wsdl/CheckSpellcheckService.wsdl"/>
+      <value n="WS_WSDL_LOCATION" v="/home/oracle/jdeveloper/mywork/prePush/WebService/public_html/WEB-INF/wsdl/"/>
+      <list n="WSDL_DEPENDENT_FILES">
+         <url path="../../../../public_html/WEB-INF/wsdl/CommitFault.xsd"/>
+         <url path="../../../../public_html/WEB-INF/wsdl/CheckSpellcheckFault.xsd"/>
+         <url path="../../../../public_html/WEB-INF/wsdl/CheckSpellcheckResponse.xsd"/>
+         <url path="../../../../public_html/WEB-INF/wsdl/CheckSpellcheckRequest.xsd"/>
+         <url path="../../../../public_html/WEB-INF/wsdl/CommitEntity.xsd"/>
+      </list>
+   </hash>
+</jdevws:WebService>

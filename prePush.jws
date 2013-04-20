@@ -1,5 +1,8 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <jws:workspace xmlns:jws="http://xmlns.oracle.com/ide/project">
+   <hash n="adrs-workspace-properties">
+      <value n="adrs-instance-binding" v="DefaultServer"/>
+   </hash>
    <value n="appTemplateId" v="BPMApplicationTemplate"/>
    <hash n="component-versions">
       <value n="oracle.adf.share.dt.migration.jps.JaznCredStoreMigratorHelper" v="11.1.1.1.0"/>
@@ -16,5 +19,6 @@
    <list n="listOfChildren">
       <hash><url n="URL" path="Commit-JAXWS-Lib/Commit-JAXWS-Lib.jpr"/></hash>
       <hash><url n="URL" path="prepush/prepush.jpr"/></hash>
+      <hash><url n="URL" path="WebService/WebService.jpr"/></hash>
    </list>
 </jws:workspace>
