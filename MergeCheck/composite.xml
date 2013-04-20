@@ -10,4 +10,19 @@
            xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
            xmlns:orawsp="http://schemas.oracle.com/ws/2006/01/policy"
            xmlns:ui="http://xmlns.oracle.com/soa/designer/">
+  <import namespace="http://www.example.org/CheckMerge"
+          location="CheckMergeWrapper.wsdl" importType="wsdl"/>
+  <service name="MergeBPELProcessService_ep"
+           ui:wsdlLocation="CheckMergeWrapper.wsdl">
+    <interface.wsdl interface="http://www.example.org/CheckMerge#wsdl.interface(CheckMergePT)"/>
+    <binding.ws port="http://www.example.org/CheckMerge#wsdl.endpoint(MergeBPELProcessService_ep/CheckMergePT_pt)"/>
+  </service>
+  <component name="MergeBPELProcess" version="2.0">
+    <implementation.bpel src="MergeBPELProcess.bpel"/>
+    <property name="bpel.config.transaction" type="xs:string" many="false">required</property>
+  </component>
+  <wire>
+    <source.uri>MergeBPELProcessService_ep</source.uri>
+    <target.uri>MergeBPELProcess/MergeBPELProcessService</target.uri>
+  </wire>
 </composite>

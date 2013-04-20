@@ -62,6 +62,12 @@
       <string v="oracle.toplink.workbench.addin/toplinkContentSet"/>
    </list>
    <value n="defaultPackage" v="mergecheck"/>
+   <url n="MergeBPELProcess_bpelFileURL" path="MergeBPELProcess.bpel"/>
+   <value n="MergeBPELProcess_Namespace" v="http://xmlns.oracle.com/prePush/MergeCheck/MergeBPELProcess"/>
+   <value n="MergeBPELProcess_ProcessName" v="MergeBPELProcess"/>
+   <value n="MergeBPELProcess_Template" v="BPEL_BASE_ON_WSDL"/>
+   <value n="MergeBPELProcess_wsdl" v="CheckMerge.wsdl"/>
+   <value n="Namespace" v="http://xmlns.oracle.com/prePush/MergeCheck/MergeBPELProcess"/>
    <hash n="oracle.ide.model.ResourcePaths">
       <hash n="resourcesContentSet">
          <list n="url-path"/>
@@ -369,4 +375,6 @@
          </list>
       </hash>
    </hash>
+   <value n="ProcessName" v="MergeBPELProcess"/>
+   <value n="Template" v="BPEL_BASE_ON_WSDL"/>
 </jpr:project>

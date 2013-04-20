@@ -4,7 +4,6 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
-import java.util.List;
 
 import javax.jws.soap.SOAPBinding;
 
@@ -14,7 +13,6 @@ import javax.xml.ws.FaultAction;
 
 import org.example.messages.CheckSpellcheckRequestType;
 import org.example.messages.CheckSpellcheckResponseType;
-import org.example.businessschemas.*;
 import org.example.messages.ObjectFactory;
 
 @WebService(name = "CheckSpellcheckPT", targetNamespace = "http://www.example.org/CheckSpellcheck", serviceName = "CheckSpellcheckService", portName = "CheckSpellcheckServicePort", wsdlLocation = "/WEB-INF/wsdl/CheckSpellcheckService.wsdl")
@@ -29,16 +27,6 @@ public class CheckSpellcheckPTImpl {
     @WebResult(name = "checkSpellcheckResponse", targetNamespace = "http://www.example.org/messages", partName = "return")
     public CheckSpellcheckResponseType checkSpellcheck(@WebParam(name = "checkSpellcheckRequest", partName = "in", targetNamespace = "http://www.example.org/messages")
         CheckSpellcheckRequestType in) throws CheckSpellcheckFault {
-        CheckSpellcheckResponseType r = new CheckSpellcheckResponseType();
-        for(Object c: in.getCommits().getCommits()) {
-            if(c instanceof FullCommitEntityType) {
-                r.setStatus("2 parenta");
-            } else {
-                r.setStatus("1 parent");
-            }
-        }
-
-
-        return r;
+        return null;
     }
 }

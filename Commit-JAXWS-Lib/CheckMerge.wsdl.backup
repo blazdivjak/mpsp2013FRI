@@ -46,4 +46,10 @@
       </output>
     </operation>
   </binding>
+  <service name="CheckMergeService">
+    <port name="CheckMergeServicePort"
+          binding="tns:CheckMergePTBinding">
+      <soap:address location="http://www.example.org"/>
+    </port>
+  </service>
 </definitions>

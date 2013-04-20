@@ -50,7 +50,7 @@
             </topicDocumentation>
             <topicDocumentation name="ABSTRACT_ACTIVITY_1363337901797">
                 <labels>
-                    <label locale="en">brachDevelop</label>
+                    <label locale="en">Push Commit To selected branch</label>
                 </labels>
                 <descriptions>
                     <description locale="en">poglej ce obstaja branch z imenom develop in je na novo spremenjena</description>
@@ -93,7 +93,7 @@
             </topicDocumentation>
             <topicDocumentation name="EXCLUSIVE_GATEWAY_1363337740321">
                 <labels>
-                    <label locale="en">developExists</label>
+                    <label locale="en">If develop branch was updated</label>
                 </labels>
             </topicDocumentation>
             <topicDocumentation name="EXCLUSIVE_GATEWAY_1363347361931">
@@ -152,6 +152,9 @@
                 <labels>
                     <label locale="en">DA</label>
                 </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
             </topicDocumentation>
             <topicDocumentation name="sf47"/>
         </topicDocumentations>

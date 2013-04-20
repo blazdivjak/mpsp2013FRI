@@ -149,7 +149,7 @@
             <ioSpecification/>
             <resourceRole name="clan ekipe" id="lane"/>
         </userTask>
-        <task isForCompensation="false" name="brachDevelop" id="ABSTRACT_ACTIVITY_1363337901797">
+        <task isForCompensation="false" name="Push Commit To selected branch" id="ABSTRACT_ACTIVITY_1363337901797">
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:GraphicsAttributes>
@@ -308,7 +308,7 @@
                 </ns5:OracleExtensions>
             </extensionElements>
         </exclusiveGateway>
-        <exclusiveGateway gatewayDirection="Unspecified" name="developExists" id="EXCLUSIVE_GATEWAY_1363337740321">
+        <exclusiveGateway gatewayDirection="Unspecified" name="If develop branch was updated" id="EXCLUSIVE_GATEWAY_1363337740321">
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:GraphicsAttributes>
@@ -494,6 +494,7 @@
                         <ns5:BooleanFeature value="false" name="collapseMessage"/>
                         <ns5:StringFeature value="-2147483648,-2147483648" name="curve"/>
                         <ns5:StringFeature value="STRAIGHT" name="routing"/>
+                        <ns5:StringFeature value="No" name="userName"/>
                         <ns5:IntegerFeature value="0" name="order"/>
                     </ns5:FeatureSet>
                 </ns5:OracleExtensions>
@@ -618,6 +619,7 @@
                         <ns5:BooleanFeature value="false" name="collapseMessage"/>
                         <ns5:StringFeature value="-2147483648,-2147483648" name="curve"/>
                         <ns5:StringFeature value="STRAIGHT" name="routing"/>
+                        <ns5:StringFeature value="Yes" name="userName"/>
                         <ns5:IntegerFeature value="0" name="order"/>
                     </ns5:FeatureSet>
                 </ns5:OracleExtensions>

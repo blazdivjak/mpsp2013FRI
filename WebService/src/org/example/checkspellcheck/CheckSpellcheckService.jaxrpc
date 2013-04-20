@@ -43,7 +43,7 @@
       </list>
       <list n="BINDING_FILES"/>
       <value n="GENERATION_OPTION" v="ANNOTATIONS_WSDL"/>
-      <value n="GUID" v="26ae3b96-013e-1000-8001-7f0000014c15"/>
+      <value n="GUID" v="26f94596-013e-1000-8292-7f0000014c15"/>
       <list n="LOCAL_FILES"/>
       <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.JavaWebService"/>
       <list n="PO_">

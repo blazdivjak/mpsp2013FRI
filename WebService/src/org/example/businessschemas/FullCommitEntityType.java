@@ -3,7 +3,6 @@ package org.example.businessschemas;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -17,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;extension base="{http://www.example.org/businessSchemas}CommitEntityType">
  *       &lt;sequence>
- *         &lt;element name="parent2" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="parent2" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/extension>
  *   &lt;/complexContent>
@@ -34,7 +33,6 @@ public class FullCommitEntityType
     extends CommitEntityType
 {
 
-    @XmlElement(required = true)
     protected String parent2;
 
     /**

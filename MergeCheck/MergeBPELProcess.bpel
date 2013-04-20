@@ -1,0 +1,126 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Sat Apr 20 04:09:39 PDT 2013
+  Author:  oracle
+  Purpose: Synchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="MergeBPELProcess"
+               targetNamespace="http://xmlns.oracle.com/prePush/MergeCheck/MergeBPELProcess"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://xmlns.oracle.com/prePush/MergeCheck/MergeBPELProcess"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+               xmlns:ns1="http://www.example.org/CheckMerge"
+               xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns3="http://www.example.org/businessSchemas"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:ns2="http://www.example.org/messages"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      PARTNERLINKS                                                      
+      List of services participating in this BPEL process               
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  --> 
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="MergeBPELProcessService" partnerLinkType="ns1:MergeBPELProcess" myRole="CheckMergePT"/>
+  </partnerLinks>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable" messageType="ns1:checkMergeRequest"/>
+
+    <!-- Reference to the message that will be returned to the requester-->
+    <variable name="outputVariable" messageType="ns1:checkMergeResponse"/>
+    <variable messageType="checkMergeFault" name="FaultVar"/>
+  </variables>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in MergeBPELProcess.wsdl) -->
+    <receive name="receiveInput" partnerLink="MergeBPELProcessService" portType="ns1:CheckMergePT" operation="checkMerge" variable="inputVariable" createInstance="yes"/>
+    <scope name="Scope1">
+      <if name="If1">
+        <documentation>branch==master</documentation>
+        <condition>$inputVariable.in/ns2:commits/ns3:commits/ns3:branch = "master"</condition>
+        <else>
+          <documentation>Not master</documentation>
+          <sequence name="Sequence1">
+            <flow name="Flow1">
+              <sequence name="checkCommit">
+                <if name="If2">
+                  <documentation>branch==develop (possible merge)</documentation>
+                  <condition>$inputVariable.in/ns2:commits/ns3:commits/ns3:branch = "develop"</condition>
+                  <if name="If3">
+                    <else></else>
+                  </if>
+                  <else>
+                    <documentation>maybe feature branch(normal commit)</documentation>
+                    <forEach parallel="no" counterName="ForEach1Counter"
+                             name="ForEach1">
+                      <startCounterValue/>
+                      <finalCounterValue/>
+                      <scope name="Scope2">
+                        <variables>
+                          <variable name="feature1" type="xsd:string">
+                            <from><literal>feature-newLogin</literal></from>
+                          </variable>
+                          <variable name="feature2" type="xsd:string">
+                            <from><literal>feature-FBapi</literal></from>
+                          </variable>
+                        </variables>
+                        <compensationHandler></compensationHandler>
+                      </scope>
+                    </forEach>
+                  </else>
+                </if>
+              </sequence>
+              <sequence name="CheckUser">
+                <forEach parallel="no" counterName="ForEach2Counter"
+                         name="ForEach2">
+                  <startCounterValue/>
+                  <finalCounterValue/>
+                  <scope name="Scope3"></scope>
+                </forEach>
+              </sequence>
+            </flow>
+          </sequence>
+        </else>
+      </if>
+    </scope>
+    <!-- Generate reply to synchronous request -->
+    <reply name="replyOutput" partnerLink="MergeBPELProcessService" portType="ns1:CheckMergePT" operation="checkMerge" variable="outputVariable"/>
+  </sequence>
+</process>
