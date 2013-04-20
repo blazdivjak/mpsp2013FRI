@@ -13,8 +13,7 @@
 		<interface.wsdl
 			interface="http://xmlns.oracle.com/bpmn/bpmnProcess/Process#wsdl.interface(ProcessPortType)"
 			callbackInterface="http://xmlns.oracle.com/bpmn/bpmnProcess/Process#wsdl.interface(ProcessPortTypeCallBack)"/>
-		<property name="bpm.generated.service.reference"
-			type="xs:string"
-			many="false">Process.service</property>
-	</service>
+  <property name="bpm.generated.service.reference" type="xs:string"
+            many="false">Process.service</property>
+ </service>
 </componentType>

@@ -10,7 +10,7 @@
             </topicDocumentation>
             <topicDocumentation name="ABSTRACT_ACTIVITY_1363336963722">
                 <labels>
-                    <label locale="en">Preveri imena branchov</label>
+                    <label locale="en">Branch names check</label>
                 </labels>
                 <descriptions>
                     <description locale="en"></description>
@@ -18,7 +18,7 @@
             </topicDocumentation>
             <topicDocumentation name="ABSTRACT_ACTIVITY_1363337031918">
                 <labels>
-                    <label locale="en">Preveri spellcheck komentarjev</label>
+                    <label locale="en">Commit comments spellcheck</label>
                 </labels>
                 <descriptions>
                     <description locale="en"></description>
@@ -26,7 +26,7 @@
             </topicDocumentation>
             <topicDocumentation name="ABSTRACT_ACTIVITY_1363337092310">
                 <labels>
-                    <label locale="en">Preveri merge</label>
+                    <label locale="en">Merge check</label>
                 </labels>
                 <descriptions>
                     <description locale="en">preveri merge. To obsega zelo veliko preverjanj, tako da bo gotovo razdeljen na vec subtaskov</description>
@@ -34,7 +34,7 @@
             </topicDocumentation>
             <topicDocumentation name="ABSTRACT_ACTIVITY_1363337142701">
                 <labels>
-                    <label locale="en">Preveri lokacijo komitov</label>
+                    <label locale="en">Commit location check</label>
                 </labels>
                 <descriptions>
                     <description locale="en">preveri na katerih brancih so komiti</description>
@@ -101,6 +101,14 @@
                     <label locale="en">codeOK</label>
                 </labels>
             </topicDocumentation>
+            <topicDocumentation name="EXCLUSIVE_GATEWAY6485260866987">
+                <labels>
+                    <label locale="en">Spellcheck </label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
             <topicDocumentation name="sf4"/>
             <topicDocumentation name="sf_1363336813883"/>
             <topicDocumentation name="sf_1363337132834"/>
@@ -145,6 +153,7 @@
                     <label locale="en">DA</label>
                 </labels>
             </topicDocumentation>
+            <topicDocumentation name="sf47"/>
         </topicDocumentations>
     </component>
 </processDocumentation>
