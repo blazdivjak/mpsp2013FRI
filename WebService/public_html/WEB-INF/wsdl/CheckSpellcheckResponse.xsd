@@ -1,9 +1,0 @@
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:msg="http://www.example.org/messages"
-     xmlns:s="http://www.example.org/businessSchemas" elementFormDefault="qualified" targetNamespace="http://www.example.org/messages">
-    <complexType name="CheckSpellcheckResponseType">
-        <sequence>
-            <element name="status" type="string"/>
-        </sequence>
-    </complexType>
-    <element name="checkSpellcheckResponse" type="msg:CheckSpellcheckResponseType"/>
-</schema>

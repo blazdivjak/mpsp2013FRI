@@ -33,7 +33,7 @@
         <complexContent>
             <extension base="s:CommitEntityType">
                 <sequence>
-                    <element name="parent2" type="string" />
+                    <element name="parent2" type="string" minOccurs="0" maxOccurs="1"/>
                 </sequence>
             </extension>
         </complexContent>
@@ -41,7 +41,7 @@
     
     <complexType name="MultiCommitEntityType">
         <sequence>
-            <element name="commits" type="s:CommitEntityType" maxOccurs="unbounded" />
+            <element name="commits" type="s:FullCommitEntityType" maxOccurs="unbounded" />
         </sequence>
     </complexType>
 </schema>
