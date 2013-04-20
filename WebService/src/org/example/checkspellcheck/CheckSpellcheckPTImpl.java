@@ -4,16 +4,18 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
-
 import javax.jws.soap.SOAPBinding;
 
-import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.ws.Action;
 import javax.xml.ws.FaultAction;
 
+import org.example.businessschemas.FullCommitEntityType;
 import org.example.messages.CheckSpellcheckRequestType;
 import org.example.messages.CheckSpellcheckResponseType;
-import org.example.messages.ObjectFactory;
+
+import org.xeustechnologies.googleapi.spelling.SpellChecker;
+import org.xeustechnologies.googleapi.spelling.SpellResponse;
+
 
 @WebService(name = "CheckSpellcheckPT", targetNamespace = "http://www.example.org/CheckSpellcheck", serviceName = "CheckSpellcheckService", portName = "CheckSpellcheckServicePort", wsdlLocation = "/WEB-INF/wsdl/CheckSpellcheckService.wsdl")
 public class CheckSpellcheckPTImpl {
@@ -27,6 +29,18 @@ public class CheckSpellcheckPTImpl {
     @WebResult(name = "checkSpellcheckResponse", targetNamespace = "http://www.example.org/messages", partName = "return")
     public CheckSpellcheckResponseType checkSpellcheck(@WebParam(name = "checkSpellcheckRequest", partName = "in", targetNamespace = "http://www.example.org/messages")
         CheckSpellcheckRequestType in) throws CheckSpellcheckFault {
-        return null;
+        SpellChecker checker = new SpellChecker();
+        int errorCount = 0;
+        for(FullCommitEntityType c: in.getCommits().getCommits()) {
+            SpellResponse spellResponse = checker.check(c.getDescription());
+            if(spellResponse.getCorrections() == null) {
+                continue;
+            }
+            errorCount++;
+            break;
+        }
+        CheckSpellcheckResponseType r = new CheckSpellcheckResponseType();
+        r.setStatus(""+errorCount);
+        return r;
     }
 }
