@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:msg="http://www.example.org/messages"
+        xmlns:s="http://www.example.org/businessSchemas"
+        elementFormDefault="qualified"
+        targetNamespace="http://www.example.org/messages">
+
+    <import namespace="http://www.example.org/businessSchemas" schemaLocation="CommitEntity.xsd"/>
+
+    <complexType name="CheckMergeRequestType">
+        <sequence>
+            <element name="commits" type="s:MultiCommitEntityType"/>
+        </sequence>
+    </complexType>
+
+    <element name="checkMergeRequest" type="msg:CheckMergeRequestType"/>
+</schema>

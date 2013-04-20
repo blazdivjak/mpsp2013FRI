@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<definitions targetNamespace="http://www.example.org/CheckMerge"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:tns="http://www.example.org/CheckMerge"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+             xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+             xmlns:msg="http://www.example.org/messages">
+  <types>
+    <xsd:schema>
+      <xsd:import namespace="http://www.example.org/messages" schemaLocation="CheckMergeRequest.xsd"/>
+      <xsd:import namespace="http://www.example.org/messages" schemaLocation="CheckMergeResponse.xsd"/>
+      <xsd:import namespace="http://www.example.org/messages" schemaLocation="CheckMergeFault.xsd"/>
+    </xsd:schema>
+  </types>
+
+  <message name="checkMergeFault">
+    <part name="fault" element="msg:checkMergeFault"/>
+  </message>
+  <message name="checkMergeRequest">
+    <part name="in" element="msg:checkMergeRequest"/>
+  </message>
+  <message name="checkMergeResponse">
+    <part name="return" element="msg:checkMergeResponse"/>
+  </message>
+
+  <portType name="CheckMergePT">
+    <operation name="checkMerge">
+      <input message="tns:checkMergeRequest"/>
+      <output message="tns:checkMergeResponse"/>
+      <fault name="fault" message="tns:checkMergeFault"/>
+    </operation>
+  </portType>
+  <binding name="CheckMergePTBinding" type="tns:CheckMergePT">
+    <soap:binding style="document"
+                  transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="checkMerge">
+      <soap:operation style="document"
+                      soapAction="http://www.example.org/CheckMerge/checkMerge"/>
+      <input>
+        <soap:body use="literal" parts="in"/>
+      </input>
+      <output>
+        <soap:body use="literal" parts="return"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="CheckMergeService">
+    <port name="CheckMergeServicePort"
+          binding="tns:CheckMergePTBinding">
+      <soap:address location="http://www.example.org"/>
+    </port>
+  </service>
+</definitions>
