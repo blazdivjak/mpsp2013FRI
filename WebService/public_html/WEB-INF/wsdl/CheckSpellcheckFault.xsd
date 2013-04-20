@@ -1,0 +1,10 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:msg="http://www.example.org/messages"
+     xmlns:s="http://www.example.org/businessSchemas" elementFormDefault="qualified" targetNamespace="http://www.example.org/messages">
+    <import namespace="http://www.example.org/businessSchemas" schemaLocation="CommitFault.xsd"/>
+    <complexType name="CheckSpellcheckFaultType">
+        <sequence>
+            <element name="fault" type="s:CommitFaultType"/>
+        </sequence>
+    </complexType>
+    <element name="checkSpellcheckFault" type="msg:CheckSpellcheckFaultType"/>
+</schema>
