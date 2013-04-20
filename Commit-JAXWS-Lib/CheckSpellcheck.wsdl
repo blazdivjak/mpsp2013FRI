@@ -29,7 +29,7 @@
     <operation name="checkSpellcheck">
       <input message="tns:checkSpellcheckRequest"/>
       <output message="tns:checkSpellcheckResponse"/>
-      <fault message="tns:checkSpellcheckFault"/>
+      <fault name="fault" message="tns:checkSpellcheckFault"/>
     </operation>
   </portType>
   <binding name="CheckSpellcheckPTBinding" type="tns:CheckSpellcheckPT">

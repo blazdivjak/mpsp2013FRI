@@ -5,11 +5,11 @@
         elementFormDefault="qualified"
         targetNamespace="http://www.example.org/messages">    
 
-    <complexType name="CheckSpellchecResponseType">
+    <complexType name="CheckSpellcheckResponseType">
         <sequence>
             <element name="status" type="string"/>
         </sequence>
     </complexType>
 
-    <element name="checkSpellchecResponse" type="msg:CheckSpellchecResponseType"/>
+    <element name="checkSpellcheckResponse" type="msg:CheckSpellcheckResponseType"/>
 </schema>
