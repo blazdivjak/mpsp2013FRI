@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<definitions targetNamespace="http://www.example.org/CheckSpellcheck"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:tns="http://www.example.org/CheckSpellcheck"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+             xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+             xmlns:msg="http://www.example.org/messages">
+  <types>
+    <xsd:schema>
+      <xsd:import namespace="http://www.example.org/messages" schemaLocation="CheckSpellcheckRequest.xsd"/>
+      <xsd:import namespace="http://www.example.org/messages" schemaLocation="CheckSpellcheckResponse.xsd"/>
+      <xsd:import namespace="http://www.example.org/messages" schemaLocation="CheckSpellcheckFault.xsd"/>
+    </xsd:schema>
+  </types>
+
+  <message name="checkSpellcheckFault">
+    <part name="fault" element="msg:checkSpellcheckFault"/>
+  </message>
+  <message name="checkSpellcheckRequest">
+    <part name="in" element="msg:checkSpellcheckRequest"/>
+  </message>
+  <message name="checkSpellcheckResponse">
+    <part name="return" element="msg:checkSpellcheckResponse"/>
+  </message>
+
+  <portType name="CheckSpellcheckPT">
+    <operation name="checkSpellcheck">
+      <input message="tns:checkSpellcheckRequest"/>
+      <output message="tns:checkSpellcheckResponse"/>
+      <fault name="fault" message="tns:checkSpellcheckFault"/>
+    </operation>
+  </portType>
+  <binding name="CheckSpellcheckPTBinding" type="tns:CheckSpellcheckPT">
+    <soap:binding style="document"
+                  transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="checkSpellcheck">
+      <soap:operation style="document"
+                      soapAction="http://www.example.org/CheckSpellcheck/checkSpellcheck"/>
+      <input>
+        <soap:body use="literal" parts="in"/>
+      </input>
+      <output>
+        <soap:body use="literal" parts="return"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="CheckSpellcheckService">
+    <port name="CheckSpellcheckServicePort"
+          binding="tns:CheckSpellcheckPTBinding">
+      <soap:address location="http://www.example.org"/>
+    </port>
+  </service>
+</definitions>

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns:s="http://www.example.org/businessSchemas" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.example.org/businessSchemas">
-    <!-- Type definition -->
+<schema xmlns:s="http://www.example.org/businessSchemas"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        elementFormDefault="qualified"
+        targetNamespace="http://www.example.org/businessSchemas">
+
     <complexType name="CommitEntityType">
         <sequence>
             <element name="rev" type="s:RevType" />
@@ -41,21 +44,4 @@
             <element name="commits" type="s:CommitEntityType" maxOccurs="unbounded" />
         </sequence>
     </complexType>
-
-    <complexType name="ConfirmType">
-        <sequence>
-            <element name="confirmed" type="boolean" />
-        </sequence>
-    </complexType>
-
-    <complexType name="FaultType">
-        <sequence>
-            <element name="code" type="string"/>
-            <element name="description" type="string"/>
-        </sequence>
-    </complexType>
-
-    <element name="commits" type="s:MultiCommitEntityType" />
-    <element name="confirm" type="s:ConfirmType" />
-    <element name="fault" type="s:FaultType" />
 </schema>

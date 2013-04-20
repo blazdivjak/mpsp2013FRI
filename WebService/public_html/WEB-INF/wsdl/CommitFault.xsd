@@ -1,0 +1,8 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.example.org/businessSchemas">
+    <complexType name="CommitFaultType">
+        <sequence>
+            <element name="code" type="string"/>
+            <element name="description" type="string"/>
+        </sequence>
+    </complexType>
+</schema>
