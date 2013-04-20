@@ -17,24 +17,20 @@
 		location="Process.wsdl"
 		importType="wsdl"
 		namespace="http://xmlns.oracle.com/bpmn/bpmnProcess/Process"/>
-	<service name="Process.service"
-		ui:wsdlLocation="Process.wsdl">
-		<interface.wsdl
-			interface="http://xmlns.oracle.com/bpmn/bpmnProcess/Process#wsdl.interface(ProcessPortType)"
-			callbackInterface="http://xmlns.oracle.com/bpmn/bpmnProcess/Process#wsdl.interface(ProcessPortTypeCallBack)"/>
-		<binding.ws
-			port="http://xmlns.oracle.com/bpmn/bpmnProcess/Process#wsdl.endpoint(Process.service/ProcessPortType)"/>
-		<callback>
-			<binding.ws
-				port="http://xmlns.oracle.com/bpmn/bpmnProcess/Process#wsdl.endpoint(Process.service/ProcessPortTypeCallBack)"/>
-		</callback>
-	</service>
-	<component name="Process">
+ <service name="Process.service" ui:wsdlLocation="Process.wsdl">
+  <interface.wsdl interface="http://xmlns.oracle.com/bpmn/bpmnProcess/Process#wsdl.interface(ProcessPortType)"
+                  callbackInterface="http://xmlns.oracle.com/bpmn/bpmnProcess/Process#wsdl.interface(ProcessPortTypeCallBack)"/>
+  <binding.ws port="http://xmlns.oracle.com/bpmn/bpmnProcess/Process#wsdl.endpoint(Process.service/ProcessPort)"/>
+  <callback>
+   <binding.ws port="http://xmlns.oracle.com/bpmn/bpmnProcess/Process#wsdl.endpoint(Process.service/ProcessPortTypeCallBack_pt)"/>
+  </callback>
+ </service>
+ <component name="Process">
 		<implementation.bpmn
 			src="processes/Process.bpmn"/>
 	</component>
-	<wire>
-		<source.uri>Process.service</source.uri>
-		<target.uri>Process/Process.service</target.uri>
-	</wire>
+ <wire>
+  <source.uri>Process.service</source.uri>
+  <target.uri>Process/Process.service</target.uri>
+ </wire>
 </composite>
