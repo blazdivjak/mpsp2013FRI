@@ -9,13 +9,13 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 -->
 <process name="MergeBPELProcess"
-               targetNamespace="http://xmlns.oracle.com/prePush/MergeCheck/MergeBPELProcess"
-               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
-               xmlns:client="http://xmlns.oracle.com/prePush/MergeCheck/MergeBPELProcess"
-               xmlns:ora="http://schemas.oracle.com/xpath/extension"
-               xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
-               xmlns:ns1="http://www.example.org/CheckMerge"
-               xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         targetNamespace="http://xmlns.oracle.com/prePush/MergeCheck/MergeBPELProcess"
+         xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:client="http://xmlns.oracle.com/prePush/MergeCheck/MergeBPELProcess"
+         xmlns:ora="http://schemas.oracle.com/xpath/extension"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:ns1="http://www.example.org/CheckMerge"
+         xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
          xmlns:ns3="http://www.example.org/businessSchemas"
          xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
          xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
@@ -29,22 +29,24 @@
          xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
          xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
          xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-
   <!-- 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       PARTNERLINKS                                                      
       List of services participating in this BPEL process               
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  --> 
+  -->
+  <import namespace="http://www.example.org/businessSchemas"
+          location="src/UserArray.xsd"
+          importType="http://www.w3.org/2001/XMLSchema"/>
   <partnerLinks>
     <!-- 
       The 'client' role represents the requester of this service. It is 
       used for callback. The location and correlation information associated
       with the client role are automatically set using WS-Addressing.
     -->
-    <partnerLink name="MergeBPELProcessService" partnerLinkType="ns1:MergeBPELProcess" myRole="CheckMergePT"/>
+    <partnerLink name="MergeBPELProcessService"
+                 partnerLinkType="ns1:MergeBPELProcess" myRole="CheckMergePT"/>
   </partnerLinks>
-
   <!-- 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       VARIABLES                                                        
@@ -54,12 +56,12 @@
   <variables>
     <!-- Reference to the message passed as input during initiation -->
     <variable name="inputVariable" messageType="ns1:checkMergeRequest"/>
-
     <!-- Reference to the message that will be returned to the requester-->
     <variable name="outputVariable" messageType="ns1:checkMergeResponse"/>
     <variable messageType="checkMergeFault" name="FaultVar"/>
+    <variable name="DenyCommitToMasterBranch_checkMerge_OutputVariable"
+              messageType="ns1:checkMergeResponse"/>
   </variables>
-
   <!-- 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
      ORCHESTRATION LOGIC                                               
@@ -68,13 +70,20 @@
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   -->
   <sequence name="main">
-
     <!-- Receive input from requestor. (Note: This maps to operation defined in MergeBPELProcess.wsdl) -->
-    <receive name="receiveInput" partnerLink="MergeBPELProcessService" portType="ns1:CheckMergePT" operation="checkMerge" variable="inputVariable" createInstance="yes"/>
+    <receive name="receiveInput" partnerLink="MergeBPELProcessService"
+             portType="ns1:CheckMergePT" operation="checkMerge"
+             variable="inputVariable" createInstance="yes"/>
     <scope name="Scope1">
       <if name="If1">
         <documentation>branch==master</documentation>
         <condition>$inputVariable.in/ns2:commits/ns3:commits/ns3:branch = "master"</condition>
+        <assign name="Assign1">
+          <copy>
+            <from><literal>denyMergeToMaster</literal></from>
+            <to>$outputVariable.return/ns2:status</to>
+          </copy>
+        </assign>
         <else>
           <documentation>Not master</documentation>
           <sequence name="Sequence1">
@@ -83,13 +92,12 @@
                 <if name="If2">
                   <documentation>branch==develop (possible merge)</documentation>
                   <condition>$inputVariable.in/ns2:commits/ns3:commits/ns3:branch = "develop"</condition>
-                  <if name="If3">
-                    <else></else>
-                  </if>
+                  <sequence name="Sequence2">
+                  </sequence>
                   <else>
                     <documentation>maybe feature branch(normal commit)</documentation>
                     <forEach parallel="no" counterName="ForEach1Counter"
-                             name="ForEach1">
+                             name="CheckFeatureBranches">
                       <startCounterValue/>
                       <finalCounterValue/>
                       <scope name="Scope2">
@@ -101,18 +109,31 @@
                             <from><literal>feature-FBapi</literal></from>
                           </variable>
                         </variables>
-                        <compensationHandler></compensationHandler>
                       </scope>
                     </forEach>
                   </else>
                 </if>
               </sequence>
               <sequence name="CheckUser">
-                <forEach parallel="no" counterName="ForEach2Counter"
-                         name="ForEach2">
-                  <startCounterValue/>
-                  <finalCounterValue/>
-                  <scope name="Scope3"></scope>
+                <forEach parallel="no" counterName="counter"
+                         name="IterateUserArray">
+                  <targets>
+                    <target/>
+                  </targets>
+                  <sources>
+                    <source/>
+                  </sources>
+                  <startCounterValue>1</startCounterValue>
+                  <finalCounterValue>$UserArray.length()</finalCounterValue>
+                  <completionCondition>
+                    <branches>$UserArray</branches>
+                  </completionCondition>
+                  <scope name="Scope3">
+                    <if name="If3">
+                      <condition>xp20:compare($UserArray/ns3:user[$counter],$inputVariable.in/ns2:commits/ns3:commits/ns3:user)</condition>
+                      <else></else>
+                    </if>
+                  </scope>
                 </forEach>
               </sequence>
             </flow>
@@ -121,6 +142,8 @@
       </if>
     </scope>
     <!-- Generate reply to synchronous request -->
-    <reply name="replyOutput" partnerLink="MergeBPELProcessService" portType="ns1:CheckMergePT" operation="checkMerge" variable="outputVariable"/>
+    <reply name="replyOutput" partnerLink="MergeBPELProcessService"
+           portType="ns1:CheckMergePT" operation="checkMerge"
+           variable="outputVariable"/>
   </sequence>
 </process>
