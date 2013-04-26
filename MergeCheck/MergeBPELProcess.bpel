@@ -75,9 +75,17 @@
              portType="ns1:CheckMergePT" operation="checkMerge"
              variable="inputVariable" createInstance="yes"/>
     <scope name="Scope1">
+      <variables>
+        <variable name="UserCollection" element="ns3:UserCollection">
+          <from><literal><UserCollection>
+<user>test1</user>
+<user>test2</user>
+</UserCollection></literal></from>
+        </variable>
+      </variables>
       <if name="If1">
         <documentation>branch==master</documentation>
-        <condition>$inputVariable.in/ns2:commits/ns3:commits/ns3:branch = "master"</condition>
+        <condition>xp20:compare($inputVariable.in/ns2:commits/ns3:commits/ns3:branch,"master") </condition>
         <assign name="Assign1">
           <copy>
             <from><literal>denyMergeToMaster</literal></from>
@@ -91,15 +99,16 @@
               <sequence name="checkCommit">
                 <if name="If2">
                   <documentation>branch==develop (possible merge)</documentation>
-                  <condition>$inputVariable.in/ns2:commits/ns3:commits/ns3:branch = "develop"</condition>
+                  <condition>xp20:compare($inputVariable.in/ns2:commits/ns3:commits/ns3:branch, "develop")</condition>
                   <sequence name="Sequence2">
+                    <empty name="Empty1"/>
                   </sequence>
                   <else>
                     <documentation>maybe feature branch(normal commit)</documentation>
                     <forEach parallel="no" counterName="ForEach1Counter"
                              name="CheckFeatureBranches">
-                      <startCounterValue/>
-                      <finalCounterValue/>
+                      <startCounterValue>1</startCounterValue>
+                      <finalCounterValue>3</finalCounterValue>
                       <scope name="Scope2">
                         <variables>
                           <variable name="feature1" type="xsd:string">
@@ -109,6 +118,7 @@
                             <from><literal>feature-FBapi</literal></from>
                           </variable>
                         </variables>
+                        <empty name="Empty4"/>
                       </scope>
                     </forEach>
                   </else>
@@ -117,21 +127,18 @@
               <sequence name="CheckUser">
                 <forEach parallel="no" counterName="counter"
                          name="IterateUserArray">
-                  <targets>
-                    <target/>
-                  </targets>
-                  <sources>
-                    <source/>
-                  </sources>
                   <startCounterValue>1</startCounterValue>
-                  <finalCounterValue>$UserArray.length()</finalCounterValue>
+                  <finalCounterValue>ora:countNodes($UserCollection)</finalCounterValue>
                   <completionCondition>
-                    <branches>$UserArray</branches>
+                    <branches successfulBranchesOnly="no">$UserArray</branches>
                   </completionCondition>
                   <scope name="Scope3">
                     <if name="If3">
-                      <condition>xp20:compare($UserArray/ns3:user[$counter],$inputVariable.in/ns2:commits/ns3:commits/ns3:user)</condition>
-                      <else></else>
+                      <condition>xp20:compare($UserCollection/ns3:user[$counter],$inputVariable.in/ns2:commits/ns3:commits/ns3:user)</condition>
+                      <empty name="Empty2"/>
+                      <else>
+                        <empty name="Empty3"/>
+                      </else>
                     </if>
                   </scope>
                 </forEach>
