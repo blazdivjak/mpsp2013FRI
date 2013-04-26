@@ -58,7 +58,6 @@
     <variable name="inputVariable" messageType="ns1:checkMergeRequest"/>
     <!-- Reference to the message that will be returned to the requester-->
     <variable name="outputVariable" messageType="ns1:checkMergeResponse"/>
-    <variable messageType="checkMergeFault" name="FaultVar"/>
     <variable name="DenyCommitToMasterBranch_checkMerge_OutputVariable"
               messageType="ns1:checkMergeResponse"/>
   </variables>
@@ -85,7 +84,7 @@
       </variables>
       <if name="If1">
         <documentation>branch==master</documentation>
-        <condition>xp20:compare($inputVariable.in/ns2:commits/ns3:commits/ns3:branch,"master") </condition>
+        <condition>xp20:compare($inputVariable.in/ns2:commits/ns3:commits/ns3:branch,"master")=1</condition>
         <assign name="Assign1">
           <copy>
             <from><literal>denyMergeToMaster</literal></from>
@@ -99,7 +98,7 @@
               <sequence name="checkCommit">
                 <if name="If2">
                   <documentation>branch==develop (possible merge)</documentation>
-                  <condition>xp20:compare($inputVariable.in/ns2:commits/ns3:commits/ns3:branch, "develop")</condition>
+                  <condition>xp20:compare($inputVariable.in/ns2:commits/ns3:commits/ns3:branch, "develop")=0</condition>
                   <sequence name="Sequence2">
                     <empty name="Empty1"/>
                   </sequence>
@@ -129,12 +128,9 @@
                          name="IterateUserArray">
                   <startCounterValue>1</startCounterValue>
                   <finalCounterValue>ora:countNodes($UserCollection)</finalCounterValue>
-                  <completionCondition>
-                    <branches successfulBranchesOnly="no">$UserArray</branches>
-                  </completionCondition>
                   <scope name="Scope3">
                     <if name="If3">
-                      <condition>xp20:compare($UserCollection/ns3:user[$counter],$inputVariable.in/ns2:commits/ns3:commits/ns3:user)</condition>
+                      <condition>xp20:compare($UserCollection/ns3:user[$counter],$inputVariable.in/ns2:commits/ns3:commits/ns3:user)=0</condition>
                       <empty name="Empty2"/>
                       <else>
                         <empty name="Empty3"/>
