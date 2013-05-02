@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:msg="http://www.example.org/messages" xmlns:s="http://www.example.org/businessSchemas" elementFormDefault="qualified" targetNamespace="http://www.example.org/messages">
+
+    <import namespace="http://www.example.org/businessSchemas" schemaLocation="schema.xsd"/>
+
+    <element name="branchNameRequest">
+        <complexType>
+            <sequence>
+                <element ref="s:commits"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="branchNameResponse">
+        <complexType>
+            <sequence>
+                <element ref="s:confirm"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="branchNameFault">
+        <complexType>
+            <sequence>
+                <element ref="s:fault"/>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="commitLocationRequest">
+        <complexType>
+            <sequence>
+                <element ref="s:commits"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="commitLocationResponse">
+        <complexType>
+            <sequence>
+                <element ref="s:confirm"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="commitLocationFault">
+        <complexType>
+            <sequence>
+                <element ref="s:fault"/>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="mergeRequest">
+        <complexType>
+            <sequence>
+                <element ref="s:commits"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="mergeResponse">
+        <complexType>
+            <sequence>
+                <element ref="s:confirm"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="mergeFault">
+        <complexType>
+            <sequence>
+                <element ref="s:fault"/>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="spellcheckRequest">
+        <complexType>
+            <sequence>
+                <element ref="s:commits"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="spellcheckResponse">
+        <complexType>
+            <sequence>
+                <element ref="s:confirm"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="spellcheckFault">
+        <complexType>
+            <sequence>
+                <element ref="s:fault"/>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="developBranchRequest">
+        <complexType>
+            <sequence>
+                <element ref="s:commits"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="developBranchResponse">
+        <complexType>
+            <sequence>
+                <element ref="s:confirm"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="developBranchFault">
+        <complexType>
+            <sequence>
+                <element ref="s:fault"/>
+            </sequence>
+        </complexType>
+    </element>
+
+</schema>
