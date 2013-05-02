@@ -17,12 +17,21 @@
     <interface.wsdl interface="http://www.example.org/CheckMerge#wsdl.interface(CheckMergePT)"/>
     <binding.ws port="http://www.example.org/CheckMerge#wsdl.endpoint(MergeBPELProcessService_ep/CheckMergePT_pt)"/>
   </service>
+  <service name="MergeCheckBPELDirectService"
+           ui:wsdlLocation="CheckMergeWrapper.wsdl">
+    <interface.wsdl interface="http://www.example.org/CheckMerge#wsdl.interface(CheckMergePT)"/>
+    <binding.direct/>
+  </service>
   <component name="MergeBPELProcess" version="2.0">
     <implementation.bpel src="MergeBPELProcess.bpel"/>
     <property name="bpel.config.transaction" type="xs:string" many="false">required</property>
   </component>
   <wire>
     <source.uri>MergeBPELProcessService_ep</source.uri>
+    <target.uri>MergeBPELProcess/MergeBPELProcessService</target.uri>
+  </wire>
+  <wire>
+    <source.uri>MergeCheckBPELDirectService</source.uri>
     <target.uri>MergeBPELProcess/MergeBPELProcessService</target.uri>
   </wire>
 </composite>

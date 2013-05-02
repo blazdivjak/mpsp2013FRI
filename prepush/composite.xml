@@ -20,6 +20,9 @@
  <import namespace="http://www.example.org/CheckSpellcheck"
          location="http://soabpm-vm:7001/prePush-WebService-context-root/CheckSpellcheckServicePort?wsdl"
          importType="wsdl"/>
+ <import namespace="http://www.example.org/CheckMerge"
+         location="http://soabpm-vm:7001/soa-infra/directWsdl/default/MergeCheck!1.0/MergeCheckBPELDirectService?resource=%2FCheckMergeWrapper.wsdl"
+         importType="wsdl"/>
  <service name="Process.service" ui:wsdlLocation="Process.wsdl">
   <interface.wsdl interface="http://xmlns.oracle.com/bpmn/bpmnProcess/Process#wsdl.interface(ProcessPortType)"
                   callbackInterface="http://xmlns.oracle.com/bpmn/bpmnProcess/Process#wsdl.interface(ProcessPortTypeCallBack)"/>
@@ -41,6 +44,15 @@
    <property name="weblogic.wsee.wsat.transaction.flowOption" type="xs:string"
              many="false">WSDLDriven</property>
   </binding.ws>
+ </reference>
+ <reference name="MergeCheckDirectReference"
+            ui:wsdlLocation="http://soabpm-vm:7001/soa-infra/directWsdl/default/MergeCheck!1.0/MergeCheckBPELDirectService?resource=%2FCheckMergeWrapper.wsdl">
+  <interface.wsdl interface="http://www.example.org/CheckMerge#wsdl.interface(CheckMergePT)"/>
+  <binding.direct address="soadirect:/default/MergeCheck!1.0/MergeCheckBPELDirectService"
+                  connection-factory="oracle.soa.api.JNDIDirectConnectionFactory"
+                  useLocalJNDIProvider="true">
+   <property name="java.naming.provider.url">t3://soabpm-vm:7001</property>
+  </binding.direct>
  </reference>
  <wire>
   <source.uri>Process.service</source.uri>

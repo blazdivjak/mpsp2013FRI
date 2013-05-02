@@ -1,0 +1,22 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
+        <ns1:checkSpellcheckRequest xmlns:ns1="http://www.example.org/messages">
+            <ns1:commits>
+                <ns2:commits xmlns:ns2="http://www.example.org/businessSchemas">
+                    <ns2:rev>
+                        <ns2:revNumber>1</ns2:revNumber>
+                        <ns2:revHex>
+                            <ns2:smallHash>12345</ns2:smallHash>
+                            <ns2:bigHash>1234567890</ns2:bigHash>
+                        </ns2:revHex>
+                    </ns2:rev>
+                    <ns2:user>divjak</ns2:user>
+                    <ns2:date>2012-05-02</ns2:date>
+                    <ns2:description>BPEL test</ns2:description>
+                    <ns2:branch>newlogin</ns2:branch>
+                    <ns2:parent1>0000000000</ns2:parent1>
+                </ns2:commits>
+            </ns1:commits>
+        </ns1:checkSpellcheckRequest>
+    </soap:Body>
+</soap:Envelope>
