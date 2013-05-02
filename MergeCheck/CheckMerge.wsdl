@@ -6,8 +6,8 @@
      xmlns:ns1="http://www.example.org/businessSchemas"
      xmlns:tns="http://www.example.org/CheckMerge"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-     xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
      xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
      xmlns:msg="http://www.example.org/messages"
      xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
     >
@@ -25,6 +25,9 @@
              xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:msg="http://www.example.org/messages"
              xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
             <xsd:import namespace="http://www.example.org/businessSchemas" schemaLocation="src/UserArray.xsd"/>
+        </xsd:schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://www.example.org/businessSchemas" schemaLocation="src/BranchArray.xsd"/>
         </xsd:schema>
     </types>
     <message name="checkMergeRequest">

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns:s="http://www.example.org/businessSchemas"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.example.org/businessSchemas"
+        elementFormDefault="qualified">
+   <complexType name="BranchCollectionType">
+      <sequence>
+         <element name="branch" type="string" minOccurs="0"
+                  maxOccurs="unbounded"/>
+      </sequence>
+   </complexType>
+   <element name="BranchCollection" type="s:BranchCollectionType"/>
+</schema>

@@ -36,6 +36,9 @@
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   -->
   <import namespace="http://www.example.org/businessSchemas"
+          location="src/BranchArray.xsd"
+          importType="http://www.w3.org/2001/XMLSchema"/>
+  <import namespace="http://www.example.org/businessSchemas"
           location="src/UserArray.xsd"
           importType="http://www.w3.org/2001/XMLSchema"/>
   <partnerLinks>
@@ -86,7 +89,16 @@
           <from><literal>NO</literal></from>
         </variable>
         <variable name="BranchOK" type="xsd:string">
-          <from><literal/></from>
+          <from><literal>NO</literal></from>
+        </variable>
+        <variable name="BranchCollection" element="ns3:BranchCollection">
+          <from><literal><BranchCollection xmlns="http://www.example.org/businessSchemas">
+<branch>newlogin</branch>
+<branch>newfrontcss</branch>
+<branch>backendfix</branch>
+<branch>test1</branch>
+<branch>test2</branch>
+</BranchCollection></literal></from>
         </variable>
       </variables>
       <if name="If1">
@@ -116,28 +128,30 @@
                         <to>$BranchOK</to>
                       </copy></assign></sequence>
                   <else>
-                    <documentation>Commiting to valid feature branch (normal commit)</documentation>
-                    <forEach parallel="no" counterName="ForEach1Counter"
-                             name="CheckFeatureBranches">
-                      <startCounterValue>1</startCounterValue>
-                      <finalCounterValue>3</finalCounterValue>
-                      <scope name="Scope2">
-                        <variables>
-                          <variable name="feature1" type="xsd:string">
-                            <from><literal>feature-newLogin</literal></from>
-                          </variable>
-                          <variable name="feature2" type="xsd:string">
-                            <from><literal>feature-FBapi</literal></from>
-                          </variable>
-                        </variables><sequence name="Sequence5"><assign name="FeatureBranchIsOK"
-                                                                                             xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+                    <documentation>Commiting to valid feature branch (normal commit)</documentation><sequence name="Sequence7"><forEach parallel="no"
+                                                                                                                                        counterName="counter"
+                                                                                                                                        name="CheckFeatureBranches"><startCounterValue>1</startCounterValue><finalCounterValue>count($BranchCollection/ns3:branch)</finalCounterValue><scope name="Scope2"><variables><variable name="feature1"
+                                                                                                                                                                                                                                                                                                                            type="xsd:string"><from><literal>feature-newLogin</literal></from></variable><variable name="feature2"
+                                                                                                                                                                                                                                                                                                                                                                                                                   type="xsd:string"><from><literal>feature-FBapi</literal></from></variable></variables><sequence name="Sequence5">
+                            <if name="CheckIfBranchExists"
+                                xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+      <documentation>Branch for feature exists</documentation>
+      <condition>$inputVariable.in/ns2:commits/ns3:commits/ns3:branch=$BranchCollection/ns3:branch[$counter]</condition>
+      <sequence name="Sequence4">
+         
+      <assign name="FeatureBranchIsOK"
+              xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
       
    <copy>
-                              <from><literal>OK</literal></from>
-                              <to>$BranchOK</to>
-                            </copy></assign></sequence></scope>
-                    </forEach>
-                  </else>
+                                    <from><literal>OK</literal></from>
+                                    <to>$BranchOK</to>
+                                  </copy></assign></sequence>
+      <else>
+         <documentation>Branch not found</documentation>
+         <empty name="UnknownBranch"/>
+      </else>
+   </if>
+                          </sequence></scope></forEach></sequence></else>
                 </if>
               </sequence>
               <sequence name="CheckUser">

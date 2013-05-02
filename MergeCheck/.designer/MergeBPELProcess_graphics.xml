@@ -4,9 +4,9 @@
    <annotationfile/>
    <iconize extensionActivity="no" empty="no" compensationHandler="no" receive="no" onMessage="no" exit="no" usertask="no" wait="no" foreach="no" phase="no" onAlarmEvent="no" throw="no" signal="no" else="no" validate="no" pick="no" milestone="no" email="no" dehydrate="no" repeatUntil="no" exec="no" im="no" receiveSignal="no" compensateScope="no" while="no" if="no" rethrow="no" assert="no" invoke="no" scope="no" compensate="no" replay="no" voice="no" elseif="no" usernotification="no" reply="no" onEvent="no" catchall="no" checkpoint="no" assign="no" flow="no" catch="no" sms="no" sequence="no" transformation="no" rule="no" onAlarmPick="no"/>
    <partnerlink_locations>
-      <partnerlink name="MergeBPELProcessService" x="1" y="928" side="left"/>
+      <partnerlink name="MergeBPELProcessService" x="1" y="991" side="left"/>
    </partnerlink_locations>
-   <graph_layout viewport="93,24,963,515" show_swimlanes="true">
+   <graph_layout viewport="156,521,963,515" show_swimlanes="true">
       <layout_item collapsed="false" xpath="/process" type="process" showhandlers="true"/>
       <layout_item collapsed="false" xpath="/process/sequence" type="sequence"/>
       <layout_item collapsed="false" xpath="/process/sequence/scope" type="scope" showhandlers="true"/>
@@ -15,9 +15,11 @@
       <layout_item collapsed="false" xpath="/process/sequence/scope/if/else/sequence/flow" type="flow"/>
       <layout_item collapsed="false" xpath="/process/sequence/scope/if/else/sequence/flow/sequence[1]" type="sequence"/>
       <layout_item collapsed="false" xpath="/process/sequence/scope/if/else/sequence/flow/sequence[1]/if/sequence" type="sequence"/>
-      <layout_item collapsed="false" xpath="/process/sequence/scope/if/else/sequence/flow/sequence[1]/if/else/forEach" type="foreach"/>
-      <layout_item collapsed="false" xpath="/process/sequence/scope/if/else/sequence/flow/sequence[1]/if/else/forEach/scope" type="scope" showhandlers="true"/>
-      <layout_item collapsed="false" xpath="/process/sequence/scope/if/else/sequence/flow/sequence[1]/if/else/forEach/scope/sequence" type="sequence"/>
+      <layout_item collapsed="false" xpath="/process/sequence/scope/if/else/sequence/flow/sequence[1]/if/else/sequence" type="sequence"/>
+      <layout_item collapsed="false" xpath="/process/sequence/scope/if/else/sequence/flow/sequence[1]/if/else/sequence/forEach" type="foreach"/>
+      <layout_item collapsed="false" xpath="/process/sequence/scope/if/else/sequence/flow/sequence[1]/if/else/sequence/forEach/scope" type="scope" showhandlers="true"/>
+      <layout_item collapsed="false" xpath="/process/sequence/scope/if/else/sequence/flow/sequence[1]/if/else/sequence/forEach/scope/sequence" type="sequence"/>
+      <layout_item collapsed="false" xpath="/process/sequence/scope/if/else/sequence/flow/sequence[1]/if/else/sequence/forEach/scope/sequence/if/sequence" type="sequence"/>
       <layout_item collapsed="false" xpath="/process/sequence/scope/if/else/sequence/flow/sequence[2]" type="sequence"/>
       <layout_item collapsed="false" xpath="/process/sequence/scope/if/else/sequence/flow/sequence[2]/forEach" type="foreach"/>
       <layout_item collapsed="false" xpath="/process/sequence/scope/if/else/sequence/flow/sequence[2]/forEach/scope" type="scope" showhandlers="true"/>
