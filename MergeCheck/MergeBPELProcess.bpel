@@ -76,7 +76,7 @@
     <scope name="Scope1">
       <variables>
         <variable name="UserCollection" element="ns3:UserCollection">
-          <from><literal><UserCollection xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+          <from><literal><UserCollection xmlns="http://www.example.org/businessSchemas">
 <user>divjak</user>
 <user>kacin</user>
 <user>majcn</user>
@@ -144,11 +144,11 @@
                 <forEach parallel="no" counterName="counter"
                          name="IterateUserArray">
                   <startCounterValue>1</startCounterValue>
-                  <finalCounterValue>3</finalCounterValue>
+                  <finalCounterValue>count($UserCollection/ns3:user)</finalCounterValue>
                   <scope name="Scope3">
                     <if name="CheckIfUserExists">
                       <documentation>User Exists</documentation>
-                      <condition>$inputVariable.in/ns2:commits/ns3:commits/ns3:user="divjak"</condition><sequence name="Sequence4"><assign name="UserValid"
+                      <condition>$inputVariable.in/ns2:commits/ns3:commits/ns3:user=$UserCollection/ns3:user[$counter]</condition><sequence name="Sequence4"><assign name="UserValid"
                                                                                                                                                                                                                                               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
       
    <copy>
