@@ -76,34 +76,47 @@
     <scope name="Scope1">
       <variables>
         <variable name="UserCollection" element="ns3:UserCollection">
-          <from><literal><UserCollection>
-<user>test1</user>
-<user>test2</user>
+          <from><literal><UserCollection xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+<user>divjak</user>
+<user>kacin</user>
+<user>majcn</user>
 </UserCollection></literal></from>
+        </variable>
+        <variable name="UserOK" type="xsd:string">
+          <from><literal>NO</literal></from>
+        </variable>
+        <variable name="BranchOK" type="xsd:string">
+          <from><literal/></from>
         </variable>
       </variables>
       <if name="If1">
-        <documentation>branch==master</documentation>
-        <condition>xp20:compare($inputVariable.in/ns2:commits/ns3:commits/ns3:branch,"master")=1</condition>
-        <assign name="Assign1">
-          <copy>
-            <from><literal>denyMergeToMaster</literal></from>
-            <to>$outputVariable.return/ns2:status</to>
-          </copy>
-        </assign>
+        <documentation>If branch is master deny. Not allowed.</documentation>
+        <condition>$inputVariable.in/ns2:commits/ns3:commits/ns3:branch="master"</condition>
+        <sequence name="Sequence3">
+          <assign name="DenyMergeToMaster">
+            <copy>
+              <from><literal>401:DenyCommitToMaster</literal></from>
+              <to>$outputVariable.return/ns2:status</to>
+            </copy>
+          </assign>
+        </sequence>
         <else>
-          <documentation>Not master</documentation>
+          <documentation>Not master. Check databases for valid users and feature branches</documentation>
           <sequence name="Sequence1">
             <flow name="Flow1">
               <sequence name="checkCommit">
-                <if name="If2">
-                  <documentation>branch==develop (possible merge)</documentation>
-                  <condition>xp20:compare($inputVariable.in/ns2:commits/ns3:commits/ns3:branch, "develop")=0</condition>
-                  <sequence name="Sequence2">
-                    <empty name="Empty1"/>
-                  </sequence>
+                <if name="CheckIfWeNeedToMerge">
+                  <documentation>Commiting to develop branch (merge)</documentation>
+                  <condition>$inputVariable.in/ns2:commits/ns3:commits/ns3:branch= "develop"</condition>
+                  <sequence name="Sequence2"><assign name="MergeToDevelopBranch"
+                                                  xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+      
+   <copy>
+                        <from><literal>Develop</literal></from>
+                        <to>$BranchOK</to>
+                      </copy></assign></sequence>
                   <else>
-                    <documentation>maybe feature branch(normal commit)</documentation>
+                    <documentation>Commiting to valid feature branch (normal commit)</documentation>
                     <forEach parallel="no" counterName="ForEach1Counter"
                              name="CheckFeatureBranches">
                       <startCounterValue>1</startCounterValue>
@@ -116,9 +129,13 @@
                           <variable name="feature2" type="xsd:string">
                             <from><literal>feature-FBapi</literal></from>
                           </variable>
-                        </variables>
-                        <empty name="Empty4"/>
-                      </scope>
+                        </variables><sequence name="Sequence5"><assign name="FeatureBranchIsOK"
+                                                                                             xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+      
+   <copy>
+                              <from><literal>OK</literal></from>
+                              <to>$BranchOK</to>
+                            </copy></assign></sequence></scope>
                     </forEach>
                   </else>
                 </if>
@@ -127,20 +144,85 @@
                 <forEach parallel="no" counterName="counter"
                          name="IterateUserArray">
                   <startCounterValue>1</startCounterValue>
-                  <finalCounterValue>ora:countNodes($UserCollection)</finalCounterValue>
+                  <finalCounterValue>3</finalCounterValue>
                   <scope name="Scope3">
-                    <if name="If3">
-                      <condition>xp20:compare($UserCollection/ns3:user[$counter],$inputVariable.in/ns2:commits/ns3:commits/ns3:user)=0</condition>
-                      <empty name="Empty2"/>
-                      <else>
-                        <empty name="Empty3"/>
+                    <if name="CheckIfUserExists">
+                      <documentation>User Exists</documentation>
+                      <condition>$inputVariable.in/ns2:commits/ns3:commits/ns3:user="divjak"</condition><sequence name="Sequence4"><assign name="UserValid"
+                                                                                                                                                                                                                                              xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+      
+   <copy>
+                            <from><literal>OK</literal></from>
+                            <to>$UserOK</to>
+                          </copy></assign></sequence><else>
+                        <documentation>User not found</documentation>
+                        <empty name="UserInvalid"/>
                       </else>
                     </if>
                   </scope>
                 </forEach>
               </sequence>
-            </flow>
-          </sequence>
+            </flow><if name="CheckUser"
+                       xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+      <documentation>User is valid</documentation>
+      <condition>$UserOK="OK"</condition>
+      <sequence name="Sequence2">
+         
+         <if name="CheckWhichBranch"
+             xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+      <documentation>Valid feature branch</documentation>
+      <condition>$BranchOK="OK"</condition>
+      <sequence name="Sequence2">
+         
+         <assign name="CommitToFeatureBranchOK"
+                 xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+      
+   <copy>
+         <from><literal>201:CommitNewFeatureOK</literal></from>
+         <to>$outputVariable.return/ns2:status</to>
+      </copy></assign>
+      </sequence>
+      <else>
+         <documentation source="CheckIfDevel">Maybe develop branch or unknown branch</documentation>
+         
+      <if name="CheckIfBranchDevelop"
+          xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+      <documentation>Develop branch</documentation>
+      <condition>$BranchOK="Develop"</condition>
+      <sequence name="Sequence2">
+         
+         <assign name="MergeToDevelop"
+                 xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+      
+   <copy>
+         <from><literal>202:MergeToDevelop</literal></from>
+         <to>$outputVariable.return/ns2:status</to>
+      </copy></assign>
+      </sequence>
+      <else>
+         <documentation>Unknown branch</documentation>
+         
+      <sequence name="Sequence6"><assign name="UnkownBranch"
+                                         xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+      
+   <copy>
+         <from><literal>403:UnknownBranch</literal></from>
+         <to>$outputVariable.return/ns2:status</to>
+      </copy></assign></sequence></else>
+   </if></else>
+   </if>
+      </sequence>
+      <else>
+         <documentation>User is not valid</documentation>
+         
+      <sequence name="Sequence6"><assign name="DenyInvalidUser"
+                                         xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable">
+      
+   <copy>
+         <from><literal>402:DenyInvalidUser</literal></from>
+         <to>$outputVariable.return/ns2:status</to>
+      </copy></assign></sequence></else>
+   </if></sequence>
         </else>
       </if>
     </scope>

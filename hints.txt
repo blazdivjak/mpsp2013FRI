@@ -1,0 +1,2 @@
+ora:countNodes($UserCollection)
+$UserCollection/ns3:user[$counter]=$inputVariable.in/ns2:commits/ns3:commits/ns3:user
