@@ -1,0 +1,40 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<schema xmlns:s="http://www.example.org/businessSchemas" xmlns="http://www.w3.org/2001/XMLSchema"
+     elementFormDefault="qualified" targetNamespace="http://www.example.org/businessSchemas">
+    <complexType name="CommitEntityType">
+        <sequence>
+            <element name="rev" type="s:RevType"/>
+            <element name="user" type="string"/>
+            <element name="date" type="date"/>
+            <element name="description" type="string"/>
+            <element name="branch" type="string"/>
+            <element name="parent1" type="string"/>
+        </sequence>
+    </complexType>
+    <complexType name="RevType">
+        <sequence>
+            <element name="revNumber" type="int"/>
+            <element name="revHex" type="s:RevHexType"/>
+        </sequence>
+    </complexType>
+    <complexType name="RevHexType">
+        <sequence>
+            <element name="smallHash" type="string"/>
+            <element name="bigHash" type="string"/>
+        </sequence>
+    </complexType>
+    <complexType name="FullCommitEntityType">
+        <complexContent>
+            <extension base="s:CommitEntityType">
+                <sequence>
+                    <element name="parent2" type="string" minOccurs="0" maxOccurs="1"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="MultiCommitEntityType">
+        <sequence>
+            <element name="commits" type="s:FullCommitEntityType" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+</schema>

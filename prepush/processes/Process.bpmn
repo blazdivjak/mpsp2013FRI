@@ -15,12 +15,18 @@
                     <ns5:StringFeature value="" name="NAMESPACE"/>
                     <ns5:StringFeature value="PROJECT_DEFAULT" name="generatesEvents"/>
                     <ns5:StringFeature value="HORIZONTAL_LAYOUT" name="process-layout"/>
-                    <ns5:StringFeature value="1.0" name="scale"/>
+                    <ns5:StringFeature value="0.5" name="scale"/>
                     <ns5:StringFeature value="REGULAR" name="sealType"/>
                 </ns5:FeatureSet>
                 <ns5:Conversations>
                     <ns5:Conversation id="CONVERSATION61744538797" type="define_interface">
                         <ns5:DefineInterfaceConversationDefinition exposeSOAPService="true"/>
+                    </ns5:Conversation>
+                    <ns5:Conversation id="CONVERSATION66950538861" type="service_call">
+                        <ns5:ServiceCallConversationDefinition service="Services.Externals.CheckSpellcheckService"/>
+                    </ns5:Conversation>
+                    <ns5:Conversation id="CONVERSATION66953933899" type="service_call">
+                        <ns5:ServiceCallConversationDefinition service="Services.Externals.MergeCheckDirectReference"/>
                     </ns5:Conversation>
                 </ns5:Conversations>
             </ns5:OracleExtensions>
@@ -70,7 +76,7 @@
                         <ns5:Position x="400" y="50"/>
                     </ns5:GraphicsAttributes>
                     <ns5:FeatureSet>
-                        <ns5:BooleanFeature value="false" name="isDraft"/>
+                        <ns5:BooleanFeature value="true" name="isDraft"/>
                         <ns5:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
                         <ns5:StringFeature value="PARALLEL_GATEWAY_1363336813880" name="level"/>
                         <ns5:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
@@ -78,7 +84,7 @@
                 </ns5:OracleExtensions>
             </extensionElements>
         </task>
-        <task isForCompensation="false" name="Commit comments spellcheck" id="ABSTRACT_ACTIVITY_1363337031918">
+        <serviceTask implementation="Services.Externals.CheckSpellcheckService" operationRef="checkSpellcheck" isForCompensation="false" name="Commit comments spellcheck" id="ABSTRACT_ACTIVITY_1363337031918">
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:GraphicsAttributes>
@@ -86,14 +92,42 @@
                     </ns5:GraphicsAttributes>
                     <ns5:FeatureSet>
                         <ns5:BooleanFeature value="false" name="isDraft"/>
+                        <ns5:BooleanFeature value="false" name="inputValidation"/>
+                        <ns5:BooleanFeature value="false" name="outputValidation"/>
                         <ns5:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
                         <ns5:StringFeature value="PARALLEL_GATEWAY_1363336813880" name="level"/>
                         <ns5:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
                     </ns5:FeatureSet>
+                    <ns5:Conversational conversation="CONVERSATION66950538861">
+                        <ns5:ServiceCallConversationalDefinition operation="checkSpellcheck"/>
+                    </ns5:Conversational>
+                    <ns5:LogHandlers/>
                 </ns5:OracleExtensions>
             </extensionElements>
-        </task>
-        <task isForCompensation="false" name="Merge check" id="ABSTRACT_ACTIVITY_1363337092310">
+            <ioSpecification>
+                <dataInput name="checkSpellcheckRequest" id="checkSpellcheckRequest">
+                    <extensionElements>
+                        <ns5:OracleExtensions>
+                            <ns5:TypeRef namespace="http://www.example.org/messages" element="checkSpellcheckRequest" isArray="false"/>
+                        </ns5:OracleExtensions>
+                    </extensionElements>
+                </dataInput>
+                <dataOutput name="checkSpellcheckResponse" id="checkSpellcheckResponse">
+                    <extensionElements>
+                        <ns5:OracleExtensions>
+                            <ns5:TypeRef namespace="http://www.example.org/messages" element="checkSpellcheckResponse" isArray="false"/>
+                        </ns5:OracleExtensions>
+                    </extensionElements>
+                </dataOutput>
+                <inputSet id="ABSTRACT_ACTIVITY_1363337031918_uniqueInputSet">
+                    <dataInputRefs>checkSpellcheckRequest</dataInputRefs>
+                </inputSet>
+                <outputSet id="ABSTRACT_ACTIVITY_1363337031918_uniqueOutputSet">
+                    <dataOutputRefs>checkSpellcheckResponse</dataOutputRefs>
+                </outputSet>
+            </ioSpecification>
+        </serviceTask>
+        <serviceTask implementation="Services.Externals.MergeCheckDirectReference" operationRef="checkMerge" isForCompensation="false" name="Merge check" id="ABSTRACT_ACTIVITY_1363337092310">
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:GraphicsAttributes>
@@ -101,13 +135,69 @@
                     </ns5:GraphicsAttributes>
                     <ns5:FeatureSet>
                         <ns5:BooleanFeature value="false" name="isDraft"/>
+                        <ns5:BooleanFeature value="false" name="inputValidation"/>
+                        <ns5:BooleanFeature value="false" name="outputValidation"/>
                         <ns5:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
                         <ns5:StringFeature value="PARALLEL_GATEWAY_1363336813880" name="level"/>
                         <ns5:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
                     </ns5:FeatureSet>
+                    <ns5:Conversational conversation="CONVERSATION66953933899">
+                        <ns5:ServiceCallConversationalDefinition operation="checkMerge"/>
+                    </ns5:Conversational>
+                    <ns5:LogHandlers/>
                 </ns5:OracleExtensions>
             </extensionElements>
-        </task>
+            <ioSpecification>
+                <dataInput name="checkMergeRequest" id="checkMergeRequest">
+                    <extensionElements>
+                        <ns5:OracleExtensions>
+                            <ns5:TypeRef namespace="http://www.example.org/messages" element="checkMergeRequest" isArray="false"/>
+                        </ns5:OracleExtensions>
+                    </extensionElements>
+                </dataInput>
+                <dataOutput name="checkMergeResponse" id="checkMergeResponse">
+                    <extensionElements>
+                        <ns5:OracleExtensions>
+                            <ns5:TypeRef namespace="http://www.example.org/messages" element="checkMergeResponse" isArray="false"/>
+                        </ns5:OracleExtensions>
+                    </extensionElements>
+                </dataOutput>
+                <inputSet id="ABSTRACT_ACTIVITY_1363337092310_uniqueInputSet">
+                    <dataInputRefs>checkMergeRequest</dataInputRefs>
+                </inputSet>
+                <outputSet id="ABSTRACT_ACTIVITY_1363337092310_uniqueOutputSet">
+                    <dataOutputRefs>checkMergeResponse</dataOutputRefs>
+                </outputSet>
+            </ioSpecification>
+            <dataInputAssociation>
+                <extensionElements>
+                    <ns5:OracleExtensions/>
+                </extensionElements>
+                <sourceRef>merge</sourceRef>
+                <targetRef>checkMergeRequest</targetRef>
+                <assignment>
+                    <extensionElements>
+                        <ns5:OracleExtensions>
+                            <ns5:DataAssignment operation="copy"/>
+                        </ns5:OracleExtensions>
+                    </extensionElements>
+                    <from xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('merge')
+                        <extensionElements>
+                            <ns5:OracleExtensions>
+                                <ns5:Expression mode="simple"/>
+                            </ns5:OracleExtensions>
+                        </extensionElements>
+                    </from>
+                    <to xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataInput('checkMergeRequest')
+                        <extensionElements>
+                            <ns5:OracleExtensions>
+                                <ns5:Expression mode="simple"/>
+                            </ns5:OracleExtensions>
+                        </extensionElements>
+                    </to>
+                </assignment>
+            </dataInputAssociation>
+        </serviceTask>
         <task isForCompensation="false" name="Commit location check" id="ABSTRACT_ACTIVITY_1363337142701">
             <extensionElements>
                 <ns5:OracleExtensions>
@@ -115,7 +205,7 @@
                         <ns5:Position x="400" y="150"/>
                     </ns5:GraphicsAttributes>
                     <ns5:FeatureSet>
-                        <ns5:BooleanFeature value="false" name="isDraft"/>
+                        <ns5:BooleanFeature value="true" name="isDraft"/>
                         <ns5:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
                         <ns5:StringFeature value="PARALLEL_GATEWAY_1363336813880" name="level"/>
                         <ns5:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
@@ -142,11 +232,176 @@
                         <ns5:StringFeature value="SIMPLE" name="humanTaskType"/>
                         <ns5:StringFeature value="" name="reinitiateSource"/>
                     </ns5:FeatureSet>
-                    <ns5:HumanTask/>
+                    <ns5:HumanTask humanTaskReference="HumanTasks.PreveriSpellcheckHT"/>
                     <ns5:LogHandlers/>
                 </ns5:OracleExtensions>
             </extensionElements>
-            <ioSpecification/>
+            <ioSpecification>
+                <dataInput name="checkSpellcheckRequest" id="checkSpellcheckRequest">
+                    <extensionElements>
+                        <ns5:OracleExtensions>
+                            <ns5:TypeRef namespace="http://www.example.org/messages" element="checkSpellcheckRequest" isArray="false"/>
+                        </ns5:OracleExtensions>
+                    </extensionElements>
+                </dataInput>
+                <dataInput name="checkSpellcheckResponse" id="checkSpellcheckResponse">
+                    <extensionElements>
+                        <ns5:OracleExtensions>
+                            <ns5:TypeRef namespace="http://www.example.org/messages" element="checkSpellcheckResponse" isArray="false"/>
+                        </ns5:OracleExtensions>
+                    </extensionElements>
+                </dataInput>
+                <dataInput name="execData" id="execData">
+                    <extensionElements>
+                        <ns5:OracleExtensions>
+                            <ns5:TypeRef namespace="http://xmlns.oracle.com/bpel/workflow/task" element="task" isArray="false"/>
+                        </ns5:OracleExtensions>
+                    </extensionElements>
+                </dataInput>
+                <dataOutput name="outcome" id="outcome">
+                    <extensionElements>
+                        <ns5:OracleExtensions>
+                            <ns5:TypeRef namespace="http://www.w3.org/2001/XMLSchema" type="string" isArray="false"/>
+                        </ns5:OracleExtensions>
+                    </extensionElements>
+                </dataOutput>
+                <dataOutput name="checkSpellcheckResponse" id="checkSpellcheckResponse">
+                    <extensionElements>
+                        <ns5:OracleExtensions>
+                            <ns5:TypeRef namespace="http://www.example.org/messages" element="checkSpellcheckResponse" isArray="false"/>
+                        </ns5:OracleExtensions>
+                    </extensionElements>
+                </dataOutput>
+                <dataOutput name="execData" id="execData">
+                    <extensionElements>
+                        <ns5:OracleExtensions>
+                            <ns5:TypeRef namespace="http://xmlns.oracle.com/bpel/workflow/task" element="task" isArray="false"/>
+                        </ns5:OracleExtensions>
+                    </extensionElements>
+                </dataOutput>
+                <inputSet id="USER_TASK_1363337300136_uniqueInputSet">
+                    <dataInputRefs>checkSpellcheckRequest</dataInputRefs>
+                    <dataInputRefs>checkSpellcheckResponse</dataInputRefs>
+                    <dataInputRefs>execData</dataInputRefs>
+                </inputSet>
+                <outputSet id="USER_TASK_1363337300136_uniqueOutputSet">
+                    <dataOutputRefs>outcome</dataOutputRefs>
+                    <dataOutputRefs>checkSpellcheckResponse</dataOutputRefs>
+                    <dataOutputRefs>execData</dataOutputRefs>
+                </outputSet>
+            </ioSpecification>
+            <dataInputAssociation>
+                <extensionElements>
+                    <ns5:OracleExtensions/>
+                </extensionElements>
+                <sourceRef>spellcheck</sourceRef>
+                <targetRef>checkSpellcheckRequest</targetRef>
+                <assignment>
+                    <extensionElements>
+                        <ns5:OracleExtensions>
+                            <ns5:DataAssignment operation="copy"/>
+                        </ns5:OracleExtensions>
+                    </extensionElements>
+                    <from xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('spellcheck')
+                        <extensionElements>
+                            <ns5:OracleExtensions>
+                                <ns5:Expression mode="simple"/>
+                            </ns5:OracleExtensions>
+                        </extensionElements>
+                    </from>
+                    <to xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataInput('checkSpellcheckRequest')
+                        <extensionElements>
+                            <ns5:OracleExtensions>
+                                <ns5:Expression mode="simple"/>
+                            </ns5:OracleExtensions>
+                        </extensionElements>
+                    </to>
+                </assignment>
+            </dataInputAssociation>
+            <dataInputAssociation>
+                <extensionElements>
+                    <ns5:OracleExtensions/>
+                </extensionElements>
+                <sourceRef>spellCheckResponse</sourceRef>
+                <targetRef>checkSpellcheckResponse</targetRef>
+                <assignment>
+                    <extensionElements>
+                        <ns5:OracleExtensions>
+                            <ns5:DataAssignment operation="copy"/>
+                        </ns5:OracleExtensions>
+                    </extensionElements>
+                    <from xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('spellCheckResponse')
+                        <extensionElements>
+                            <ns5:OracleExtensions>
+                                <ns5:Expression mode="simple"/>
+                            </ns5:OracleExtensions>
+                        </extensionElements>
+                    </from>
+                    <to xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataInput('checkSpellcheckResponse')
+                        <extensionElements>
+                            <ns5:OracleExtensions>
+                                <ns5:Expression mode="simple"/>
+                            </ns5:OracleExtensions>
+                        </extensionElements>
+                    </to>
+                </assignment>
+            </dataInputAssociation>
+            <dataOutputAssociation>
+                <extensionElements>
+                    <ns5:OracleExtensions/>
+                </extensionElements>
+                <sourceRef>checkSpellcheckResponse</sourceRef>
+                <targetRef>spellCheckResponse</targetRef>
+                <assignment>
+                    <extensionElements>
+                        <ns5:OracleExtensions>
+                            <ns5:DataAssignment operation="copy"/>
+                        </ns5:OracleExtensions>
+                    </extensionElements>
+                    <from xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataOutput('checkSpellcheckResponse')
+                        <extensionElements>
+                            <ns5:OracleExtensions>
+                                <ns5:Expression mode="simple"/>
+                            </ns5:OracleExtensions>
+                        </extensionElements>
+                    </from>
+                    <to xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('spellCheckResponse')
+                        <extensionElements>
+                            <ns5:OracleExtensions>
+                                <ns5:Expression mode="simple"/>
+                            </ns5:OracleExtensions>
+                        </extensionElements>
+                    </to>
+                </assignment>
+            </dataOutputAssociation>
+            <dataOutputAssociation>
+                <extensionElements>
+                    <ns5:OracleExtensions/>
+                </extensionElements>
+                <sourceRef>outcome</sourceRef>
+                <targetRef>outcomeHT</targetRef>
+                <assignment>
+                    <extensionElements>
+                        <ns5:OracleExtensions>
+                            <ns5:DataAssignment operation="copy"/>
+                        </ns5:OracleExtensions>
+                    </extensionElements>
+                    <from xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataOutput('outcome')
+                        <extensionElements>
+                            <ns5:OracleExtensions>
+                                <ns5:Expression mode="simple"/>
+                            </ns5:OracleExtensions>
+                        </extensionElements>
+                    </from>
+                    <to xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('outcomeHT')
+                        <extensionElements>
+                            <ns5:OracleExtensions>
+                                <ns5:Expression mode="simple"/>
+                            </ns5:OracleExtensions>
+                        </extensionElements>
+                    </to>
+                </assignment>
+            </dataOutputAssociation>
             <resourceRole name="clan ekipe" id="lane"/>
         </userTask>
         <task isForCompensation="false" name="Push Commit To selected branch" id="ABSTRACT_ACTIVITY_1363337901797">
@@ -156,7 +411,7 @@
                         <ns5:Position x="1100" y="200"/>
                     </ns5:GraphicsAttributes>
                     <ns5:FeatureSet>
-                        <ns5:BooleanFeature value="false" name="isDraft"/>
+                        <ns5:BooleanFeature value="true" name="isDraft"/>
                         <ns5:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
                         <ns5:StringFeature value="Begin Level" name="level"/>
                         <ns5:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
@@ -171,7 +426,7 @@
                         <ns5:Position x="1300" y="670"/>
                     </ns5:GraphicsAttributes>
                     <ns5:FeatureSet>
-                        <ns5:BooleanFeature value="false" name="isDraft"/>
+                        <ns5:BooleanFeature value="true" name="isDraft"/>
                         <ns5:BooleanFeature value="false" name="reinitiate"/>
                         <ns5:BooleanFeature value="false" name="manualCreation"/>
                         <ns5:BooleanFeature value="false" name="inputValidation"/>
@@ -197,7 +452,7 @@
                         <ns5:Position x="1550" y="670"/>
                     </ns5:GraphicsAttributes>
                     <ns5:FeatureSet>
-                        <ns5:BooleanFeature value="false" name="isDraft"/>
+                        <ns5:BooleanFeature value="true" name="isDraft"/>
                         <ns5:BooleanFeature value="false" name="reinitiate"/>
                         <ns5:BooleanFeature value="false" name="manualCreation"/>
                         <ns5:BooleanFeature value="false" name="inputValidation"/>
@@ -232,12 +487,157 @@
                         <ns5:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
                     </ns5:FeatureSet>
                     <ns5:Conversational conversation="CONVERSATION61744538797">
-                        <ns5:DefineInterfaceConversationalDefinition definedOperationName="start"/>
+                        <ns5:DefineInterfaceConversationalDefinition definedOperationName="ObdelajPush"/>
                     </ns5:Conversational>
                     <ns5:LogHandlers/>
                 </ns5:OracleExtensions>
             </extensionElements>
-            <outputSet/>
+            <dataOutput name="checkSpellcheck" id="checkSpellcheck">
+                <extensionElements>
+                    <ns5:OracleExtensions>
+                        <ns5:TypeRef namespace="http://www.example.org/messages" element="checkSpellcheckRequest" isArray="false"/>
+                    </ns5:OracleExtensions>
+                </extensionElements>
+            </dataOutput>
+            <dataOutput name="checkSpellcheckResponse" id="checkSpellcheckResponse">
+                <extensionElements>
+                    <ns5:OracleExtensions>
+                        <ns5:TypeRef namespace="http://www.example.org/messages" element="checkSpellcheckResponse" isArray="false"/>
+                    </ns5:OracleExtensions>
+                </extensionElements>
+            </dataOutput>
+            <dataOutput name="checkMerge" id="checkMerge">
+                <extensionElements>
+                    <ns5:OracleExtensions>
+                        <ns5:TypeRef namespace="http://www.example.org/messages" element="checkMergeRequest" isArray="false"/>
+                    </ns5:OracleExtensions>
+                </extensionElements>
+            </dataOutput>
+            <dataOutput name="checkMergeResponse" id="checkMergeResponse">
+                <extensionElements>
+                    <ns5:OracleExtensions>
+                        <ns5:TypeRef namespace="http://www.example.org/messages" element="checkMergeResponse" isArray="false"/>
+                    </ns5:OracleExtensions>
+                </extensionElements>
+            </dataOutput>
+            <dataOutputAssociation>
+                <extensionElements>
+                    <ns5:OracleExtensions/>
+                </extensionElements>
+                <sourceRef>checkSpellcheck</sourceRef>
+                <targetRef>spellcheck</targetRef>
+                <assignment>
+                    <extensionElements>
+                        <ns5:OracleExtensions>
+                            <ns5:DataAssignment operation="copy"/>
+                        </ns5:OracleExtensions>
+                    </extensionElements>
+                    <from xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataOutput('checkSpellcheck')
+                        <extensionElements>
+                            <ns5:OracleExtensions>
+                                <ns5:Expression mode="simple"/>
+                            </ns5:OracleExtensions>
+                        </extensionElements>
+                    </from>
+                    <to xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('spellcheck')
+                        <extensionElements>
+                            <ns5:OracleExtensions>
+                                <ns5:Expression mode="simple"/>
+                            </ns5:OracleExtensions>
+                        </extensionElements>
+                    </to>
+                </assignment>
+            </dataOutputAssociation>
+            <dataOutputAssociation>
+                <extensionElements>
+                    <ns5:OracleExtensions/>
+                </extensionElements>
+                <sourceRef>checkMerge</sourceRef>
+                <targetRef>merge</targetRef>
+                <assignment>
+                    <extensionElements>
+                        <ns5:OracleExtensions>
+                            <ns5:DataAssignment operation="copy"/>
+                        </ns5:OracleExtensions>
+                    </extensionElements>
+                    <from xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataOutput('checkMerge')
+                        <extensionElements>
+                            <ns5:OracleExtensions>
+                                <ns5:Expression mode="simple"/>
+                            </ns5:OracleExtensions>
+                        </extensionElements>
+                    </from>
+                    <to xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('merge')
+                        <extensionElements>
+                            <ns5:OracleExtensions>
+                                <ns5:Expression mode="simple"/>
+                            </ns5:OracleExtensions>
+                        </extensionElements>
+                    </to>
+                </assignment>
+            </dataOutputAssociation>
+            <dataOutputAssociation>
+                <extensionElements>
+                    <ns5:OracleExtensions/>
+                </extensionElements>
+                <sourceRef>checkMergeResponse</sourceRef>
+                <targetRef>mergeResponse</targetRef>
+                <assignment>
+                    <extensionElements>
+                        <ns5:OracleExtensions>
+                            <ns5:DataAssignment operation="copy"/>
+                        </ns5:OracleExtensions>
+                    </extensionElements>
+                    <from xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataOutput('checkMergeResponse')
+                        <extensionElements>
+                            <ns5:OracleExtensions>
+                                <ns5:Expression mode="simple"/>
+                            </ns5:OracleExtensions>
+                        </extensionElements>
+                    </from>
+                    <to xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('mergeResponse')
+                        <extensionElements>
+                            <ns5:OracleExtensions>
+                                <ns5:Expression mode="simple"/>
+                            </ns5:OracleExtensions>
+                        </extensionElements>
+                    </to>
+                </assignment>
+            </dataOutputAssociation>
+            <dataOutputAssociation>
+                <extensionElements>
+                    <ns5:OracleExtensions/>
+                </extensionElements>
+                <sourceRef>checkSpellcheckResponse</sourceRef>
+                <targetRef>spellCheckResponse</targetRef>
+                <assignment>
+                    <extensionElements>
+                        <ns5:OracleExtensions>
+                            <ns5:DataAssignment operation="copy"/>
+                        </ns5:OracleExtensions>
+                    </extensionElements>
+                    <from xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataOutput('checkSpellcheckResponse')
+                        <extensionElements>
+                            <ns5:OracleExtensions>
+                                <ns5:Expression mode="simple"/>
+                            </ns5:OracleExtensions>
+                        </extensionElements>
+                    </from>
+                    <to xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('spellCheckResponse')
+                        <extensionElements>
+                            <ns5:OracleExtensions>
+                                <ns5:Expression mode="simple"/>
+                            </ns5:OracleExtensions>
+                        </extensionElements>
+                    </to>
+                </assignment>
+            </dataOutputAssociation>
+            <outputSet id="START_EVENT6174453879719_uniqueOutputSet">
+                <dataOutputRefs>checkSpellcheck</dataOutputRefs>
+                <dataOutputRefs>checkSpellcheckResponse</dataOutputRefs>
+                <dataOutputRefs>checkMerge</dataOutputRefs>
+                <dataOutputRefs>checkMergeResponse</dataOutputRefs>
+            </outputSet>
             <messageEventDefinition/>
         </startEvent>
         <endEvent name="End" id="END_EVENT617445387978">
@@ -454,11 +854,18 @@
                         <ns5:BooleanFeature value="false" name="collapseMessage"/>
                         <ns5:StringFeature value="499,489" name="curve"/>
                         <ns5:StringFeature value="ORTHOGONAL" name="routing"/>
+                        <ns5:StringFeature value="" name="userName"/>
                         <ns5:IntegerFeature value="0" name="order"/>
                     </ns5:FeatureSet>
                 </ns5:OracleExtensions>
             </extensionElements>
-            <conditionExpression xsi:type="tFormalExpression"/>
+            <conditionExpression xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:ns="http://www.example.org/messages" xmlns:bpmn="http://www.omg.org/bpmn20">(bpmn:getDataObject('spellCheckResponse')/ns:status != '0')
+                <extensionElements>
+                    <ns5:OracleExtensions>
+                        <ns5:Expression mode="simple"/>
+                    </ns5:OracleExtensions>
+                </extensionElements>
+            </conditionExpression>
         </sequenceFlow>
         <sequenceFlow sourceRef="USER_TASK_1363337300136" targetRef="EXCLUSIVE_GATEWAY6485260866987" name="sf_1363337545210" id="sf_1363337545210">
             <extensionElements>
@@ -499,7 +906,13 @@
                     </ns5:FeatureSet>
                 </ns5:OracleExtensions>
             </extensionElements>
-            <conditionExpression xsi:type="tFormalExpression"/>
+            <conditionExpression xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:ns="http://www.example.org/messages" xmlns:bpmn="http://www.omg.org/bpmn20">(bpmn:getDataObject('spellCheckResponse')/ns:status != '0')
+                <extensionElements>
+                    <ns5:OracleExtensions>
+                        <ns5:Expression mode="simple"/>
+                    </ns5:OracleExtensions>
+                </extensionElements>
+            </conditionExpression>
         </sequenceFlow>
         <sequenceFlow sourceRef="ABSTRACT_ACTIVITY_1363337901797" targetRef="EXCLUSIVE_GATEWAY_1363337740321" name="sf_1363337921730" id="sf_1363337921730">
             <extensionElements>
@@ -535,11 +948,18 @@
                         <ns5:BooleanFeature value="false" name="collapseMessage"/>
                         <ns5:StringFeature value="-2147483648,-2147483648" name="curve"/>
                         <ns5:StringFeature value="STRAIGHT" name="routing"/>
+                        <ns5:StringFeature value="" name="userName"/>
                         <ns5:IntegerFeature value="0" name="order"/>
                     </ns5:FeatureSet>
                 </ns5:OracleExtensions>
             </extensionElements>
-            <conditionExpression xsi:type="tFormalExpression"/>
+            <conditionExpression xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:ns="http://www.example.org/messages" xmlns:bpmn="http://www.omg.org/bpmn20">(bpmn:getDataObject('spellCheckResponse')/ns:status = '0')
+                <extensionElements>
+                    <ns5:OracleExtensions>
+                        <ns5:Expression mode="simple"/>
+                    </ns5:OracleExtensions>
+                </extensionElements>
+            </conditionExpression>
         </sequenceFlow>
         <sequenceFlow sourceRef="EXCLUSIVE_GATEWAY_1363347361931" targetRef="END_EVENT617445387978" name="sf_1363347766881" id="sf_1363347766881">
             <extensionElements>
@@ -551,11 +971,10 @@
                         <ns5:BooleanFeature value="false" name="collapseMessage"/>
                         <ns5:StringFeature value="1221,100" name="curve"/>
                         <ns5:StringFeature value="ORTHOGONAL" name="routing"/>
-                        <ns5:IntegerFeature value="0" name="order"/>
+                        <ns5:StringFeature value="" name="userName"/>
                     </ns5:FeatureSet>
                 </ns5:OracleExtensions>
             </extensionElements>
-            <conditionExpression xsi:type="tFormalExpression"/>
         </sequenceFlow>
         <sequenceFlow sourceRef="EXCLUSIVE_GATEWAY_1363337442402" targetRef="EXCLUSIVE_GATEWAY6485260866987" name="sf_1363348045238" id="sf_1363348045238">
             <extensionElements>
@@ -567,11 +986,10 @@
                         <ns5:BooleanFeature value="false" name="collapseMessage"/>
                         <ns5:StringFeature value="756,351" name="curve"/>
                         <ns5:StringFeature value="ORTHOGONAL" name="routing"/>
-                        <ns5:IntegerFeature value="0" name="order"/>
+                        <ns5:StringFeature value="" name="userName"/>
                     </ns5:FeatureSet>
                 </ns5:OracleExtensions>
             </extensionElements>
-            <conditionExpression xsi:type="tFormalExpression"/>
         </sequenceFlow>
         <sequenceFlow sourceRef="PARALLEL_GATEWAY_1363336813880" targetRef="ABSTRACT_ACTIVITY_1363337142701" name="sf_1363348458827" id="sf_1363348458827">
             <extensionElements>
@@ -620,11 +1038,9 @@
                         <ns5:StringFeature value="-2147483648,-2147483648" name="curve"/>
                         <ns5:StringFeature value="STRAIGHT" name="routing"/>
                         <ns5:StringFeature value="Yes" name="userName"/>
-                        <ns5:IntegerFeature value="0" name="order"/>
                     </ns5:FeatureSet>
                 </ns5:OracleExtensions>
             </extensionElements>
-            <conditionExpression xsi:type="tFormalExpression"/>
         </sequenceFlow>
         <sequenceFlow sourceRef="EXCLUSIVE_GATEWAY6485260866987" targetRef="PARALLEL_GATEWAY_1363336813880M" name="sf47" id="sf47">
             <extensionElements>
@@ -640,5 +1056,50 @@
                 </ns5:OracleExtensions>
             </extensionElements>
         </sequenceFlow>
+        <dataObject name="spellcheck" id="spellcheck">
+            <extensionElements>
+                <ns5:OracleExtensions>
+                    <ns5:DataObjectType initialize="true">
+                        <ns5:TypeRef namespace="http://www.example.org/messages" element="checkSpellcheckRequest" isArray="false"/>
+                    </ns5:DataObjectType>
+                </ns5:OracleExtensions>
+            </extensionElements>
+        </dataObject>
+        <dataObject name="spellCheckResponse" id="spellCheckResponse">
+            <extensionElements>
+                <ns5:OracleExtensions>
+                    <ns5:DataObjectType initialize="true">
+                        <ns5:TypeRef namespace="http://www.example.org/messages" element="checkSpellcheckResponse" isArray="false"/>
+                    </ns5:DataObjectType>
+                </ns5:OracleExtensions>
+            </extensionElements>
+        </dataObject>
+        <dataObject name="merge" id="merge">
+            <extensionElements>
+                <ns5:OracleExtensions>
+                    <ns5:DataObjectType initialize="true">
+                        <ns5:TypeRef namespace="http://www.example.org/messages" element="checkMergeRequest" isArray="false"/>
+                    </ns5:DataObjectType>
+                </ns5:OracleExtensions>
+            </extensionElements>
+        </dataObject>
+        <dataObject name="mergeResponse" id="mergeResponse">
+            <extensionElements>
+                <ns5:OracleExtensions>
+                    <ns5:DataObjectType initialize="true">
+                        <ns5:TypeRef namespace="http://www.example.org/messages" element="checkMergeResponse" isArray="false"/>
+                    </ns5:DataObjectType>
+                </ns5:OracleExtensions>
+            </extensionElements>
+        </dataObject>
+        <dataObject name="outcomeHT" id="outcomeHT">
+            <extensionElements>
+                <ns5:OracleExtensions>
+                    <ns5:DataObjectType initialize="true">
+                        <ns5:TypeRef namespace="http://www.w3.org/2001/XMLSchema" type="string" isArray="false"/>
+                    </ns5:DataObjectType>
+                </ns5:OracleExtensions>
+            </extensionElements>
+        </dataObject>
     </process>
 </definitions>

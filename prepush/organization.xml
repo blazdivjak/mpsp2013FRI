@@ -26,7 +26,19 @@
         </ns1:applicationRole>
     </ns1:applicationRoles>
     <ns1:applicationRoleOrgUnitCalendarAssociations/>
-    <ns1:participantPropertiesList/>
+    <ns1:participantPropertiesList>
+        <ns1:participantProperties>
+            <ns1:participantProperty localizedName="ESCALATIONPATH" name="ESCALATIONPATH" ns1:propertyType="FREEFORM_STRING">
+                <ns1:value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">USER:demoadmin</ns1:value>
+                <ns1:createdDate>2013-05-14T17:15:24.604+02:00</ns1:createdDate>
+                <ns1:isMultiValued>false</ns1:isMultiValued>
+                <ns1:localizedValue xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">USER:demoadmin</ns1:localizedValue>
+            </ns1:participantProperty>
+            <ns1:participant type="APPROLE">
+                <ns1:name>prepush.clanekipe</ns1:name>
+            </ns1:participant>
+        </ns1:participantProperties>
+    </ns1:participantPropertiesList>
     <ns1:holidayRules/>
     <ns1:calendarRules/>
 </ns1:organization>

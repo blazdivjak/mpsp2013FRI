@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.61.92"
+          id="CheckSpellcheckResponseType"
+          Package="PrevedbaCrkovanjaForm_PreveriSpellcheckHT"
+          BeanClass="PrevedbaCrkovanjaForm_PreveriSpellcheckHT.CheckSpellcheckResponseType"
+          isJavaBased="false">
+  <Attribute Name="status" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="minOccurs" Value="1"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Status"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="status"/>
+        <Property Name="targetNamespace"
+                  Value="http://www.example.org/messages"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+</JavaBean>

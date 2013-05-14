@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.61.92"
+          id="CheckSpellcheckRequestType"
+          Package="PrevedbaCrkovanjaForm_PreveriSpellcheckHT"
+          BeanClass="PrevedbaCrkovanjaForm_PreveriSpellcheckHT.CheckSpellcheckRequestType"
+          isJavaBased="false">
+  <AccessorAttribute id="commits" IsCollection="true"
+                     BeanClass="PrevedbaCrkovanjaForm_PreveriSpellcheckHT.MultiCommitEntityType"
+                     CollectionBeanClass="PrevedbaCrkovanjaForm_PreveriSpellcheckHT.MultiCommitEntityType_commits_Operations">
+    <Properties>
+      <Property Name="minOccurs" Value="1"/>
+      <Property Name="maxOccurs" Value="1"/>
+      <Property Name="LABEL" Value="Commits"/>
+      <Property Name="nillable" Value="false"/>
+      <Property Name="originalName" Value="commits"/>
+      <Property Name="targetNamespace" Value="http://www.example.org/messages"/>
+    </Properties>
+  </AccessorAttribute>
+</JavaBean>

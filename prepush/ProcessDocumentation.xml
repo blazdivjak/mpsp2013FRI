@@ -70,6 +70,9 @@
                 <labels>
                     <label locale="en">Start</label>
                 </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
             </topicDocumentation>
             <topicDocumentation name="END_EVENT617445387978">
                 <labels>
@@ -120,6 +123,9 @@
                 <labels>
                     <label locale="en">NE</label>
                 </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
             </topicDocumentation>
             <topicDocumentation name="sf_1363337545210"/>
             <topicDocumentation name="sf_1363337747324"/>
@@ -127,6 +133,9 @@
                 <labels>
                     <label locale="en">NE</label>
                 </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
             </topicDocumentation>
             <topicDocumentation name="sf_1363337921730"/>
             <topicDocumentation name="sf_1363347082638"/>
@@ -134,16 +143,25 @@
                 <labels>
                     <label locale="en">DA</label>
                 </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
             </topicDocumentation>
             <topicDocumentation name="sf_1363347766881">
                 <labels>
                     <label locale="en">NE</label>
                 </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
             </topicDocumentation>
             <topicDocumentation name="sf_1363348045238">
                 <labels>
                     <label locale="en">DA</label>
                 </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
             </topicDocumentation>
             <topicDocumentation name="sf_1363348458827"/>
             <topicDocumentation name="sf_1363348634085"/>

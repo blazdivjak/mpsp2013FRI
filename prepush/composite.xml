@@ -23,6 +23,12 @@
  <import namespace="http://www.example.org/CheckMerge"
          location="http://soabpm-vm:7001/soa-infra/directWsdl/default/MergeCheck!1.0/MergeCheckBPELDirectService?resource=%2FCheckMergeWrapper.wsdl"
          importType="wsdl"/>
+ <import namespace="http://xmlns.oracle.com/bpel/workflow/taskService"
+         location="oramds:/soa/shared/workflow/TaskServiceInterface.wsdl"
+         importType="wsdl"/>
+ <import namespace="http://www.example.org/CheckMerge"
+         location="http://soabpm-vm:7001/soa-infra/directWsdl/default/MergeCheck!1.0/MergeCheckBPELDirectService?resource=%2FCheckMerge.wsdl"
+         importType="wsdl"/>
  <service name="Process.service" ui:wsdlLocation="Process.wsdl">
   <interface.wsdl interface="http://xmlns.oracle.com/bpmn/bpmnProcess/Process#wsdl.interface(ProcessPortType)"
                   callbackInterface="http://xmlns.oracle.com/bpmn/bpmnProcess/Process#wsdl.interface(ProcessPortTypeCallBack)"/>
@@ -35,6 +41,9 @@
 		<implementation.bpmn
 			src="processes/Process.bpmn"/>
 	</component>
+ <component name="PreveriSpellcheckHT">
+  <implementation.workflow src="PreveriSpellcheckHT.task"/>
+ </component>
  <reference name="CheckSpellcheckService"
             ui:wsdlLocation="http://soabpm-vm:7001/prePush-WebService-context-root/CheckSpellcheckServicePort?wsdl">
   <interface.wsdl interface="http://www.example.org/CheckSpellcheck#wsdl.interface(CheckSpellcheckPT)"/>
@@ -54,6 +63,18 @@
    <property name="java.naming.provider.url">t3://soabpm-vm:7001</property>
   </binding.direct>
  </reference>
+ <wire>
+  <source.uri>Process/Services.Externals.CheckSpellcheckService.reference</source.uri>
+  <target.uri>CheckSpellcheckService</target.uri>
+ </wire>
+ <wire>
+  <source.uri>Process/HumanTasks.PreveriSpellcheckHT.reference</source.uri>
+  <target.uri>PreveriSpellcheckHT/TaskService</target.uri>
+ </wire>
+ <wire>
+  <source.uri>Process/Services.Externals.MergeCheckDirectReference.reference</source.uri>
+  <target.uri>MergeCheckDirectReference</target.uri>
+ </wire>
  <wire>
   <source.uri>Process.service</source.uri>
   <target.uri>Process/Process.service</target.uri>

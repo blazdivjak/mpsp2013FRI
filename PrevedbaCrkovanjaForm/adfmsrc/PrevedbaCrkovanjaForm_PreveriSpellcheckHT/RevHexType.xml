@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.61.92"
+          id="RevHexType" Package="PrevedbaCrkovanjaForm_PreveriSpellcheckHT"
+          BeanClass="PrevedbaCrkovanjaForm_PreveriSpellcheckHT.RevHexType"
+          isJavaBased="false">
+  <Attribute Name="smallHash" IsUpdateable="0" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace"
+                  Value="http://www.example.org/businessSchemas"/>
+        <Property Name="nextSibling" Value="bigHash"/>
+        <Property Name="minOccurs" Value="1"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Small Hash"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="smallHash"/>
+        <Property Name="targetNamespace"
+                  Value="http://www.example.org/businessSchemas"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="bigHash" IsUpdateable="0" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="minOccurs" Value="1"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Big Hash"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="bigHash"/>
+        <Property Name="targetNamespace"
+                  Value="http://www.example.org/businessSchemas"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+</JavaBean>

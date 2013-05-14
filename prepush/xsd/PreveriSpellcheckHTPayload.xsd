@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<schema targetNamespace="http://xmlns.oracle.com/bpel/workflow/task" xmlns:tns="http://xmlns.oracle.com/bpel/workflow/task" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns0="http://www.example.org/messages">
+   <import namespace="http://www.example.org/messages" schemaLocation="http://soabpm-vm:7001/prePush-WebService-context-root/CheckSpellcheckServicePort?xsd=2"/>
+   <import namespace="http://www.example.org/messages" schemaLocation="http://soabpm-vm:7001/prePush-WebService-context-root/CheckSpellcheckServicePort?xsd=3"/>
+   <complexType name="PreveriSpellcheckHTPayloadType">
+      <sequence>
+         <element ref="ns0:checkSpellcheckRequest"/>
+         <element ref="ns0:checkSpellcheckResponse"/>
+      </sequence>
+   </complexType>
+</schema>
