@@ -2,10 +2,26 @@
 <measurements xmlns="http://xmlns.oracle.com/bpm/analytics/measurement">
     <compositeDN>prepush</compositeDN>
     <measurementElements>
-        <measurementElement name="prepush" type="COMPOSITE" enabled="true">
-            <elementSelection>INTERACTIVE</elementSelection>
+        <measurementElement enabled="true" type="COMPOSITE" name="prepush">
+            <elementSelection>NONE</elementSelection>
             <elementStates>
                 <elementState>ALL</elementState>
+            </elementStates>
+        </measurementElement>
+        <measurementElement userDefined="true" enabled="true" type="COMPOSITE" name="Measurement">
+            <elementTypes>
+                <elementType>ALL</elementType>
+            </elementTypes>
+            <elementStates>
+                <elementState>MEASUREMENT_START_STOP</elementState>
+            </elementStates>
+        </measurementElement>
+        <measurementElement userDefined="true" enabled="true" type="COMPOSITE" name="Counter">
+            <elementTypes>
+                <elementType>ALL</elementType>
+            </elementTypes>
+            <elementStates>
+                <elementState>MEASUREMENT_COUNTER</elementState>
             </elementStates>
         </measurementElement>
     </measurementElements>

@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Actions xmlns="http://xmlns.oracle.com/bpm/analytics/measurement">
     <compositeDN>prepush</compositeDN>
-    <action name="BAMCommand" enabled="false">
+    <action enabled="true" name="BAMCommand">
         <interfaceName>oracle.bpm.analytics.bam.action.BAMActionMDB</interfaceName>
         <properties>
+            <property name="BAMAdapterJNDIName">eis/bam/rmi</property>
             <property name="InBatch">false</property>
             <property name="CachedConnections">false</property>
-            <property name="DataObjectPath">/Samples/Monitor Express</property>
+            <property name="DataObjectPath">/prePush</property>
             <property name="BAMDeploymentUseHTTPS">false</property>
         </properties>
-        <measurementElementName>prepush</measurementElementName>
+        <measurementElementName>Measurement</measurementElementName>
+        <measurementElementName>Counter</measurementElementName>
     </action>
-    <action name="CubeCommand" enabled="true">
+    <action enabled="true" name="CubeCommand">
         <interfaceName>oracle.bpm.analytics.cube.action.CubeActionMDB</interfaceName>
         <properties/>
-        <measurementElementName>prepush</measurementElementName>
+        <measurementElementName>Measurement</measurementElementName>
+        <measurementElementName>Counter</measurementElementName>
     </action>
 </Actions>

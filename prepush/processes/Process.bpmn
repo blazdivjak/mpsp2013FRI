@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <definitions fileRevision="20110706" version="11.1.1.6.0.15.53" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DI" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:ns4="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:ns3="http://www.omg.org/spec/DD/20100524/DC" xmlns:ns5="http://xmlns.oracle.com/bpm/OracleExtensions" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <process processType="Public" isExecutable="true" name="Process" id="Process">
+    <process isExecutable="true" processType="Public" name="Process" id="Process">
         <extensionElements>
             <ns5:OracleExtensions>
                 <ns5:FeatureSet>
@@ -19,13 +19,13 @@
                     <ns5:StringFeature value="REGULAR" name="sealType"/>
                 </ns5:FeatureSet>
                 <ns5:Conversations>
-                    <ns5:Conversation id="CONVERSATION61744538797" type="define_interface">
+                    <ns5:Conversation type="define_interface" id="CONVERSATION61744538797">
                         <ns5:DefineInterfaceConversationDefinition exposeSOAPService="true"/>
                     </ns5:Conversation>
-                    <ns5:Conversation id="CONVERSATION66950538861" type="service_call">
+                    <ns5:Conversation type="service_call" id="CONVERSATION66950538861">
                         <ns5:ServiceCallConversationDefinition service="Services.Externals.CheckSpellcheckService"/>
                     </ns5:Conversation>
-                    <ns5:Conversation id="CONVERSATION66953933899" type="service_call">
+                    <ns5:Conversation type="service_call" id="CONVERSATION66953933899">
                         <ns5:ServiceCallConversationDefinition service="Services.Externals.MergeCheckDirectReference"/>
                     </ns5:Conversation>
                 </ns5:Conversations>
@@ -36,8 +36,8 @@
                 <extensionElements>
                     <ns5:OracleExtensions>
                         <ns5:GraphicsAttributes backgroundColor="-1761607681">
-                            <ns5:Position x="0" y="0"/>
-                            <ns5:Size width="491" height="0"/>
+                            <ns5:Position y="0" x="0"/>
+                            <ns5:Size height="0" width="491"/>
                         </ns5:GraphicsAttributes>
                         <ns5:LaneAttributes roleId="AutomaticHandler"/>
                         <ns5:FeatureSet/>
@@ -48,8 +48,8 @@
                 <extensionElements>
                     <ns5:OracleExtensions>
                         <ns5:GraphicsAttributes backgroundColor="16777215">
-                            <ns5:Position x="491" y="0"/>
-                            <ns5:Size width="135" height="0"/>
+                            <ns5:Position y="0" x="491"/>
+                            <ns5:Size height="0" width="135"/>
                         </ns5:GraphicsAttributes>
                         <ns5:LaneAttributes roleId="clanekipe"/>
                         <ns5:FeatureSet/>
@@ -60,8 +60,8 @@
                 <extensionElements>
                     <ns5:OracleExtensions>
                         <ns5:GraphicsAttributes backgroundColor="16777215">
-                            <ns5:Position x="626" y="0"/>
-                            <ns5:Size width="136" height="0"/>
+                            <ns5:Position y="0" x="626"/>
+                            <ns5:Size height="0" width="136"/>
                         </ns5:GraphicsAttributes>
                         <ns5:LaneAttributes roleId="vodjaekipe"/>
                         <ns5:FeatureSet/>
@@ -73,7 +73,7 @@
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:GraphicsAttributes>
-                        <ns5:Position x="400" y="50"/>
+                        <ns5:Position y="50" x="400"/>
                     </ns5:GraphicsAttributes>
                     <ns5:FeatureSet>
                         <ns5:BooleanFeature value="true" name="isDraft"/>
@@ -84,11 +84,11 @@
                 </ns5:OracleExtensions>
             </extensionElements>
         </task>
-        <serviceTask implementation="Services.Externals.CheckSpellcheckService" operationRef="checkSpellcheck" isForCompensation="false" name="Commit comments spellcheck" id="ABSTRACT_ACTIVITY_1363337031918">
+        <serviceTask operationRef="checkSpellcheck" implementation="Services.Externals.CheckSpellcheckService" isForCompensation="false" name="Commit comments spellcheck" id="ABSTRACT_ACTIVITY_1363337031918">
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:GraphicsAttributes>
-                        <ns5:Position x="400" y="350"/>
+                        <ns5:Position y="376" x="156"/>
                     </ns5:GraphicsAttributes>
                     <ns5:FeatureSet>
                         <ns5:BooleanFeature value="false" name="isDraft"/>
@@ -108,14 +108,14 @@
                 <dataInput name="checkSpellcheckRequest" id="checkSpellcheckRequest">
                     <extensionElements>
                         <ns5:OracleExtensions>
-                            <ns5:TypeRef namespace="http://www.example.org/messages" element="checkSpellcheckRequest" isArray="false"/>
+                            <ns5:TypeRef isArray="false" element="checkSpellcheckRequest" namespace="http://www.example.org/messages"/>
                         </ns5:OracleExtensions>
                     </extensionElements>
                 </dataInput>
                 <dataOutput name="checkSpellcheckResponse" id="checkSpellcheckResponse">
                     <extensionElements>
                         <ns5:OracleExtensions>
-                            <ns5:TypeRef namespace="http://www.example.org/messages" element="checkSpellcheckResponse" isArray="false"/>
+                            <ns5:TypeRef isArray="false" element="checkSpellcheckResponse" namespace="http://www.example.org/messages"/>
                         </ns5:OracleExtensions>
                     </extensionElements>
                 </dataOutput>
@@ -127,11 +127,11 @@
                 </outputSet>
             </ioSpecification>
         </serviceTask>
-        <serviceTask implementation="Services.Externals.MergeCheckDirectReference" operationRef="checkMerge" isForCompensation="false" name="Merge check" id="ABSTRACT_ACTIVITY_1363337092310">
+        <serviceTask operationRef="checkMerge" implementation="Services.Externals.MergeCheckDirectReference" isForCompensation="false" name="Merge check" id="ABSTRACT_ACTIVITY_1363337092310">
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:GraphicsAttributes>
-                        <ns5:Position x="400" y="250"/>
+                        <ns5:Position y="250" x="400"/>
                     </ns5:GraphicsAttributes>
                     <ns5:FeatureSet>
                         <ns5:BooleanFeature value="false" name="isDraft"/>
@@ -151,14 +151,14 @@
                 <dataInput name="checkMergeRequest" id="checkMergeRequest">
                     <extensionElements>
                         <ns5:OracleExtensions>
-                            <ns5:TypeRef namespace="http://www.example.org/messages" element="checkMergeRequest" isArray="false"/>
+                            <ns5:TypeRef isArray="false" element="checkMergeRequest" namespace="http://www.example.org/messages"/>
                         </ns5:OracleExtensions>
                     </extensionElements>
                 </dataInput>
                 <dataOutput name="checkMergeResponse" id="checkMergeResponse">
                     <extensionElements>
                         <ns5:OracleExtensions>
-                            <ns5:TypeRef namespace="http://www.example.org/messages" element="checkMergeResponse" isArray="false"/>
+                            <ns5:TypeRef isArray="false" element="checkMergeResponse" namespace="http://www.example.org/messages"/>
                         </ns5:OracleExtensions>
                     </extensionElements>
                 </dataOutput>
@@ -202,7 +202,7 @@
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:GraphicsAttributes>
-                        <ns5:Position x="400" y="150"/>
+                        <ns5:Position y="150" x="400"/>
                     </ns5:GraphicsAttributes>
                     <ns5:FeatureSet>
                         <ns5:BooleanFeature value="true" name="isDraft"/>
@@ -217,7 +217,7 @@
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:GraphicsAttributes>
-                        <ns5:Position x="750" y="550"/>
+                        <ns5:Position y="550" x="750"/>
                     </ns5:GraphicsAttributes>
                     <ns5:FeatureSet>
                         <ns5:BooleanFeature value="false" name="isDraft"/>
@@ -240,42 +240,42 @@
                 <dataInput name="checkSpellcheckRequest" id="checkSpellcheckRequest">
                     <extensionElements>
                         <ns5:OracleExtensions>
-                            <ns5:TypeRef namespace="http://www.example.org/messages" element="checkSpellcheckRequest" isArray="false"/>
+                            <ns5:TypeRef isArray="false" element="checkSpellcheckRequest" namespace="http://www.example.org/messages"/>
                         </ns5:OracleExtensions>
                     </extensionElements>
                 </dataInput>
                 <dataInput name="checkSpellcheckResponse" id="checkSpellcheckResponse">
                     <extensionElements>
                         <ns5:OracleExtensions>
-                            <ns5:TypeRef namespace="http://www.example.org/messages" element="checkSpellcheckResponse" isArray="false"/>
+                            <ns5:TypeRef isArray="false" element="checkSpellcheckResponse" namespace="http://www.example.org/messages"/>
                         </ns5:OracleExtensions>
                     </extensionElements>
                 </dataInput>
                 <dataInput name="execData" id="execData">
                     <extensionElements>
                         <ns5:OracleExtensions>
-                            <ns5:TypeRef namespace="http://xmlns.oracle.com/bpel/workflow/task" element="task" isArray="false"/>
+                            <ns5:TypeRef isArray="false" element="task" namespace="http://xmlns.oracle.com/bpel/workflow/task"/>
                         </ns5:OracleExtensions>
                     </extensionElements>
                 </dataInput>
                 <dataOutput name="outcome" id="outcome">
                     <extensionElements>
                         <ns5:OracleExtensions>
-                            <ns5:TypeRef namespace="http://www.w3.org/2001/XMLSchema" type="string" isArray="false"/>
+                            <ns5:TypeRef isArray="false" type="string" namespace="http://www.w3.org/2001/XMLSchema"/>
                         </ns5:OracleExtensions>
                     </extensionElements>
                 </dataOutput>
                 <dataOutput name="checkSpellcheckResponse" id="checkSpellcheckResponse">
                     <extensionElements>
                         <ns5:OracleExtensions>
-                            <ns5:TypeRef namespace="http://www.example.org/messages" element="checkSpellcheckResponse" isArray="false"/>
+                            <ns5:TypeRef isArray="false" element="checkSpellcheckResponse" namespace="http://www.example.org/messages"/>
                         </ns5:OracleExtensions>
                     </extensionElements>
                 </dataOutput>
                 <dataOutput name="execData" id="execData">
                     <extensionElements>
                         <ns5:OracleExtensions>
-                            <ns5:TypeRef namespace="http://xmlns.oracle.com/bpel/workflow/task" element="task" isArray="false"/>
+                            <ns5:TypeRef isArray="false" element="task" namespace="http://xmlns.oracle.com/bpel/workflow/task"/>
                         </ns5:OracleExtensions>
                     </extensionElements>
                 </dataOutput>
@@ -408,7 +408,7 @@
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:GraphicsAttributes>
-                        <ns5:Position x="1100" y="200"/>
+                        <ns5:Position y="200" x="1100"/>
                     </ns5:GraphicsAttributes>
                     <ns5:FeatureSet>
                         <ns5:BooleanFeature value="true" name="isDraft"/>
@@ -423,7 +423,7 @@
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:GraphicsAttributes>
-                        <ns5:Position x="1300" y="670"/>
+                        <ns5:Position y="670" x="1300"/>
                     </ns5:GraphicsAttributes>
                     <ns5:FeatureSet>
                         <ns5:BooleanFeature value="true" name="isDraft"/>
@@ -449,7 +449,7 @@
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:GraphicsAttributes>
-                        <ns5:Position x="1550" y="670"/>
+                        <ns5:Position y="670" x="1550"/>
                     </ns5:GraphicsAttributes>
                     <ns5:FeatureSet>
                         <ns5:BooleanFeature value="true" name="isDraft"/>
@@ -471,11 +471,236 @@
             <ioSpecification/>
             <resourceRole name="vodja ekipe" id="lane 1"/>
         </userTask>
+        <scriptTask isForCompensation="false" name="Counter" id="ABSTRACT_ACTIVITY6832117421043">
+            <extensionElements>
+                <ns5:OracleExtensions>
+                    <ns5:GraphicsAttributes>
+                        <ns5:Position y="404" x="348"/>
+                    </ns5:GraphicsAttributes>
+                    <ns5:FeatureSet>
+                        <ns5:BooleanFeature value="false" name="isDraft"/>
+                        <ns5:BooleanFeature value="false" name="outputValidation"/>
+                        <ns5:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                        <ns5:StringFeature value="PARALLEL_GATEWAY_1363336813880" name="level"/>
+                        <ns5:StringFeature value="" name="script"/>
+                        <ns5:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                    </ns5:FeatureSet>
+                    <ns5:LogHandlers/>
+                </ns5:OracleExtensions>
+            </extensionElements>
+            <ioSpecification/>
+            <dataOutputAssociation>
+                <extensionElements>
+                    <ns5:OracleExtensions>
+                        <ns5:OtherRef>countSpellcheck</ns5:OtherRef>
+                    </ns5:OracleExtensions>
+                </extensionElements>
+                <targetRef>steviloSpellcheckov</targetRef>
+                <assignment>
+                    <extensionElements>
+                        <ns5:OracleExtensions>
+                            <ns5:DataAssignment operation="copy"/>
+                        </ns5:OracleExtensions>
+                    </extensionElements>
+                    <from xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('countSpellcheck')
+                        <extensionElements>
+                            <ns5:OracleExtensions>
+                                <ns5:Expression mode="simple"/>
+                            </ns5:OracleExtensions>
+                        </extensionElements>
+                    </from>
+                    <to xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('steviloSpellcheckov')
+                        <extensionElements>
+                            <ns5:OracleExtensions>
+                                <ns5:Expression mode="simple"/>
+                            </ns5:OracleExtensions>
+                        </extensionElements>
+                    </to>
+                </assignment>
+            </dataOutputAssociation>
+            <script></script>
+        </scriptTask>
+        <scriptTask isForCompensation="false" name="CounterUspesnih" id="ABSTRACT_ACTIVITY6832182304735">
+            <extensionElements>
+                <ns5:OracleExtensions>
+                    <ns5:GraphicsAttributes>
+                        <ns5:Position y="350" x="666"/>
+                    </ns5:GraphicsAttributes>
+                    <ns5:FeatureSet>
+                        <ns5:BooleanFeature value="false" name="isDraft"/>
+                        <ns5:BooleanFeature value="false" name="outputValidation"/>
+                        <ns5:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                        <ns5:StringFeature value="PARALLEL_GATEWAY_1363336813880" name="level"/>
+                        <ns5:StringFeature value="" name="script"/>
+                        <ns5:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                    </ns5:FeatureSet>
+                    <ns5:LogHandlers/>
+                </ns5:OracleExtensions>
+            </extensionElements>
+            <ioSpecification/>
+            <dataOutputAssociation>
+                <extensionElements>
+                    <ns5:OracleExtensions>
+                        <ns5:OtherRef>countSpellcheck</ns5:OtherRef>
+                    </ns5:OracleExtensions>
+                </extensionElements>
+                <targetRef>steviloUspesnihSpellcheckov</targetRef>
+                <assignment>
+                    <extensionElements>
+                        <ns5:OracleExtensions>
+                            <ns5:DataAssignment operation="copy"/>
+                        </ns5:OracleExtensions>
+                    </extensionElements>
+                    <from xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('countSpellcheck')
+                        <extensionElements>
+                            <ns5:OracleExtensions>
+                                <ns5:Expression mode="simple"/>
+                            </ns5:OracleExtensions>
+                        </extensionElements>
+                    </from>
+                    <to xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('steviloUspesnihSpellcheckov')
+                        <extensionElements>
+                            <ns5:OracleExtensions>
+                                <ns5:Expression mode="simple"/>
+                            </ns5:OracleExtensions>
+                        </extensionElements>
+                    </to>
+                </assignment>
+            </dataOutputAssociation>
+            <dataOutputAssociation>
+                <extensionElements>
+                    <ns5:OracleExtensions>
+                        <ns5:OtherRef>countSpellcheck</ns5:OtherRef>
+                    </ns5:OracleExtensions>
+                </extensionElements>
+                <targetRef>uspesnostCommitov</targetRef>
+                <assignment>
+                    <extensionElements>
+                        <ns5:OracleExtensions>
+                            <ns5:DataAssignment operation="copy"/>
+                        </ns5:OracleExtensions>
+                    </extensionElements>
+                    <from xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('countSpellcheck')
+                        <extensionElements>
+                            <ns5:OracleExtensions>
+                                <ns5:Expression mode="simple"/>
+                            </ns5:OracleExtensions>
+                        </extensionElements>
+                    </from>
+                    <to xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('uspesnostCommitov')
+                        <extensionElements>
+                            <ns5:OracleExtensions>
+                                <ns5:Expression mode="simple"/>
+                            </ns5:OracleExtensions>
+                        </extensionElements>
+                    </to>
+                </assignment>
+            </dataOutputAssociation>
+            <script></script>
+        </scriptTask>
+        <scriptTask isForCompensation="false" name="ScriptTask" id="ABSTRACT_ACTIVITY6832235443362">
+            <extensionElements>
+                <ns5:OracleExtensions>
+                    <ns5:GraphicsAttributes>
+                        <ns5:Position y="200" x="946"/>
+                    </ns5:GraphicsAttributes>
+                    <ns5:FeatureSet>
+                        <ns5:BooleanFeature value="false" name="isDraft"/>
+                        <ns5:BooleanFeature value="false" name="outputValidation"/>
+                        <ns5:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                        <ns5:StringFeature value="Begin Level" name="level"/>
+                        <ns5:StringFeature value="" name="script"/>
+                        <ns5:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                    </ns5:FeatureSet>
+                    <ns5:LogHandlers/>
+                </ns5:OracleExtensions>
+            </extensionElements>
+            <ioSpecification/>
+            <dataOutputAssociation>
+                <extensionElements>
+                    <ns5:OracleExtensions>
+                        <ns5:OtherRef>countMergeCheck</ns5:OtherRef>
+                    </ns5:OracleExtensions>
+                </extensionElements>
+                <targetRef>steviloMergov</targetRef>
+                <assignment>
+                    <extensionElements>
+                        <ns5:OracleExtensions>
+                            <ns5:DataAssignment operation="copy"/>
+                        </ns5:OracleExtensions>
+                    </extensionElements>
+                    <from xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('countMergeCheck')
+                        <extensionElements>
+                            <ns5:OracleExtensions>
+                                <ns5:Expression mode="simple"/>
+                            </ns5:OracleExtensions>
+                        </extensionElements>
+                    </from>
+                    <to xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('steviloMergov')
+                        <extensionElements>
+                            <ns5:OracleExtensions>
+                                <ns5:Expression mode="simple"/>
+                            </ns5:OracleExtensions>
+                        </extensionElements>
+                    </to>
+                </assignment>
+            </dataOutputAssociation>
+            <script></script>
+        </scriptTask>
+        <scriptTask isForCompensation="false" name="ScriptTask1" id="ABSTRACT_ACTIVITY6832246209163">
+            <extensionElements>
+                <ns5:OracleExtensions>
+                    <ns5:GraphicsAttributes>
+                        <ns5:Position y="460" x="908"/>
+                    </ns5:GraphicsAttributes>
+                    <ns5:FeatureSet>
+                        <ns5:BooleanFeature value="false" name="isDraft"/>
+                        <ns5:BooleanFeature value="false" name="outputValidation"/>
+                        <ns5:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                        <ns5:StringFeature value="PARALLEL_GATEWAY_1363336813880" name="level"/>
+                        <ns5:StringFeature value="" name="script"/>
+                        <ns5:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                    </ns5:FeatureSet>
+                    <ns5:LogHandlers/>
+                </ns5:OracleExtensions>
+            </extensionElements>
+            <ioSpecification/>
+            <dataOutputAssociation>
+                <extensionElements>
+                    <ns5:OracleExtensions>
+                        <ns5:OtherRef>countManualSpellcheck</ns5:OtherRef>
+                    </ns5:OracleExtensions>
+                </extensionElements>
+                <targetRef>steviloUporabniskihZahtev</targetRef>
+                <assignment>
+                    <extensionElements>
+                        <ns5:OracleExtensions>
+                            <ns5:DataAssignment operation="copy"/>
+                        </ns5:OracleExtensions>
+                    </extensionElements>
+                    <from xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('countManualSpellcheck')
+                        <extensionElements>
+                            <ns5:OracleExtensions>
+                                <ns5:Expression mode="simple"/>
+                            </ns5:OracleExtensions>
+                        </extensionElements>
+                    </from>
+                    <to xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('steviloUporabniskihZahtev')
+                        <extensionElements>
+                            <ns5:OracleExtensions>
+                                <ns5:Expression mode="simple"/>
+                            </ns5:OracleExtensions>
+                        </extensionElements>
+                    </to>
+                </assignment>
+            </dataOutputAssociation>
+            <script></script>
+        </scriptTask>
         <startEvent isInterrupting="false" name="Start" id="START_EVENT6174453879719">
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:GraphicsAttributes>
-                        <ns5:Position x="100" y="200"/>
+                        <ns5:Position y="200" x="100"/>
                     </ns5:GraphicsAttributes>
                     <ns5:FeatureSet>
                         <ns5:BooleanFeature value="false" name="catchAllErrors"/>
@@ -495,28 +720,28 @@
             <dataOutput name="checkSpellcheck" id="checkSpellcheck">
                 <extensionElements>
                     <ns5:OracleExtensions>
-                        <ns5:TypeRef namespace="http://www.example.org/messages" element="checkSpellcheckRequest" isArray="false"/>
+                        <ns5:TypeRef isArray="false" element="checkSpellcheckRequest" namespace="http://www.example.org/messages"/>
                     </ns5:OracleExtensions>
                 </extensionElements>
             </dataOutput>
             <dataOutput name="checkSpellcheckResponse" id="checkSpellcheckResponse">
                 <extensionElements>
                     <ns5:OracleExtensions>
-                        <ns5:TypeRef namespace="http://www.example.org/messages" element="checkSpellcheckResponse" isArray="false"/>
+                        <ns5:TypeRef isArray="false" element="checkSpellcheckResponse" namespace="http://www.example.org/messages"/>
                     </ns5:OracleExtensions>
                 </extensionElements>
             </dataOutput>
             <dataOutput name="checkMerge" id="checkMerge">
                 <extensionElements>
                     <ns5:OracleExtensions>
-                        <ns5:TypeRef namespace="http://www.example.org/messages" element="checkMergeRequest" isArray="false"/>
+                        <ns5:TypeRef isArray="false" element="checkMergeRequest" namespace="http://www.example.org/messages"/>
                     </ns5:OracleExtensions>
                 </extensionElements>
             </dataOutput>
             <dataOutput name="checkMergeResponse" id="checkMergeResponse">
                 <extensionElements>
                     <ns5:OracleExtensions>
-                        <ns5:TypeRef namespace="http://www.example.org/messages" element="checkMergeResponse" isArray="false"/>
+                        <ns5:TypeRef isArray="false" element="checkMergeResponse" namespace="http://www.example.org/messages"/>
                     </ns5:OracleExtensions>
                 </extensionElements>
             </dataOutput>
@@ -644,7 +869,7 @@
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:GraphicsAttributes>
-                        <ns5:Position x="1550" y="200"/>
+                        <ns5:Position y="200" x="1550"/>
                     </ns5:GraphicsAttributes>
                     <ns5:FeatureSet>
                         <ns5:BooleanFeature value="false" name="catchAllErrors"/>
@@ -668,7 +893,7 @@
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:GraphicsAttributes>
-                        <ns5:Position x="200" y="200"/>
+                        <ns5:Position y="200" x="200"/>
                     </ns5:GraphicsAttributes>
                     <ns5:FeatureSet>
                         <ns5:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
@@ -683,7 +908,7 @@
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:GraphicsAttributes>
-                        <ns5:Position x="900" y="200"/>
+                        <ns5:Position y="200" x="900"/>
                     </ns5:GraphicsAttributes>
                     <ns5:FeatureSet>
                         <ns5:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
@@ -698,7 +923,7 @@
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:GraphicsAttributes>
-                        <ns5:Position x="500" y="350"/>
+                        <ns5:Position y="350" x="500"/>
                     </ns5:GraphicsAttributes>
                     <ns5:FeatureSet>
                         <ns5:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
@@ -712,7 +937,7 @@
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:GraphicsAttributes>
-                        <ns5:Position x="1300" y="200"/>
+                        <ns5:Position y="200" x="1300"/>
                     </ns5:GraphicsAttributes>
                     <ns5:FeatureSet>
                         <ns5:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
@@ -726,7 +951,7 @@
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:GraphicsAttributes>
-                        <ns5:Position x="1000" y="200"/>
+                        <ns5:Position y="200" x="1000"/>
                     </ns5:GraphicsAttributes>
                     <ns5:FeatureSet>
                         <ns5:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
@@ -740,7 +965,7 @@
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:GraphicsAttributes>
-                        <ns5:Position x="908" y="349"/>
+                        <ns5:Position y="349" x="908"/>
                     </ns5:GraphicsAttributes>
                     <ns5:FeatureSet>
                         <ns5:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
@@ -750,7 +975,7 @@
                 </ns5:OracleExtensions>
             </extensionElements>
         </exclusiveGateway>
-        <sequenceFlow sourceRef="START_EVENT6174453879719" targetRef="PARALLEL_GATEWAY_1363336813880" name="sf4" id="sf4">
+        <sequenceFlow targetRef="PARALLEL_GATEWAY_1363336813880" sourceRef="START_EVENT6174453879719" name="sf4" id="sf4">
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:SequenceFlowAttributes/>
@@ -762,11 +987,11 @@
                 </ns5:OracleExtensions>
             </extensionElements>
         </sequenceFlow>
-        <sequenceFlow sourceRef="PARALLEL_GATEWAY_1363336813880" targetRef="ABSTRACT_ACTIVITY_1363336963722" name="sf_1363336813883" id="sf_1363336813883">
+        <sequenceFlow targetRef="ABSTRACT_ACTIVITY_1363336963722" sourceRef="PARALLEL_GATEWAY_1363336813880" name="sf_1363336813883" id="sf_1363336813883">
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:SequenceFlowAttributes>
-                        <ns5:Positions x="210" y="51"/>
+                        <ns5:Positions y="51" x="210"/>
                     </ns5:SequenceFlowAttributes>
                     <ns5:FeatureSet>
                         <ns5:BooleanFeature value="false" name="collapseMessage"/>
@@ -776,11 +1001,11 @@
                 </ns5:OracleExtensions>
             </extensionElements>
         </sequenceFlow>
-        <sequenceFlow sourceRef="PARALLEL_GATEWAY_1363336813880" targetRef="ABSTRACT_ACTIVITY_1363337092310" name="sf_1363337132834" id="sf_1363337132834">
+        <sequenceFlow targetRef="ABSTRACT_ACTIVITY_1363337092310" sourceRef="PARALLEL_GATEWAY_1363336813880" name="sf_1363337132834" id="sf_1363337132834">
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:SequenceFlowAttributes>
-                        <ns5:Positions x="200" y="246"/>
+                        <ns5:Positions y="246" x="200"/>
                     </ns5:SequenceFlowAttributes>
                     <ns5:FeatureSet>
                         <ns5:BooleanFeature value="false" name="collapseMessage"/>
@@ -790,25 +1015,25 @@
                 </ns5:OracleExtensions>
             </extensionElements>
         </sequenceFlow>
-        <sequenceFlow sourceRef="ABSTRACT_ACTIVITY_1363336963722" targetRef="PARALLEL_GATEWAY_1363336813880M" name="sf_1363337260801" id="sf_1363337260801">
+        <sequenceFlow targetRef="PARALLEL_GATEWAY_1363336813880M" sourceRef="ABSTRACT_ACTIVITY_1363336963722" name="sf_1363337260801" id="sf_1363337260801">
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:SequenceFlowAttributes>
-                        <ns5:Positions x="900" y="87"/>
+                        <ns5:Positions y="88" x="900"/>
                     </ns5:SequenceFlowAttributes>
                     <ns5:FeatureSet>
                         <ns5:BooleanFeature value="false" name="collapseMessage"/>
-                        <ns5:StringFeature value="900,87" name="curve"/>
+                        <ns5:StringFeature value="900,88" name="curve"/>
                         <ns5:StringFeature value="ORTHOGONAL" name="routing"/>
                     </ns5:FeatureSet>
                 </ns5:OracleExtensions>
             </extensionElements>
         </sequenceFlow>
-        <sequenceFlow sourceRef="ABSTRACT_ACTIVITY_1363337092310" targetRef="PARALLEL_GATEWAY_1363336813880M" name="sf_1363337265124" id="sf_1363337265124">
+        <sequenceFlow targetRef="PARALLEL_GATEWAY_1363336813880M" sourceRef="ABSTRACT_ACTIVITY_1363337092310" name="sf_1363337265124" id="sf_1363337265124">
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:SequenceFlowAttributes>
-                        <ns5:Positions x="798" y="254"/>
+                        <ns5:Positions y="254" x="798"/>
                     </ns5:SequenceFlowAttributes>
                     <ns5:FeatureSet>
                         <ns5:BooleanFeature value="false" name="collapseMessage"/>
@@ -818,11 +1043,11 @@
                 </ns5:OracleExtensions>
             </extensionElements>
         </sequenceFlow>
-        <sequenceFlow sourceRef="ABSTRACT_ACTIVITY_1363337142701" targetRef="PARALLEL_GATEWAY_1363336813880M" name="sf_1363337267339" id="sf_1363337267339">
+        <sequenceFlow targetRef="PARALLEL_GATEWAY_1363336813880M" sourceRef="ABSTRACT_ACTIVITY_1363337142701" name="sf_1363337267339" id="sf_1363337267339">
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:SequenceFlowAttributes>
-                        <ns5:Positions x="886" y="174"/>
+                        <ns5:Positions y="174" x="886"/>
                     </ns5:SequenceFlowAttributes>
                     <ns5:FeatureSet>
                         <ns5:BooleanFeature value="false" name="collapseMessage"/>
@@ -832,7 +1057,7 @@
                 </ns5:OracleExtensions>
             </extensionElements>
         </sequenceFlow>
-        <sequenceFlow sourceRef="ABSTRACT_ACTIVITY_1363337031918" targetRef="EXCLUSIVE_GATEWAY_1363337442402" name="sf_1363337453767" id="sf_1363337453767">
+        <sequenceFlow targetRef="ABSTRACT_ACTIVITY6832117421043" sourceRef="ABSTRACT_ACTIVITY_1363337031918" name="sf_1363337453767" id="sf_1363337453767">
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:SequenceFlowAttributes/>
@@ -844,11 +1069,11 @@
                 </ns5:OracleExtensions>
             </extensionElements>
         </sequenceFlow>
-        <sequenceFlow sourceRef="EXCLUSIVE_GATEWAY_1363337442402" targetRef="USER_TASK_1363337300136" name="sf_1363337455018" id="sf_1363337455018">
+        <sequenceFlow targetRef="USER_TASK_1363337300136" sourceRef="EXCLUSIVE_GATEWAY_1363337442402" name="sf_1363337455018" id="sf_1363337455018">
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:SequenceFlowAttributes>
-                        <ns5:Positions x="499" y="489"/>
+                        <ns5:Positions y="489" x="499"/>
                     </ns5:SequenceFlowAttributes>
                     <ns5:FeatureSet>
                         <ns5:BooleanFeature value="false" name="collapseMessage"/>
@@ -867,21 +1092,21 @@
                 </extensionElements>
             </conditionExpression>
         </sequenceFlow>
-        <sequenceFlow sourceRef="USER_TASK_1363337300136" targetRef="EXCLUSIVE_GATEWAY6485260866987" name="sf_1363337545210" id="sf_1363337545210">
+        <sequenceFlow targetRef="ABSTRACT_ACTIVITY6832246209163" sourceRef="USER_TASK_1363337300136" name="sf_1363337545210" id="sf_1363337545210">
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:SequenceFlowAttributes>
-                        <ns5:Positions x="806" y="547"/>
+                        <ns5:Positions y="563" x="788"/>
                     </ns5:SequenceFlowAttributes>
                     <ns5:FeatureSet>
                         <ns5:BooleanFeature value="false" name="collapseMessage"/>
-                        <ns5:StringFeature value="806,547" name="curve"/>
+                        <ns5:StringFeature value="788,563" name="curve"/>
                         <ns5:StringFeature value="ORTHOGONAL" name="routing"/>
                     </ns5:FeatureSet>
                 </ns5:OracleExtensions>
             </extensionElements>
         </sequenceFlow>
-        <sequenceFlow sourceRef="PARALLEL_GATEWAY_1363336813880M" targetRef="EXCLUSIVE_GATEWAY_1363347361931" name="sf_1363337747324" id="sf_1363337747324">
+        <sequenceFlow targetRef="ABSTRACT_ACTIVITY6832235443362" sourceRef="PARALLEL_GATEWAY_1363336813880M" name="sf_1363337747324" id="sf_1363337747324">
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:SequenceFlowAttributes/>
@@ -893,7 +1118,7 @@
                 </ns5:OracleExtensions>
             </extensionElements>
         </sequenceFlow>
-        <sequenceFlow sourceRef="EXCLUSIVE_GATEWAY_1363337740321" targetRef="END_EVENT617445387978" name="sf_1363337843935" id="sf_1363337843935">
+        <sequenceFlow targetRef="END_EVENT617445387978" sourceRef="EXCLUSIVE_GATEWAY_1363337740321" name="sf_1363337843935" id="sf_1363337843935">
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:SequenceFlowAttributes/>
@@ -914,7 +1139,7 @@
                 </extensionElements>
             </conditionExpression>
         </sequenceFlow>
-        <sequenceFlow sourceRef="ABSTRACT_ACTIVITY_1363337901797" targetRef="EXCLUSIVE_GATEWAY_1363337740321" name="sf_1363337921730" id="sf_1363337921730">
+        <sequenceFlow targetRef="EXCLUSIVE_GATEWAY_1363337740321" sourceRef="ABSTRACT_ACTIVITY_1363337901797" name="sf_1363337921730" id="sf_1363337921730">
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:SequenceFlowAttributes/>
@@ -926,21 +1151,19 @@
                 </ns5:OracleExtensions>
             </extensionElements>
         </sequenceFlow>
-        <sequenceFlow sourceRef="PARALLEL_GATEWAY_1363336813880" targetRef="ABSTRACT_ACTIVITY_1363337031918" name="sf_1363347082638" id="sf_1363347082638">
+        <sequenceFlow targetRef="ABSTRACT_ACTIVITY_1363337031918" sourceRef="PARALLEL_GATEWAY_1363336813880" name="sf_1363347082638" id="sf_1363347082638">
             <extensionElements>
                 <ns5:OracleExtensions>
-                    <ns5:SequenceFlowAttributes>
-                        <ns5:Positions x="200" y="313"/>
-                    </ns5:SequenceFlowAttributes>
+                    <ns5:SequenceFlowAttributes/>
                     <ns5:FeatureSet>
                         <ns5:BooleanFeature value="false" name="collapseMessage"/>
-                        <ns5:StringFeature value="200,313" name="curve"/>
-                        <ns5:StringFeature value="ORTHOGONAL" name="routing"/>
+                        <ns5:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                        <ns5:StringFeature value="STRAIGHT" name="routing"/>
                     </ns5:FeatureSet>
                 </ns5:OracleExtensions>
             </extensionElements>
         </sequenceFlow>
-        <sequenceFlow sourceRef="EXCLUSIVE_GATEWAY_1363347361931" targetRef="ABSTRACT_ACTIVITY_1363337901797" name="sf_1363347388182" id="sf_1363347388182">
+        <sequenceFlow targetRef="ABSTRACT_ACTIVITY_1363337901797" sourceRef="EXCLUSIVE_GATEWAY_1363347361931" name="sf_1363347388182" id="sf_1363347388182">
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:SequenceFlowAttributes/>
@@ -961,11 +1184,11 @@
                 </extensionElements>
             </conditionExpression>
         </sequenceFlow>
-        <sequenceFlow sourceRef="EXCLUSIVE_GATEWAY_1363347361931" targetRef="END_EVENT617445387978" name="sf_1363347766881" id="sf_1363347766881">
+        <sequenceFlow targetRef="END_EVENT617445387978" sourceRef="EXCLUSIVE_GATEWAY_1363347361931" name="sf_1363347766881" id="sf_1363347766881">
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:SequenceFlowAttributes>
-                        <ns5:Positions x="1221" y="100"/>
+                        <ns5:Positions y="100" x="1221"/>
                     </ns5:SequenceFlowAttributes>
                     <ns5:FeatureSet>
                         <ns5:BooleanFeature value="false" name="collapseMessage"/>
@@ -976,26 +1199,26 @@
                 </ns5:OracleExtensions>
             </extensionElements>
         </sequenceFlow>
-        <sequenceFlow sourceRef="EXCLUSIVE_GATEWAY_1363337442402" targetRef="EXCLUSIVE_GATEWAY6485260866987" name="sf_1363348045238" id="sf_1363348045238">
+        <sequenceFlow targetRef="ABSTRACT_ACTIVITY6832182304735" sourceRef="EXCLUSIVE_GATEWAY_1363337442402" name="sf_1363348045238" id="sf_1363348045238">
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:SequenceFlowAttributes>
-                        <ns5:Positions x="756" y="351"/>
+                        <ns5:Positions y="351" x="604"/>
                     </ns5:SequenceFlowAttributes>
                     <ns5:FeatureSet>
                         <ns5:BooleanFeature value="false" name="collapseMessage"/>
-                        <ns5:StringFeature value="756,351" name="curve"/>
+                        <ns5:StringFeature value="604,351" name="curve"/>
                         <ns5:StringFeature value="ORTHOGONAL" name="routing"/>
                         <ns5:StringFeature value="" name="userName"/>
                     </ns5:FeatureSet>
                 </ns5:OracleExtensions>
             </extensionElements>
         </sequenceFlow>
-        <sequenceFlow sourceRef="PARALLEL_GATEWAY_1363336813880" targetRef="ABSTRACT_ACTIVITY_1363337142701" name="sf_1363348458827" id="sf_1363348458827">
+        <sequenceFlow targetRef="ABSTRACT_ACTIVITY_1363337142701" sourceRef="PARALLEL_GATEWAY_1363336813880" name="sf_1363348458827" id="sf_1363348458827">
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:SequenceFlowAttributes>
-                        <ns5:Positions x="306" y="150"/>
+                        <ns5:Positions y="150" x="306"/>
                     </ns5:SequenceFlowAttributes>
                     <ns5:FeatureSet>
                         <ns5:BooleanFeature value="false" name="collapseMessage"/>
@@ -1005,7 +1228,7 @@
                 </ns5:OracleExtensions>
             </extensionElements>
         </sequenceFlow>
-        <sequenceFlow sourceRef="USER_TASK_1363348547999" targetRef="USER_TASK_1363348601524" name="sf_1363348634085" id="sf_1363348634085">
+        <sequenceFlow targetRef="USER_TASK_1363348601524" sourceRef="USER_TASK_1363348547999" name="sf_1363348634085" id="sf_1363348634085">
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:SequenceFlowAttributes/>
@@ -1017,7 +1240,7 @@
                 </ns5:OracleExtensions>
             </extensionElements>
         </sequenceFlow>
-        <sequenceFlow sourceRef="USER_TASK_1363348601524" targetRef="END_EVENT617445387978" name="sf_1363348636948" id="sf_1363348636948">
+        <sequenceFlow targetRef="END_EVENT617445387978" sourceRef="USER_TASK_1363348601524" name="sf_1363348636948" id="sf_1363348636948">
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:SequenceFlowAttributes/>
@@ -1029,7 +1252,7 @@
                 </ns5:OracleExtensions>
             </extensionElements>
         </sequenceFlow>
-        <sequenceFlow sourceRef="EXCLUSIVE_GATEWAY_1363337740321" targetRef="USER_TASK_1363348547999" name="sf_1363348639876" id="sf_1363348639876">
+        <sequenceFlow targetRef="USER_TASK_1363348547999" sourceRef="EXCLUSIVE_GATEWAY_1363337740321" name="sf_1363348639876" id="sf_1363348639876">
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:SequenceFlowAttributes/>
@@ -1042,11 +1265,11 @@
                 </ns5:OracleExtensions>
             </extensionElements>
         </sequenceFlow>
-        <sequenceFlow sourceRef="EXCLUSIVE_GATEWAY6485260866987" targetRef="PARALLEL_GATEWAY_1363336813880M" name="sf47" id="sf47">
+        <sequenceFlow targetRef="PARALLEL_GATEWAY_1363336813880M" sourceRef="EXCLUSIVE_GATEWAY6485260866987" name="sf47" id="sf47">
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:SequenceFlowAttributes>
-                        <ns5:Positions x="909" y="253"/>
+                        <ns5:Positions y="253" x="909"/>
                     </ns5:SequenceFlowAttributes>
                     <ns5:FeatureSet>
                         <ns5:BooleanFeature value="false" name="collapseMessage"/>
@@ -1056,11 +1279,59 @@
                 </ns5:OracleExtensions>
             </extensionElements>
         </sequenceFlow>
+        <sequenceFlow targetRef="EXCLUSIVE_GATEWAY_1363337442402" sourceRef="ABSTRACT_ACTIVITY6832117421043" name="sf30" id="sf30">
+            <extensionElements>
+                <ns5:OracleExtensions>
+                    <ns5:SequenceFlowAttributes/>
+                    <ns5:FeatureSet>
+                        <ns5:BooleanFeature value="false" name="collapseMessage"/>
+                        <ns5:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                        <ns5:StringFeature value="STRAIGHT" name="routing"/>
+                    </ns5:FeatureSet>
+                </ns5:OracleExtensions>
+            </extensionElements>
+        </sequenceFlow>
+        <sequenceFlow targetRef="EXCLUSIVE_GATEWAY6485260866987" sourceRef="ABSTRACT_ACTIVITY6832182304735" name="sf31" id="sf31">
+            <extensionElements>
+                <ns5:OracleExtensions>
+                    <ns5:SequenceFlowAttributes/>
+                    <ns5:FeatureSet>
+                        <ns5:BooleanFeature value="false" name="collapseMessage"/>
+                        <ns5:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                        <ns5:StringFeature value="STRAIGHT" name="routing"/>
+                    </ns5:FeatureSet>
+                </ns5:OracleExtensions>
+            </extensionElements>
+        </sequenceFlow>
+        <sequenceFlow targetRef="EXCLUSIVE_GATEWAY_1363347361931" sourceRef="ABSTRACT_ACTIVITY6832235443362" name="sf29" id="sf29">
+            <extensionElements>
+                <ns5:OracleExtensions>
+                    <ns5:SequenceFlowAttributes/>
+                    <ns5:FeatureSet>
+                        <ns5:BooleanFeature value="false" name="collapseMessage"/>
+                        <ns5:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                        <ns5:StringFeature value="STRAIGHT" name="routing"/>
+                    </ns5:FeatureSet>
+                </ns5:OracleExtensions>
+            </extensionElements>
+        </sequenceFlow>
+        <sequenceFlow targetRef="EXCLUSIVE_GATEWAY6485260866987" sourceRef="ABSTRACT_ACTIVITY6832246209163" name="sf32" id="sf32">
+            <extensionElements>
+                <ns5:OracleExtensions>
+                    <ns5:SequenceFlowAttributes/>
+                    <ns5:FeatureSet>
+                        <ns5:BooleanFeature value="false" name="collapseMessage"/>
+                        <ns5:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                        <ns5:StringFeature value="STRAIGHT" name="routing"/>
+                    </ns5:FeatureSet>
+                </ns5:OracleExtensions>
+            </extensionElements>
+        </sequenceFlow>
         <dataObject name="spellcheck" id="spellcheck">
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:DataObjectType initialize="true">
-                        <ns5:TypeRef namespace="http://www.example.org/messages" element="checkSpellcheckRequest" isArray="false"/>
+                        <ns5:TypeRef isArray="false" element="checkSpellcheckRequest" namespace="http://www.example.org/messages"/>
                     </ns5:DataObjectType>
                 </ns5:OracleExtensions>
             </extensionElements>
@@ -1069,7 +1340,7 @@
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:DataObjectType initialize="true">
-                        <ns5:TypeRef namespace="http://www.example.org/messages" element="checkSpellcheckResponse" isArray="false"/>
+                        <ns5:TypeRef isArray="false" element="checkSpellcheckResponse" namespace="http://www.example.org/messages"/>
                     </ns5:DataObjectType>
                 </ns5:OracleExtensions>
             </extensionElements>
@@ -1078,7 +1349,7 @@
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:DataObjectType initialize="true">
-                        <ns5:TypeRef namespace="http://www.example.org/messages" element="checkMergeRequest" isArray="false"/>
+                        <ns5:TypeRef isArray="false" element="checkMergeRequest" namespace="http://www.example.org/messages"/>
                     </ns5:DataObjectType>
                 </ns5:OracleExtensions>
             </extensionElements>
@@ -1087,7 +1358,7 @@
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:DataObjectType initialize="true">
-                        <ns5:TypeRef namespace="http://www.example.org/messages" element="checkMergeResponse" isArray="false"/>
+                        <ns5:TypeRef isArray="false" element="checkMergeResponse" namespace="http://www.example.org/messages"/>
                     </ns5:DataObjectType>
                 </ns5:OracleExtensions>
             </extensionElements>
@@ -1096,10 +1367,158 @@
             <extensionElements>
                 <ns5:OracleExtensions>
                     <ns5:DataObjectType initialize="true">
-                        <ns5:TypeRef namespace="http://www.w3.org/2001/XMLSchema" type="string" isArray="false"/>
+                        <ns5:TypeRef isArray="false" type="string" namespace="http://www.w3.org/2001/XMLSchema"/>
                     </ns5:DataObjectType>
                 </ns5:OracleExtensions>
             </extensionElements>
         </dataObject>
+        <artifact xsi:type="ns5:tMeasurementMark" id="Measurement">
+            <extensionElements>
+                <ns5:OracleExtensions>
+                    <ns5:GraphicsAttributes>
+                        <ns5:Position y="378" x="420"/>
+                    </ns5:GraphicsAttributes>
+                    <ns5:FeatureSet>
+                        <ns5:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                        <ns5:StringFeature value="sf30" name="transition"/>
+                        <ns5:StringFeature value="START_STOP" name="type"/>
+                    </ns5:FeatureSet>
+                    <ns5:Localization>
+                        <ns5:Label>
+                            <ns5:LocalizedContent language="en">MeritevZacetna</ns5:LocalizedContent>
+                        </ns5:Label>
+                        <ns5:Description>
+                            <ns5:LocalizedContent language="en"></ns5:LocalizedContent>
+                        </ns5:Description>
+                    </ns5:Localization>
+                </ns5:OracleExtensions>
+                <ns5:BusinessIndicators>
+                    <ns5:BusinessIndicator id="steviloSpellcheckov"/>
+                </ns5:BusinessIndicators>
+            </extensionElements>
+        </artifact>
+        <artifact xsi:type="ns5:tMeasurementMark" id="Measurement1">
+            <extensionElements>
+                <ns5:OracleExtensions>
+                    <ns5:GraphicsAttributes>
+                        <ns5:Position y="374" x="770"/>
+                    </ns5:GraphicsAttributes>
+                    <ns5:FeatureSet>
+                        <ns5:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                        <ns5:StringFeature value="sf31" name="transition"/>
+                        <ns5:StringFeature value="START_STOP" name="type"/>
+                    </ns5:FeatureSet>
+                    <ns5:Localization>
+                        <ns5:Label>
+                            <ns5:LocalizedContent language="en">UspesnaMera</ns5:LocalizedContent>
+                        </ns5:Label>
+                        <ns5:Description>
+                            <ns5:LocalizedContent language="en"></ns5:LocalizedContent>
+                        </ns5:Description>
+                    </ns5:Localization>
+                </ns5:OracleExtensions>
+                <ns5:BusinessIndicators>
+                    <ns5:BusinessIndicator id="steviloUspesnihSpellcheckov"/>
+                </ns5:BusinessIndicators>
+            </extensionElements>
+        </artifact>
+        <artifact xsi:type="ns5:tMeasurementMark" id="Measurement2">
+            <extensionElements>
+                <ns5:OracleExtensions>
+                    <ns5:GraphicsAttributes>
+                        <ns5:Position y="196" x="976"/>
+                    </ns5:GraphicsAttributes>
+                    <ns5:FeatureSet>
+                        <ns5:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                        <ns5:StringFeature value="sf29" name="transition"/>
+                        <ns5:StringFeature value="START_STOP" name="type"/>
+                    </ns5:FeatureSet>
+                    <ns5:Localization>
+                        <ns5:Label>
+                            <ns5:LocalizedContent language="en">MeritevMergov</ns5:LocalizedContent>
+                        </ns5:Label>
+                        <ns5:Description>
+                            <ns5:LocalizedContent language="en"></ns5:LocalizedContent>
+                        </ns5:Description>
+                    </ns5:Localization>
+                </ns5:OracleExtensions>
+                <ns5:BusinessIndicators>
+                    <ns5:BusinessIndicator id="steviloMergov"/>
+                </ns5:BusinessIndicators>
+            </extensionElements>
+        </artifact>
+        <artifact xsi:type="ns5:tMeasurementMark" id="Measurement3">
+            <extensionElements>
+                <ns5:OracleExtensions>
+                    <ns5:GraphicsAttributes>
+                        <ns5:Position y="414" x="908"/>
+                    </ns5:GraphicsAttributes>
+                    <ns5:FeatureSet>
+                        <ns5:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                        <ns5:StringFeature value="sf32" name="transition"/>
+                        <ns5:StringFeature value="START_STOP" name="type"/>
+                    </ns5:FeatureSet>
+                    <ns5:Localization>
+                        <ns5:Label>
+                            <ns5:LocalizedContent language="en">MeritevUporabniskihDel</ns5:LocalizedContent>
+                        </ns5:Label>
+                        <ns5:Description>
+                            <ns5:LocalizedContent language="en"></ns5:LocalizedContent>
+                        </ns5:Description>
+                    </ns5:Localization>
+                </ns5:OracleExtensions>
+                <ns5:BusinessIndicators>
+                    <ns5:BusinessIndicator id="steviloUspesnihSpellcheckov"/>
+                </ns5:BusinessIndicators>
+            </extensionElements>
+        </artifact>
+        <artifact xsi:type="ns5:tCounter" id="Counter">
+            <extensionElements>
+                <ns5:OracleExtensions>
+                    <ns5:GraphicsAttributes>
+                        <ns5:Position y="0" x="0"/>
+                    </ns5:GraphicsAttributes>
+                    <ns5:FeatureSet>
+                        <ns5:StringFeature value="ABSTRACT_ACTIVITY_1363337031918" name="activity"/>
+                    </ns5:FeatureSet>
+                    <ns5:Localization/>
+                </ns5:OracleExtensions>
+                <ns5:BusinessIndicators>
+                    <ns5:BusinessIndicator id="countSpellcheck"/>
+                </ns5:BusinessIndicators>
+            </extensionElements>
+        </artifact>
+        <artifact xsi:type="ns5:tCounter" id="Counter1">
+            <extensionElements>
+                <ns5:OracleExtensions>
+                    <ns5:GraphicsAttributes>
+                        <ns5:Position y="0" x="0"/>
+                    </ns5:GraphicsAttributes>
+                    <ns5:FeatureSet>
+                        <ns5:StringFeature value="ABSTRACT_ACTIVITY_1363337092310" name="activity"/>
+                    </ns5:FeatureSet>
+                    <ns5:Localization/>
+                </ns5:OracleExtensions>
+                <ns5:BusinessIndicators>
+                    <ns5:BusinessIndicator id="countMergeCheck"/>
+                </ns5:BusinessIndicators>
+            </extensionElements>
+        </artifact>
+        <artifact xsi:type="ns5:tCounter" id="Counter2">
+            <extensionElements>
+                <ns5:OracleExtensions>
+                    <ns5:GraphicsAttributes>
+                        <ns5:Position y="0" x="0"/>
+                    </ns5:GraphicsAttributes>
+                    <ns5:FeatureSet>
+                        <ns5:StringFeature value="USER_TASK_1363337300136" name="activity"/>
+                    </ns5:FeatureSet>
+                    <ns5:Localization/>
+                </ns5:OracleExtensions>
+                <ns5:BusinessIndicators>
+                    <ns5:BusinessIndicator id="countManualSpellcheck"/>
+                </ns5:BusinessIndicators>
+            </extensionElements>
+        </artifact>
     </process>
 </definitions>

@@ -66,6 +66,38 @@
                     <label locale="en">Naredi Merge na Deploy branch</label>
                 </labels>
             </topicDocumentation>
+            <topicDocumentation name="ABSTRACT_ACTIVITY6832117421043">
+                <labels>
+                    <label locale="en">Counter</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="ABSTRACT_ACTIVITY6832182304735">
+                <labels>
+                    <label locale="en">CounterUspesnih</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="ABSTRACT_ACTIVITY6832235443362">
+                <labels>
+                    <label locale="en">ScriptTask</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="ABSTRACT_ACTIVITY6832246209163">
+                <labels>
+                    <label locale="en">ScriptTask1</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
             <topicDocumentation name="START_EVENT6174453879719">
                 <labels>
                     <label locale="en">Start</label>
@@ -175,6 +207,10 @@
                 </descriptions>
             </topicDocumentation>
             <topicDocumentation name="sf47"/>
+            <topicDocumentation name="sf30"/>
+            <topicDocumentation name="sf31"/>
+            <topicDocumentation name="sf29"/>
+            <topicDocumentation name="sf32"/>
         </topicDocumentations>
     </component>
 </processDocumentation>

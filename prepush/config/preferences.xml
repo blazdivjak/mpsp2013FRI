@@ -4,5 +4,5 @@
 	<general/>
 	<processes exceptionHandlingPolicy="PROPAGATE" interactiveRole=""/>
 	<languages default="en" availables="en"/>
-	<generateEvents type="GENERATE_INTERACTIVE_EVENTS"/>
+	<generateEvents type="DO_NOT_GENERATE_EVENTS"/>
 </preferences>
